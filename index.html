@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEIL KAPPEL | הנדסת התקציב המשפחתי</title>
+    <style>
+        /* יבוא פונטים - שילוב של מונטסראט (יוקרה) ואסיסטנט (קריאות) */
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Montserrat:wght@400;600;900&display=swap');
+
+        :root {
+            --primary-blue: #1a252f;
+            --accent-gold: #d4af37;
+            --light-gray: #f4f7f6;
+            --text-dark: #333;
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Assistant', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: #fff;
+            padding: 15px 5%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .monogram {
+            background: var(--primary-blue);
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            width: 42px; height: 42px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            font-size: 18px;
+        }
+        .brand-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin: 0;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .brand-text span {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        nav { display: flex; gap: 25px; align-items: center; }
+        nav a { text-decoration: none; color: var(--primary-blue); font-weight: 600; transition: 0.3s; }
+        nav a:hover { color: var(--accent-gold); }
+        
+        .cta-btn {
+            background-color: var(--accent-gold);
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0a151f 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* תג אובייקטיביות */
+        .badge-objective {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero h2 {
+            font-size: 48px;
+            margin: 0 0 20px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .hero p {
+            font-size: 22px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- Pain Points (הרגש) --- */
+        .pain-points {
+            background-color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .pain-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+        .pain-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+        .pain-icon { font-size: 40px; margin-bottom: 15px; display: block; }
+        .pain-item h3 { color: var(--primary-blue); margin-bottom: 10px; }
+
+        /* --- The Process (השיטה ההנדסית) --- */
+        .process {
+            background-color: var(--light-gray);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .step-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+            border-top: 4px solid var(--accent-gold);
+        }
+        .step-num {
+            background: var(--primary-blue);
+            color: white;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+            margin: -45px auto 15px; /* חצי בחוץ */
+            border: 3px solid white;
+        }
+        .step-card h4 { margin: 10px 0; color: var(--primary-blue); font-size: 20px; }
+        .step-card p { font-size: 15px; color: #555; }
+
+        /* --- Why Me (הבידול) --- */
+        .why-me {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 80px auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .why-content {
+            flex: 1;
+            padding: 60px;
+            background: white;
+        }
+        .why-image {
+            flex: 1;
+            background: var(--primary-blue);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 24px;
+            font-weight: bold;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        .why-list li {
+            margin-bottom: 15px;
+            padding-right: 25px;
+            position: relative;
+        }
+        .why-list li::before {
+            content: '✓';
+            color: var(--accent-gold);
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+
+        /* --- Market Landscape (לוגואים) --- */
+        .market-tools {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+        .logos-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            opacity: 0.6;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            font-weight: bold;
+            color: #ccc;
+            font-size: 20px;
+        }
+        
+        /* --- Disclaimer & Footer --- */
+        footer {
+            background-color: #222;
+            color: #999;
+            padding: 40px 20px;
+            font-size: 13px;
+            text-align: center;
+            border-top: 5px solid var(--accent-gold);
+        }
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav { width: 100%; justify-content: space-between; font-size: 14px; }
+            .hero h2 { font-size: 34px; }
+            .steps-container { flex-direction: column; align-items: center; }
+            .step-card { width: 100%; margin-bottom: 25px; }
+            .why-me { flex-direction: column-reverse; margin: 40px 15px; }
+            .why-content { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-wrapper">
+            <div class="monogram">NK</div>
+            <div class="brand-text">
+                <h1>NEIL KAPPEL</h1>
+                <span>הנדסת התקציב המשפחתי</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#">השיטה</a>
+            <a href="#">אודות</a>
+            <a href="#">בלוג</a> <a href="#" class="cta-btn">תיאום פגישה</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="badge-objective">100% אובייקטיבי – ללא ניגוד עניינים</div>
+        <h2>לנהל את כלכלת המשפחה<br>כמו פרויקט הנדסי מנצח</h2>
+        <p>למשפחות צעירות שרוצות לבנות הון, להבטיח את העתיד ולישון בשקט.<br>
+        בלי שיווק השקעות, בלי עמלות נסתרות, רק תכנון אסטרטגי נקי.</p>
+        <a href="#" class="cta-btn" style="font-size: 18px; padding: 15px 35px;">מתחילים כאן >></a>
+    </section>
+
+    <section class="pain-points">
+        <h3 style="font-size: 28px; color: var(--primary-blue);">נשמע מוכר?</h3>
+        <div class="pain-grid">
+            <div class="pain-item">
+                <span class="pain-icon">📉</span>
+                <h3>הכסף נעלם</h3>
+                <p>עובדים קשה, מרוויחים יפה, אבל בסוף החודש נשארים עם 0 או במינוס.</p>
+            </div>
+            <div class="pain-item">
+                <span class="pain-icon">🏠</span>
+                <h3>חלום הדירה מתרחק</h3>
+                <p>רוצים לקנות נכס אבל לא מבינים איך לחסוך להון עצמי בלי להיחנק.</p>
+            </div>
+            <div class="pain-item">
+                <span class="pain-icon">👶</span>
+                <h3>חרדה לעתיד הילדים</h3>
+                <p>האם יהיה לנו איך לממן להם לימודים? חתונה? התחלה טובה לחיים?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <h2 class="section-title">השיטה ההנדסית לצמיחה כלכלית</h2>
+        <p class="section-subtitle">תהליך מובנה, מדויק ומדיד – מהכאוס לסדר מוחלט.</p>
+        
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h4>מיפוי ואיסוף נתונים</h4>
+                <p>בדיוק כמו לפני המראה: אוספים את כל הנתונים (ביטוחים, הלוואות, עו"ש) כדי לקבל תמונת מצב אמתית.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h4>אנליזה הנדסית</h4>
+                <p>ניתוח עומק לאיתור "דליפות" כספיות, כפל ביטוחי והזדמנויות השקעה שלא נוצלו.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h4>בניית אסטרטגיה</h4>
+                <p>בניית תוכנית עבודה ("Spec") המותאמת למטרות שלכם: דירה, פרישה מוקדמת או השכלה לילדים.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <h4>יישום ובקרה</h4>
+                <p>יוצאים לדרך. אני מלווה אתכם ביישום מול הבנקים ובתי ההשקעות, ומוודא עמידה ביעדים.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-me">
+        <div class="why-image">
+            <div style="font-size: 80px; margin-bottom: 20px;">NK</div>
+            <div>ניל קאפל</div>
+            <div style="font-size: 16px; font-weight: normal; margin-top: 10px;">מהנדס B.Sc | מתכנן פיננסי</div>
+        </div>
+        <div class="why-content">
+            <h2 style="color: var(--primary-blue); margin-top: 0;">למה דווקא כאן?</h2>
+            <ul class="why-list" style="list-style: none; padding: 0;">
+                <li><strong>ראש של מהנדס:</strong> אני מביא את הדיוק, האנליטיות וניהול הסיכונים מהתעשייה האווירית ישר לכיס שלכם.</li>
+                <li><strong>100% נאמנות אליכם (Fiduciary):</strong> אני לא סוכן ביטוח. אני לא מקבל עמלות מאף בית השקעות. התשלום היחיד הוא מכם, ולכן האינטרס שלי הוא אך ורק הצלחתכם.</li>
+                <li><strong>ארגז כלים מתקדם:</strong> שימוש באפליקציות ואוטומציות שפיתחתי כדי להפוך את ניהול התקציב לקל ופשוט.</li>
+                <li><strong>שקיפות קפיטליסטית:</strong> מאמין בלקיחת אחריות, יוזמה והגדלת ההון, לא רק ב"צמצום".</li>
+            </ul>
+            <a href="#" class="cta-btn" style="background: var(--primary-blue);">לקביעת שיחת היכרות >></a>
+        </div>
+    </section>
+
+    <section class="market-tools">
+        <h3>החופש לבחור בטוב ביותר עבורכם</h3>
+        <p>אנחנו בוחנים את כל השוק ובוחרים את המכשירים המשתלמים ביותר – ללא מחויבות לאף מותג.</p>
+        <div class="logos-grid">
+            <span>[אלטשולר שחם]</span>
+            <span>[מיטב דש]</span>
+            <span>[ילין לפידות]</span>
+            <span>[בנקים]</span>
+            <span>[מור]</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="disclaimer">
+            <strong>גילוי נאות והצהרה משפטית:</strong><br>
+            ניל קאפל אינו בעל רישיון לייעוץ השקעות או שיווק פנסיוני לפי חוק. השירות ניתן כייעוץ כלכלי ותכנון פיננסי ("תכנון הוליסטי"). המידע המוצג באתר ובתהליך הליווי אינו מהווה ייעוץ פרטני הנוגע לכדאיות השקעה בנכס פיננסי ספציפי ואינו מהווה תחליף לייעוץ/שיווק המתחשב בנתונים ובצרכים המיוחדים של כל אדם. אין באמור משום התחייבות להשגת תשואה כלשהי. ט.ל.ח.
+            <br><br>
+            <strong>נגישות:</strong> העסק פטור מביצוע התאמות נגישות באתר מחמת מחזור כספי (תקנה 35ה). לכל סיוע ניתן לפנות לניל בטלפון: 05X-XXXXXXX.
+        </div>
+        <p>© 2025 כל הזכויות שמורות לניל קאפל. הנדסת התקציב המשפחתי.</p>
+    </footer>
+
+</body>
+</html>
