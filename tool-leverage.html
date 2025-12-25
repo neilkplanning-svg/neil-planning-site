@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון ריבית דריבית | NEIL KAPPEL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="brand-wrapper">
+        <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <div class="monogram-header">NK</div>
+            <div class="brand-text">
+                <div class="brand-name">NEIL KAPPEL</div>
+                <div class="brand-slogan">תכנון פיננסי למשפחות</div>
+            </div>
+        </a>
+    </div>
+    <nav>
+        <a href="index.html">חזרה לראשי</a>
+        <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+    </nav>
+</header>
+
+<div class="tool-header">
+    <h1>מחשבון אחוז מינוף (LTV)</h1>
+    <p>ניהול סיכונים: חשבו את יחס ההלוואה לשווי הנכס</p>
+</div>
+
+<main class="tool-container">
+    <div class="form-group">
+        <label>שווי הנכס הנוכחי (ש"ח)</label>
+        <input type="number" id="assetValue" placeholder="למשל: 2,500,000">
+    </div>
+    <div class="form-group">
+        <label>הון עצמי קיים (ש"ח)</label>
+        <input type="number" id="equity" placeholder="למשל: 800,000">
+    </div>
+    <div class="form-group">
+        <label>סך כל ההלוואות/משכנתא על הנכס (ש"ח)</label>
+        <input type="number" id="loans" placeholder="למשל: 1,700,000">
+    </div>
+    <button class="calc-btn" onclick="alert('הלוגיקה תתווסף בשלב הבא')">חשב אחוז מינוף</button>
+
+    <div class="result-area">
+        <h3>תוצאות החישוב:</h3>
+        <p>אחוז המינוף שלך: <strong>0%</strong></p>
+        <p>סטטוס סיכון: --</p>
+    </div>
+</main>

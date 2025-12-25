@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון ריבית דריבית | NEIL KAPPEL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="brand-wrapper">
+        <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <div class="monogram-header">NK</div>
+            <div class="brand-text">
+                <div class="brand-name">NEIL KAPPEL</div>
+                <div class="brand-slogan">תכנון פיננסי למשפחות</div>
+            </div>
+        </a>
+    </div>
+    <nav>
+        <a href="index.html">חזרה לראשי</a>
+        <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+    </nav>
+</header>
+
+<div class="tool-header">
+    <h1>מחשבון הלוואה (שפיצר)</h1>
+    <p>תכנון החזרים: בדקו מה יהיה ההחזר החודשי הצפוי</p>
+</div>
+
+<main class="tool-container">
+    <div class="form-group">
+        <label>סכום ההלוואה (ש"ח)</label>
+        <input type="number" id="loanAmount" placeholder="למשל: 100,000">
+    </div>
+    <div class="form-group">
+        <label>ריבית שנתית (%)</label>
+        <input type="number" step="0.1" id="interestRate" placeholder="למשל: 5.5">
+    </div>
+    <div class="form-group">
+        <label>תקופת ההלוואה (שנים)</label>
+        <input type="number" id="loanYears" placeholder="למשל: 5">
+    </div>
+    <button class="calc-btn" onclick="alert('הלוגיקה תתווסף בשלב הבא')">חשב החזר חודשי</button>
+
+    <div class="result-area">
+        <h3>תוצאות החישוב:</h3>
+        <p>החזר חודשי משוער: <strong>₪0</strong></p>
+        <p>סך כל הריבית שתשולם: ₪0</p>
+    </div>
+</main>
