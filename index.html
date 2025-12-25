@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEIL KAPPEL | הנדסת התקציב המשפחתי</title>
     <style>
-        /* יבוא פונטים - שילוב של מונטסראט (יוקרה) ואסיסטנט (קריאות) */
+        /* יבוא פונטים */
         @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Montserrat:wght@400;600;900&display=swap');
 
         :root {
@@ -13,6 +13,7 @@
             --accent-gold: #d4af37;
             --light-gray: #f4f7f6;
             --text-dark: #333;
+            --whatsapp-green: #25D366;
         }
 
         * { box-sizing: border-box; }
@@ -82,6 +83,7 @@
             font-weight: 700;
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
             transition: transform 0.2s;
+            text-decoration: none;
         }
         .cta-btn:hover { transform: translateY(-2px); }
 
@@ -94,7 +96,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* תג אובייקטיביות */
         .badge-objective {
             background-color: rgba(255,255,255,0.1);
             border: 1px solid var(--accent-gold);
@@ -120,7 +121,7 @@
             opacity: 0.9;
         }
 
-        /* --- Pain Points (הרגש) --- */
+        /* --- Pain Points --- */
         .pain-points {
             background-color: #fff;
             padding: 60px 20px;
@@ -142,7 +143,7 @@
         .pain-icon { font-size: 40px; margin-bottom: 15px; display: block; }
         .pain-item h3 { color: var(--primary-blue); margin-bottom: 10px; }
 
-        /* --- The Process (השיטה ההנדסית) --- */
+        /* --- Process Section --- */
         .process {
             background-color: var(--light-gray);
             padding: 80px 20px;
@@ -159,7 +160,6 @@
             margin-bottom: 60px;
             font-size: 18px;
         }
-        
         .steps-container {
             display: flex;
             justify-content: center;
@@ -186,13 +186,13 @@
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-weight: bold;
-            margin: -45px auto 15px; /* חצי בחוץ */
+            margin: -45px auto 15px;
             border: 3px solid white;
         }
         .step-card h4 { margin: 10px 0; color: var(--primary-blue); font-size: 20px; }
         .step-card p { font-size: 15px; color: #555; }
 
-        /* --- Why Me (הבידול) --- */
+        /* --- Why Me --- */
         .why-me {
             display: flex;
             flex-wrap: wrap;
@@ -203,11 +203,7 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
-        .why-content {
-            flex: 1;
-            padding: 60px;
-            background: white;
-        }
+        .why-content { flex: 1; padding: 60px; background: white; }
         .why-image {
             flex: 1;
             background: var(--primary-blue);
@@ -235,7 +231,7 @@
             font-weight: bold;
         }
 
-        /* --- Market Landscape (לוגואים) --- */
+        /* --- Market Landscape --- */
         .market-tools {
             text-align: center;
             padding: 50px 20px;
@@ -254,7 +250,7 @@
             font-size: 20px;
         }
         
-        /* --- Disclaimer & Footer --- */
+        /* --- Footer & WhatsApp --- */
         footer {
             background-color: #222;
             color: #999;
@@ -271,6 +267,31 @@
             padding: 15px;
             border-radius: 5px;
         }
+        
+        /* כפתור וואטסאפ צף */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebe57;
+        }
 
         /* --- Mobile --- */
         @media (max-width: 768px) {
@@ -281,6 +302,7 @@
             .step-card { width: 100%; margin-bottom: 25px; }
             .why-me { flex-direction: column-reverse; margin: 40px 15px; }
             .why-content { padding: 30px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 28px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -297,7 +319,8 @@
         <nav>
             <a href="#">השיטה</a>
             <a href="#">אודות</a>
-            <a href="#">בלוג</a> <a href="#" class="cta-btn">תיאום פגישה</a>
+            <a href="https://wa.me/972545882618" target="_blank">וואטסאפ</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-btn">תיאום פגישה</a>
         </nav>
     </header>
 
@@ -306,7 +329,7 @@
         <h2>לנהל את כלכלת המשפחה<br>כמו פרויקט הנדסי מנצח</h2>
         <p>למשפחות צעירות שרוצות לבנות הון, להבטיח את העתיד ולישון בשקט.<br>
         בלי שיווק השקעות, בלי עמלות נסתרות, רק תכנון אסטרטגי נקי.</p>
-        <a href="#" class="cta-btn" style="font-size: 18px; padding: 15px 35px;">מתחילים כאן >></a>
+        <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-btn" style="font-size: 18px; padding: 15px 35px;">מתחילים כאן >></a>
     </section>
 
     <section class="pain-points">
@@ -372,7 +395,7 @@
                 <li><strong>ארגז כלים מתקדם:</strong> שימוש באפליקציות ואוטומציות שפיתחתי כדי להפוך את ניהול התקציב לקל ופשוט.</li>
                 <li><strong>שקיפות קפיטליסטית:</strong> מאמין בלקיחת אחריות, יוזמה והגדלת ההון, לא רק ב"צמצום".</li>
             </ul>
-            <a href="#" class="cta-btn" style="background: var(--primary-blue);">לקביעת שיחת היכרות >></a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-btn" style="background: var(--primary-blue);">לקביעת שיחת היכרות >></a>
         </div>
     </section>
 
@@ -388,14 +411,23 @@
         </div>
     </section>
 
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" title="שלח לי הודעה בוואטסאפ">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white" style="margin-top: 5px;">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.001.572 2.073.872 3.164.872l.001-.001c3.181 0 5.768-2.586 5.768-5.766.001-3.18-2.587-5.767-5.767-5.767zm0 10.5c-1.026 0-2.022-.293-2.883-.799l-.206-.123-1.636.429.438-1.596-.134-.213c-.569-.904-.87-1.954-.87-3.033 0-2.607 2.122-4.729 4.73-4.729 2.607 0 4.728 2.122 4.728 4.729 0 2.608-2.122 4.729-4.729 4.729z"/>
+        </svg>
+    </a>
+
     <footer>
         <div class="disclaimer">
             <strong>גילוי נאות והצהרה משפטית:</strong><br>
             ניל קאפל אינו בעל רישיון לייעוץ השקעות או שיווק פנסיוני לפי חוק. השירות ניתן כייעוץ כלכלי ותכנון פיננסי ("תכנון הוליסטי"). המידע המוצג באתר ובתהליך הליווי אינו מהווה ייעוץ פרטני הנוגע לכדאיות השקעה בנכס פיננסי ספציפי ואינו מהווה תחליף לייעוץ/שיווק המתחשב בנתונים ובצרכים המיוחדים של כל אדם. אין באמור משום התחייבות להשגת תשואה כלשהי. ט.ל.ח.
             <br><br>
-            <strong>נגישות:</strong> העסק פטור מביצוע התאמות נגישות באתר מחמת מחזור כספי (תקנה 35ה). לכל סיוע ניתן לפנות לניל בטלפון: 05X-XXXXXXX.
+            <strong>נגישות:</strong> העסק פטור מביצוע התאמות נגישות באתר מחמת מחזור כספי (תקנה 35ה). לכל סיוע ניתן לפנות לניל בטלפון: 054-5882618.
         </div>
-        <p>© 2025 כל הזכויות שמורות לניל קאפל. הנדסת התקציב המשפחתי.</p>
+        <p>
+            © 2025 כל הזכויות שמורות לניל קאפל. הנדסת התקציב המשפחתי.<br>
+            מייל: <a href="mailto:Neil.k.planning@gmail.com" style="color: #bbb;">Neil.k.planning@gmail.com</a>
+        </p>
     </footer>
 
 </body>
