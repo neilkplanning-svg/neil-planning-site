@@ -3,20 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחשבון ריבית דריבית | NEIL KAPPEL</title>
+    <title>מחשבון הלוואה ומשכנתא | NEIL KAPPEL</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* עיצוב ספציפי לכרטיסיות הסיכום בדף זה */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--accent-gold);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .card h3 { margin: 0; font-size: 0.9em; color: #666; font-weight: normal; }
+        .card .value { font-size: 1.4em; font-weight: bold; color: var(--primary-blue); margin-top: 5px; }
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="brand-wrapper">
-        <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
-            <div class="monogram-header">NK</div>
-            <div class="brand-text">
-                <div class="brand-name">NEIL KAPPEL</div>
-                <div class="brand-slogan">תכנון פיננסי למשפחות</div>
-            </div>
-        </a>
+        <div class="monogram-header">NK</div>
+        <div class="brand-text">
+            <div class="brand-name">NEIL KAPPEL</div>
+            <div class="brand-slogan">תכנון פיננסי למשפחות</div>
+        </div>
     </div>
     <nav>
         <a href="index.html">חזרה לראשי</a>
@@ -25,47 +44,74 @@
 </header>
 
 <div class="tool-header">
-    <h1>מחשבון הלוואה (שפיצר)</h1>
-    <p>תכנון החזרים: בדקו מה יהיה ההחזר החודשי הצפוי</p>
+    <h1>מחשבון הלוואות ומשכנתא</h1>
+    <p>חישוב שפיצר מתקדם כולל הצמדה למדד והלוואת בלון</p>
 </div>
 
 <main class="tool-container">
     <div class="form-group">
         <label>סכום ההלוואה (ש"ח)</label>
-        <input type="number" id="loanAmount" placeholder="למשל: 100,000">
+        <input type="number" id="loanAmount" value="1000000">
     </div>
-    <div class="form-group">
-        <label>ריבית שנתית (%)</label>
-        <input type="number" step="0.1" id="interestRate" placeholder="למשל: 5.5">
-    </div>
-    <div class="form-group">
-        <label>תקופת ההלוואה (שנים)</label>
-        <input type="number" id="loanYears" placeholder="למשל: 5">
-    </div>
-    <button class="calc-btn" onclick="alert('הלוגיקה תתווסף בשלב הבא')">חשב החזר חודשי</button>
 
-    <div class="result-area">
-        <h3>תוצאות החישוב:</h3>
-        <p>החזר חודשי משוער: <strong>₪0</strong></p>
-        <p>סך כל הריבית שתשולם: ₪0</p>
+    <div class="form-group">
+        <label>תקופה בשנים</label>
+        <input type="number" id="loanYears" value="20" max="30">
+    </div>
+
+    <div class="form-group">
+        <label>ריבית שנתית נומינלית (%)</label>
+        <input type="number" id="interestRate" value="4.5" step="0.1">
+    </div>
+
+    <div class="form-group" style="display:flex; align-items:center; gap:10px; background:#f9f9f9; padding:10px; border-radius:5px;">
+        <input type="checkbox" id="linkageCheck" onchange="toggleLinkage()" style="width:20px; height:20px;">
+        <label for="linkageCheck" style="margin:0; cursor:pointer;">האם המסלול צמוד למדד?</label>
+    </div>
+
+    <div class="form-group hidden" id="cpiContainer">
+        <label>צפי אינפלציה/מדד שנתי (%)</label>
+        <input type="number" id="cpiRate" value="2.5" step="0.1">
+    </div>
+
+    <div class="form-group">
+        <label>סכום הלוואת בלון בסוף תקופה (ש"ח)</label>
+        <input type="number" id="balloonAmount" value="0" placeholder="אופציונלי - סכום שלא יוחזר בשוטף">
+        <small style="color:#666; display:block; margin-top:3px;">הסכום הזה לא יוחזר בתשלומים החודשיים, אלא בפעימה אחת בסוף (בינתיים משלמים עליו ריבית).</small>
+    </div>
+
+    <button class="calc-btn" onclick="calculateLoan()">חשב לוח סילוקין</button>
+
+    <div class="result-area" id="result" style="display:none;">
+        <div class="summary-cards">
+            <div class="card">
+                <h3>החזר חודשי ראשון</h3>
+                <div class="value" id="resFirstPmt">₪0</div>
+            </div>
+            <div class="card">
+                <h3>סה"כ ריבית והצמדה</h3>
+                <div class="value" id="resTotalInterest">₪0</div>
+            </div>
+            <div class="card">
+                <h3>סה"כ לבנק בסוף תקופה</h3>
+                <div class="value" id="resTotalPay">₪0</div>
+            </div>
+        </div>
+
+        <div style="height: 350px;">
+            <canvas id="loanChart"></canvas>
+        </div>
     </div>
 </main>
 
 <footer>
     <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-    <p>
-        ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-        טלפון: 054-5882618
-    </p>
-
+    <p>ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a></p>
     <div class="legal-disclaimer">
-        <strong>גילוי נאות והצהרה משפטית:</strong><br>
-        האתר מופעל על ידי ניל קאפל. המידע המוצג באתר, בכלים ובמחשבונים נועד למטרות אינפורמטיביות והשכלה פיננסית בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פנסיוני, ייעוץ מס או תחליף לייעוץ אישי המתחשב בנתונים ובצרכים המיוחדים של כל אדם. ניל קאפל אינו מחזיק ברישיון מכוח חוק הסדרת העיסוק בייעוץ השקעות, בשיווק השקעות ובניהול תיקי השקעות, תשנ"ה-1995. כל הפועל על סמך המידע באתר עושה זאת על דעת עצמו ועל אחריותו הבלעדית. אין באמור משום הבטחה לתשואה כלשהי. ט.ל.ח.
-        <br><br>
-        <strong>הצהרת נגישות:</strong>
-        עסק זה פטור מביצוע התאמות נגישות באתר האינטרנט מתוקף תקנה 35ה (פטור נטל כלכלי לעסק שמחזורו נמוך מ-100,000 ש"ח). עם זאת, אנו רואים חשיבות רבה במתן שירות שוויוני. אם נתקלתם בקושי לגלוש באתר, ניתן לפנות לניל בטלפון 054-5882618 לקבלת המידע בעל פה.
+        <strong>גילוי נאות:</strong> המחשבון נועד להמחשה בלבד. החישובים מתבססים על לוח שפיצר ועל הנחות מדד קבועות. בפועל ייתכנו שינויים בהתאם למועדי החיוב המדויקים, שינויי מדד בפועל ועמלות בנקאיות.
     </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
