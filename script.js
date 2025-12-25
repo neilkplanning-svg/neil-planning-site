@@ -352,3 +352,24 @@ function renderGenericChart(canvasId, type, labels, datasets, stacked = false) {
 
     myChart = new Chart(ctx, config);
 }
+
+<script>
+    // פונקציה לפתיחת התפריט בנייד
+    function toggleMobileMenu(event) {
+        event.preventDefault(); // מונע קפיצה של הדף
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // סגירת התפריט אם לוחצים במקום אחר במסך
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
