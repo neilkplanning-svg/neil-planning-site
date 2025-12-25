@@ -4,309 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEIL KAPPEL | תכנון פיננסי למשפחות</title>
-    <style>
-        /* ייבוא הפונטים של הלוגו */
-        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&family=Montserrat:wght@400;600;900&display=swap');
-
-        /* הגדרות כלליות */
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Assistant', sans-serif; /* הפונט הראשי בעברית */
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
-
-        /* --- HEADER & LOGO INTEGRATION --- */
-        header {
-            background-color: #fff;
-            padding: 10px 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            border-bottom: 3px solid #d4af37; /* פס זהב דק מתחת להדר */
-        }
-
-        /* קונטיינר ללוגו כדי לשמור על המבנה שלו */
-        .brand-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none; /* במקרה שזה לינק */
-        }
-
-        /* העיגול NK (מוקטן) */
-        .monogram-header {
-            background: #1a252f; /* הכחול של הלוגו */
-            color: #d4af37;      /* הזהב של הלוגו */
-            font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
-            font-weight: 900;
-            width: 45px; height: 45px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
-            flex-shrink: 0;
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .brand-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            font-weight: 900;
-            color: #1a252f;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-
-        .brand-slogan {
-            font-family: 'Assistant', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #d4af37;
-            margin-top: 2px;
-        }
-
-        /* NAV */
-        nav {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #1a252f;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #d4af37;
-        }
-        .cta-button {
-            background-color: #d4af37; /* הזהב של הלוגו */
-            color: #fff !important;
-            padding: 10px 20px;
-            border-radius: 50px; /* כפתור עגול יותר */
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s;
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background-color: #1a252f; /* הכחול של הלוגו */
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            background-image: linear-gradient(rgba(26, 37, 47, 0.92), rgba(26, 37, 47, 0.85));
-            /* כאן תבוא תמונת רקע */
-        }
-        .hero h1 {
-            font-family: 'Assistant', sans-serif;
-            font-weight: 700;
-            font-size: 48px;
-            margin-bottom: 15px;
-            line-height: 1.1;
-        }
-        .hero p {
-            font-family: 'Assistant', sans-serif;
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-        }
-
-        /* APP SECTION */
-        .app-section {
-            background-color: #fff;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-        .app-container {
-            border: 2px dashed #d4af37; /* מסגרת זהב מקווקוות */
-            background-color: #fbfbfb;
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            margin: 30px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            border-radius: 15px;
-            position: relative;
-        }
-        .app-mobile-hint {
-            display: none;
-            font-size: 13px;
-            color: #888;
-            margin-top: 10px;
-        }
-
-        /* FEATURES */
-        .features {
-            display: flex;
-            justify-content: center;
-            padding: 70px 20px;
-            gap: 30px;
-            flex-wrap: wrap;
-            background-color: #f9f9f9;
-        }
-        .feature-box {
-            background: white;
-            padding: 30px;
-            width: 300px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            text-align: center;
-            border-top: 5px solid #1a252f; /* פס כחול */
-            border-radius: 8px;
-            flex: 1 1 280px;
-            transition: transform 0.3s;
-        }
-        .feature-box:hover {
-            transform: translateY(-5px);
-        }
-        .feature-box h3 {
-            color: #1a252f;
-            font-family: 'Montserrat', sans-serif; /* שימוש בפונט הלוגו לכותרות */
-            font-weight: 700;
-        }
-
-        /* ABOUT */
-        .about {
-            background-color: #eef2f5; /* צבע הרקע מהלוגו */
-            padding: 70px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-        }
-        .about-text {
-            max-width: 550px;
-        }
-        .about-text h2 {
-            color: #1a252f;
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        .about-img {
-            width: 250px;
-            height: 250px;
-            background-color: #d4af37; /* רקע זהב לתמונה */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            font-size: 24px;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: #1a252f;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            font-size: 14px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        footer a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-
-        /* --- כפתור וואטסאפ צף --- */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #1ebe57;
-        }
-
-        /* --- מובייל --- */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-                text-align: center;
-            }
-            .brand-wrapper {
-                flex-direction: row; /* משאיר את הלוגו והטקסט באותה שורה */
-                justify-content: center;
-            }
-            nav {
-                width: 100%;
-                justify-content: center; 
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            .hero h1 { font-size: 36px; }
-            .hero p { font-size: 18px; }
-            .about { flex-direction: column; text-align: center; }
-            .app-mobile-hint { display: block; }
-            .app-container { height: 500px; }
-            .whatsapp-float { width: 50px; height: 50px; font-size: 28px; bottom: 20px; right: 20px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="brand-wrapper">
-            <div class="monogram-header">NK</div>
-            <div class="brand-text">
-                <div class="brand-name">NEIL KAPPEL</div>
-                <div class="brand-slogan">תכנון פיננסי למשפחות</div>
-            </div>
-        </div>
+	<header>
+		<div class="brand-wrapper">
+			<div class="monogram-header">NK</div>
+			<div class="brand-text">
+				<div class="brand-name">NEIL KAPPEL</div>
+				<div class="brand-slogan">תכנון פיננסי למשפחות</div>
+			</div>
+		</div>
 
-        <nav>
-            <a href="#">ראשי</a>
-            <a href="#">כלים</a>
-            <a href="#">אודות</a>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
-        </nav>
-    </header>
+		<nav>
+			<a href="index.html">ראשי</a>
+			
+			<div class="dropdown">
+				<a href="#" style="cursor: default;">כלים ▼</a>
+				<div class="dropdown-content">
+					<a href="tool-compound.html">מחשבון ריבית דריבית</a>
+					<a href="tool-loan.html">מחשבון הלוואה</a>
+					<a href="tool-leverage.html">מחשבון מינוף עצמי</a>
+					<a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
+				</div>
+			</div>
+
+			<a href="index.html#about">אודות</a>
+			<a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+		</nav>
+	</header>
 
     <div class="hero">
         <h1>הנדסת התקציב המשפחתי</h1>
@@ -352,12 +81,6 @@
         </div>
     </div>
 
-    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" title="שלח הודעת וואטסאפ">
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="white" style="margin-top: 5px;">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.001.572 2.073.872 3.164.872l.001-.001c3.181 0 5.768-2.586 5.768-5.766.001-3.18-2.587-5.767-5.767-5.767zm0 10.5c-1.026 0-2.022-.293-2.883-.799l-.206-.123-1.636.429.438-1.596-.134-.213c-.569-.904-.87-1.954-.87-3.033 0-2.607 2.122-4.729 4.73-4.729 2.607 0 4.728 2.122 4.728 4.729 0 2.608-2.122 4.729-4.729 4.729z"/>
-        </svg>
-    </a>
-
     <footer>
         <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
         <p>
@@ -365,6 +88,10 @@
             טלפון: 054-5882618
         </p>
     </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
