@@ -253,3 +253,19 @@ footer a { color: var(--accent-gold); text-decoration: none; }
 .legal-disclaimer strong {
     color: var(--accent-gold); /* הדגשת הכותרות בזהב */
 }
+
+/* --- תוספת למובייל: הצגת תפריט בלחיצה --- */
+.dropdown-content.show {
+    display: block;
+}
+
+/* התאמה לנייד: שהתפריט לא יברח מהמסך */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* מירכוז התפריט מתחת לכפתור */
+        min-width: 200px;
+    }
+}
+
