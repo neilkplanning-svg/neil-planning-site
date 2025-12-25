@@ -234,3 +234,22 @@ footer a { color: var(--accent-gold); text-decoration: none; }
 		bottom: 20px;
 	}
 }
+
+/* --- Legal Footer Styles (גילוי נאות) --- */
+.legal-disclaimer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* קו הפרדה עדין */
+    font-size: 12px; /* גודל פונט קטן יותר */
+    line-height: 1.5;
+    text-align: center;
+    direction: rtl;
+    opacity: 0.8; /* מעט שקיפות שלא יגנוב את הפוקוס */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.legal-disclaimer strong {
+    color: var(--accent-gold); /* הדגשת הכותרות בזהב */
+}
