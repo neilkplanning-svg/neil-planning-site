@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מקורות מידע וכלים | NEIL KAPPEL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-wrapper">
+            <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
+        </div>
+
+        <nav>
+            <a href="index.html">ראשי</a>
+            
+            <div class="dropdown">
+                <span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="tool-compound.html">מחשבון ריבית דריבית</a>
+                    <a href="tool-loan.html">מחשבון הלוואה</a>
+                    <a href="tool-leverage.html">מחשבון מינוף עצמי</a>
+                    <a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
+                    <a href="tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+                </div>
+            </div>
+
+            <a href="resources.html" style="color:var(--accent-gold);">מקורות מידע</a>
+            <a href="about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1>הספרייה המקצועית</h1>
+        <p>ארגז כלים, נתונים ומקורות מידע אובייקטיביים לקבלת החלטות מושכלות</p>
+    </div>
+
+    <main class="tool-container" style="max-width: 1100px;">
+        
+        <h3 style="color:var(--primary-blue); border-bottom:2px solid #eee; padding-bottom:10px; margin-top:0;">נתוני מאקרו ורגולציה</h3>
+        <div class="resources-grid" style="margin-bottom: 50px;">
+            <a href="https://www.funder.co.il/" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-chart-pie"></i></div>
+                <h4>Funder</h4>
+                <p>השוואת קרנות נאמנות, השתלמות וקופות גמל.</p>
+            </a>
+
+            <a href="https://www.cbs.gov.il/he/CBSNewBrand/Pages/Price-Indices-Main.aspx" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-calculator"></i></div>
+                <h4>מדד המחירים לצרכן</h4>
+                <p>נתוני אינפלציה רשמיים מאתר הלמ"ס.</p>
+            </a>
+
+            <a href="https://www.boi.org.il/" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-university"></i></div>
+                <h4>בנק ישראל</h4>
+                <p>מעקב אחר ריבית הפריים והודעות הנגיד.</p>
+            </a>
+
+            <a href="https://www.tase.co.il/" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-building"></i></div>
+                <h4>הבורסה לני"ע</h4>
+                <p>נתוני מסחר רשמיים, אג"ח ומניות בת"א.</p>
+            </a>
+        </div>
+
+        <h3 style="color:var(--primary-blue); border-bottom:2px solid #eee; padding-bottom:10px;">מחקר, מניות והשקעות ערך</h3>
+        <div class="resources-grid">
+            
+            <a href="https://www.dataroma.com/m/home.php" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-user-secret"></i></div>
+                <h4>Dataroma</h4>
+                <p>מעקב אחרי התיקים של גדולי המשקיעים (באפט ושות').</p>
+            </a>
+
+            <a href="https://quickfs.net/" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-database"></i></div>
+                <h4>QuickFS</h4>
+                <p>היסטוריה פיננסית של מניות ודוחות כספיים בצורה מהירה.</p>
+            </a>
+
+            <a href="https://il.tradingview.com/screener/Hon7Pxbo/" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-search-dollar"></i></div>
+                <h4>TradingView Screener</h4>
+                <p>סורק מניות טכני ופונדמנטלי עם גרפים מתקדמים.</p>
+            </a>
+
+            <a href="https://www.bizportal.co.il/" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-newspaper"></i></div>
+                <h4>Bizportal</h4>
+                <p>חדשות שוק ההון הישראלי וניתוח מניות מקומיות.</p>
+            </a>
+
+            <a href="https://finance.yahoo.com/?guccounter=1" target="_blank" class="resource-card">
+                <div class="resource-icon"><i class="fas fa-globe-americas"></i></div>
+                <h4>Yahoo Finance</h4>
+                <p>הפורטל המוביל לנתונים וחדשות מהשווקים הגלובליים.</p>
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: 054-5882618
+        </p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות:</strong> הקישורים בעמוד זה מובילים לאתרים חיצוניים שאינם בשליטתנו. השימוש במידע באחריות המשתמש בלבד.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
