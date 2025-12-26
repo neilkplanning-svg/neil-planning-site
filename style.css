@@ -801,3 +801,39 @@ nav .dropbtn:hover {
         font-size: 28px;
     }
 }
+
+/* --- עיצוב כפתור לינקדאין --- */
+.linkedin-link {
+    color: white; /* בפוטר */
+    font-size: 24px;
+    margin: 0 10px;
+    transition: 0.3s;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.linkedin-link:hover {
+    color: #0077b5; /* הצבע הרשמי של לינקדאין */
+    transform: scale(1.1);
+}
+
+/* עיצוב ספציפי לעמוד אודות אם רוצים כפתור בולט */
+.about-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #0077b5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.about-social-btn:hover {
+    background-color: #005e93;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,119,181,0.3);
+}
