@@ -376,4 +376,4 @@ window.onclick = function(event) {
             }
         }
     }
-}
+}; // זהו הסוף, אין כאן סוגריים נוספים
