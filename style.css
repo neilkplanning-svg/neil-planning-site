@@ -479,3 +479,325 @@ nav .dropbtn:hover {
         height: 24px;
     }
 }
+
+/* --- תוספות עיצוב לעמוד הבית החדש --- */
+
+/* 1. הגדלת האייקונים (כאב) */
+.pain-icon {
+    font-size: 80px; /* הוגדל משמעותית */
+    margin-bottom: 25px;
+    display: block;
+    color: var(--primary-blue); /* או var(--accent-gold) לבחירתך */
+    line-height: 1;
+}
+
+/* 2. עיצוב סקשן "למה אני" (Why Me) - הועתק מ-WEB PAGE */
+.why-me {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 80px auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.why-content {
+    flex: 1;
+    padding: 60px;
+    background: white;
+}
+
+.why-image {
+    flex: 1;
+    background: var(--primary-blue);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    text-align: center;
+    padding: 20px;
+}
+
+/* טיפול ברשימת היתרונות */
+.why-list {
+    padding: 0;
+    margin: 0;
+}
+
+.why-list li {
+    margin-bottom: 15px;
+    padding-right: 25px;
+    position: relative;
+    list-style: none; /* ביטול הנקודה השחורה */
+    font-size: 16px;
+}
+
+.why-list li::before {
+    content: '✓';
+    color: var(--accent-gold);
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* התאמה למובייל עבור הסקשן הזה */
+@media (max-width: 768px) {
+    .why-me {
+        flex-direction: column-reverse; /* התמונה למעלה בנייד */
+        margin: 40px 15px;
+    }
+    .why-content {
+        padding: 30px;
+    }
+    .why-image {
+        min-height: 250px;
+    }
+}
+
+/* --- Resources Section (קישורים מומלצים) --- */
+.resources-section {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.resources-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 30px auto 0;
+}
+
+.resource-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 220px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+    text-align: center;
+    text-decoration: none; /* ביטול קו תחתי */
+    color: inherit;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: var(--accent-gold);
+}
+
+.resource-icon {
+    font-size: 30px;
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+}
+
+.resource-card h4 {
+    margin: 5px 0;
+    color: var(--primary-blue);
+    font-size: 18px;
+}
+
+.resource-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --- עיצוב עמוד אודות (About Page) --- */
+
+.about-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-profile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.about-profile-img {
+    width: 120px;
+    height: 120px;
+    background-color: var(--primary-blue);
+    color: var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.about-grid-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-card {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    border-right: 4px solid var(--primary-blue);
+}
+
+.about-card .icon-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+}
+
+.about-card .icon-title i {
+    font-size: 24px;
+    color: var(--accent-gold);
+}
+
+.about-card h3 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.custom-list {
+    padding-right: 20px;
+}
+
+.custom-list li {
+    margin-bottom: 10px;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+    .about-profile-img {
+        width: 100px;
+        height: 100px;
+        font-size: 32px;
+    }
+}
+
+/* --- עיצוב הציטוט של באפט --- */
+.buffett-quote {
+    background-color: #fdfdfd; /* רקע כמעט לבן */
+    border-right: 5px solid var(--accent-gold); /* פס זהב בולט מימין */
+    padding: 20px 30px;
+    margin: 40px auto;
+    max-width: 650px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    position: relative;
+    text-align: right;
+}
+
+.quote-icon {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--accent-gold);
+    color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.quote-text {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--primary-blue);
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.quote-author {
+    font-size: 0.95em;
+    color: #888;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* --- תוספות וליטושים למובייל עבור העמודים החדשים (About + Resources) --- */
+@media (max-width: 768px) {
+
+    /* 1. שיפור כרטיסיות מקורות מידע בנייד */
+    .resources-grid {
+        flex-direction: column; /* מסדר בטור */
+        align-items: center;    /* ממקם באמצע */
+        gap: 15px;              /* מרווח בין כרטיסיות */
+    }
+
+    .resource-card {
+        width: 100%;           /* ניצול רוחב מלא */
+        max-width: 350px;      /* הגבלה שלא יהיה ענק מדי */
+        display: flex;         /* הופך ל-Flex כדי ליישר יפה */
+        flex-direction: row;   /* אייקון לצד טקסט */
+        align-items: center;
+        text-align: right;     /* טקסט מימין */
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .resource-card .resource-icon {
+        margin-bottom: 0;      /* ביטול מרווח תחתון של האייקון */
+        font-size: 24px;       /* הקטנה קלה של האייקון */
+        width: 40px;           /* רוחב קבוע לאזור האייקון */
+        text-align: center;
+    }
+
+    .resource-card div {
+        flex: 1;               /* הטקסט לוקח את שאר המקום */
+    }
+    
+    .resource-card h4 {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    /* 2. שיפור עמוד אודות בנייד */
+    .about-card {
+        padding: 20px;         /* קצת פחות ריפוד כדי להרוויח מקום */
+    }
+
+    .about-intro h2 {
+        font-size: 1.5em;      /* כותרת קצת יותר קטנה */
+        line-height: 1.3;
+    }
+
+    /* התאמת הציטוט של באפט למסך צר */
+    .buffett-quote {
+        padding: 20px 15px 20px 10px; /* התאמת שוליים פנימיים */
+        margin: 30px auto;
+        text-align: center;    /* מרכוז הטקסט בנייד נראה טוב יותר */
+        border-right: none;    /* ביטול הפס מימין */
+        border-top: 4px solid var(--accent-gold); /* פס זהב מלמעלה במקום */
+    }
+
+    .quote-icon {
+        top: -20px;            /* הרמת האייקון */
+        right: 50%;            /* מרכוז האייקון */
+        transform: translateX(50%); /* תיקון מרכוז מדוייק */
+    }
+    
+    /* הקטנת הכותרת הכחולה בכל הדפים הפנימיים */
+    .tool-header h1 {
+        font-size: 28px;
+    }
+}
