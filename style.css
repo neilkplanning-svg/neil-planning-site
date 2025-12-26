@@ -207,34 +207,69 @@ footer a { color: var(--accent-gold); text-decoration: none; }
 	transform: scale(1.1);
 }
 
-/* --- Mobile Responsiveness --- */
+/* --- Mobile Responsiveness (קוד משולב ומתוקן) --- */
 @media (max-width: 768px) {
-	.nav-wrapper {
-		flex-direction: column;
-		height: auto;
-		padding: 20px 0;
-	}
-	nav ul {
-		flex-direction: column;
-		align-items: center;
-		gap: 15px;
-		margin-top: 20px;
-	}
-	.hero-content h1 {
-		font-size: 2.2rem;
-	}
-	.about-grid, .contact-container {
-		grid-template-columns: 1fr;
-	}
-	.about-image {
-		height: 300px;
-	}
-	.whatsapp-float {
-		left: 20px;
-		bottom: 20px;
-	}
-}
+    
+    /* 1. התאמות כלליות לעיצוב */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px;
+    }
 
+    nav {
+        position: relative; /* קריטי לתפריט */
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero h1 { font-size: 2.2rem; }
+    .about { flex-direction: column; text-align: center; }
+    .app-container { height: auto; padding: 20px; }
+
+    /* 2. מיקום כפתור הוואטסאפ במובייל (שמרנו את הקיים) */
+    .whatsapp-float {
+        left: 20px;
+        bottom: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    /* 3. התיקון הקריטי לתפריט הכלים */
+    .dropdown {
+        position: static; /* גורם לתפריט להתייחס לרוחב המסך כולו ולא לכפתור */
+    }
+
+    .dropdown-content {
+        left: 10px;          /* מרווח בטיחות משמאל */
+        right: 10px;         /* מרווח בטיחות מימין */
+        width: auto;         /* לוקח את כל הרוחב הזמין */
+        min-width: unset;    /* מבטל הגבלות רוחב */
+        top: 100%;           /* נפתח מיד מתחת לשורת הניווט */
+        transform: none;     /* ביטול הזזות קודמות */
+        
+        text-align: center;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        z-index: 9999 !important; /* דואג שיהיה מעל הכל */
+    }
+
+    .dropdown-content a {
+        padding: 15px;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+        display: block; /* מוודא שכל השורה לחיצה */
+    }
+
+    /* 4. מניעת גלילה אופקית (הזזת המסך) */
+    body, html {
+        overflow-x: hidden;
+    }
+}
 /* --- Legal Footer Styles (גילוי נאות) --- */
 .legal-disclaimer {
     margin-top: 30px;
