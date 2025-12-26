@@ -207,19 +207,20 @@ footer a { color: var(--accent-gold); text-decoration: none; }
 	transform: scale(1.1);
 }
 
-/* --- Mobile Responsiveness (קוד משולב ומתוקן) --- */
+/* --- Mobile Responsiveness (פתרון חלונית צפה) --- */
 @media (max-width: 768px) {
     
-    /* 1. התאמות כלליות לעיצוב */
+    /* 1. עיצוב כללי למובייל */
     header {
         flex-direction: column;
         gap: 15px;
         text-align: center;
         padding: 15px;
+        position: relative; 
+        z-index: 1001; /* מוודא שההדר גבוה */
     }
 
     nav {
-        position: relative; /* קריטי לתפריט */
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
@@ -230,7 +231,7 @@ footer a { color: var(--accent-gold); text-decoration: none; }
     .about { flex-direction: column; text-align: center; }
     .app-container { height: auto; padding: 20px; }
 
-    /* 2. מיקום כפתור הוואטסאפ במובייל (שמרנו את הקיים) */
+    /* 2. כפתור הוואטסאפ */
     .whatsapp-float {
         left: 20px;
         bottom: 20px;
@@ -239,33 +240,45 @@ footer a { color: var(--accent-gold); text-decoration: none; }
         font-size: 24px;
     }
 
-    /* 3. התיקון הקריטי לתפריט הכלים */
+    /* 3. עיצוב התפריט כחלונית צפה (Modal) */
     .dropdown {
-        position: static; /* גורם לתפריט להתייחס לרוחב המסך כולו ולא לכפתור */
+        position: static; /* לא משפיע על המיקום */
     }
 
     .dropdown-content {
-        left: 10px;          /* מרווח בטיחות משמאל */
-        right: 10px;         /* מרווח בטיחות מימין */
-        width: auto;         /* לוקח את כל הרוחב הזמין */
-        min-width: unset;    /* מבטל הגבלות רוחב */
-        top: 100%;           /* נפתח מיד מתחת לשורת הניווט */
-        transform: none;     /* ביטול הזזות קודמות */
+        /* מיקום קבוע ביחס למסך הטלפון - לא מזיז את האתר! */
+        position: fixed; 
+        top: 50%;           /* אמצע הגובה */
+        left: 50%;          /* אמצע הרוחב */
+        transform: translate(-50%, -50%); /* מירכוז מדויק */
         
+        width: 85vw;        /* 85% מרוחב המסך */
+        max-width: 350px;   /* לא רחב מדי */
+        
+        background-color: #fff;
+        border: 2px solid var(--accent-gold);
+        border-radius: 12px;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5); /* צל גדול שמכהה את הרקע */
+        
+        z-index: 10002 !important; /* מעל הכל */
+        padding: 10px 0;
         text-align: center;
-        border-radius: 0 0 8px 8px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        z-index: 9999 !important; /* דואג שיהיה מעל הכל */
     }
 
+    /* עיצוב הקישורים בתוך החלונית */
     .dropdown-content a {
         padding: 15px;
-        font-size: 16px;
-        border-bottom: 1px solid #eee;
-        display: block; /* מוודא שכל השורה לחיצה */
+        font-size: 18px; /* פונט גדול וקריא */
+        border-bottom: 1px solid #f0f0f0;
+        display: block;
+        color: var(--primary-blue);
+    }
+    
+    .dropdown-content a:last-child {
+        border-bottom: none;
     }
 
-    /* 4. מניעת גלילה אופקית (הזזת המסך) */
+    /* מניעת גלילה אופקית */
     body, html {
         overflow-x: hidden;
     }
