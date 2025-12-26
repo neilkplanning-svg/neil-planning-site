@@ -269,3 +269,20 @@ footer a { color: var(--accent-gold); text-decoration: none; }
     }
 }
 
+/* --- תיקון עיצוב לכפתור כלים (SPAN) --- */
+nav .dropbtn {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer; /* מראה סמן של יד */
+    transition: 0.3s;
+}
+
+nav .dropbtn:hover {
+    color: var(--accent-gold);
+}
+
+/* וידוא שהתפריט עולה מעל הכל בנייד */
+.dropdown-content {
+    z-index: 2000 !important; /* מספר גבוה כדי להיות מעל הכל */
+}
