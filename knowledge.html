@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מרכז הידע | NEIL KAPPEL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-wrapper">
+            <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
+        </div>
+
+        <nav>
+            <a href="index.html">ראשי</a>
+            
+            <div class="dropdown">
+                <span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="tool-compound.html">מחשבון ריבית דריבית</a>
+                    <a href="tool-loan.html">מחשבון הלוואה</a>
+                    <a href="tool-leverage.html">מחשבון מינוף עצמי</a>
+                    <a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
+                    <a href="tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+                </div>
+            </div>
+
+            <a href="resources.html">מקורות מידע</a>
+            <a href="knowledge.html" style="color:var(--accent-gold);">מרכז ידע</a>
+            <a href="about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1>מרכז ידע ותובנות פיננסיות</h1>
+        <p>ניתוחי עומק, מדריכים וכלים לניהול ההון המשפחתי</p>
+    </div>
+
+    <main class="tool-container" style="max-width: 1100px;">
+        
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" onkeyup="filterArticles()" placeholder="חפש נושא, מונח או כותרת...">
+            </div>
+            
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterCategory('all')">הכל</button>
+                <button class="filter-btn" onclick="filterCategory('investing')">השקעות ושוק ההון</button>
+                <button class="filter-btn" onclick="filterCategory('housing')">נדל"ן ומשכנתאות</button>
+                <button class="filter-btn" onclick="filterCategory('family')">כלכלת המשפחה</button>
+                <button class="filter-btn" onclick="filterCategory('macro')">מאקרו כלכלה</button>
+            </div>
+        </div>
+
+        <div class="articles-grid" id="articlesGrid">
+            
+            <article class="article-card" data-category="housing">
+                <div class="article-tag">נדל"ן ומשכנתאות</div>
+                <h3>האם כדאי למחזר את המשכנתא כשהפריים עולה?</h3>
+                <p class="article-excerpt">ניתוח הנדסי של השפעת עליית הריבית על ההחזר החודשי, ומתי נקודת האיזון שבה משתלם לשלם קנס יציאה.</p>
+                <div class="article-meta">
+                    <span><i class="far fa-clock"></i> 5 דק' קריאה</span>
+                    <a href="#" class="read-more">קרא עוד >></a>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="investing">
+                <div class="article-tag">השקעות</div>
+                <h3>הסוד של הריבית דריבית: המדריך המלא</h3>
+                <p class="article-excerpt">אלברט איינשטיין קרא לזה "הפלא השמיני". איך להשתמש בזמן ובמתמטיקה כדי להגדיל את ההון שלכם באופן פסיבי.</p>
+                <div class="article-meta">
+                    <span><i class="fas fa-headphones"></i> האזנה זמינה</span>
+                    <a href="#" class="read-more">קרא עוד >></a>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="macro">
+                <div class="article-tag">מאקרו כלכלה</div>
+                <h3>אינפלציה והכסף שלכם: איך להתגונן?</h3>
+                <p class="article-excerpt">מהי שחיקת הכסף, למה היא קורית, ואיזה אפיקי השקעה היסטוריים הוכחו כהגנה הטובה ביותר מפני עליות מחירים.</p>
+                <div class="article-meta">
+                    <span><i class="far fa-clock"></i> 7 דק' קריאה</span>
+                    <a href="#" class="read-more">קרא עוד >></a>
+                </div>
+            </article>
+
+            <article class="article-card" data-category="family">
+                <div class="article-tag">כלכלת המשפחה</div>
+                <h3>איך בונים תקציב שלא נשאר רק באקסל?</h3>
+                <p class="article-excerpt">השיטה הפרקטית לניהול תזרים מזומנים משפחתי שמחזיקה מעמד לאורך זמן, בלי לוותר על ההנאות הקטנות.</p>
+                <div class="article-meta">
+                    <span><i class="far fa-clock"></i> 4 דק' קריאה</span>
+                    <a href="#" class="read-more">קרא עוד >></a>
+                </div>
+            </article>
+
+        </div>
+
+        <div id="noResults" style="display:none; text-align:center; padding: 40px; color:#888;">
+            <i class="fas fa-search" style="font-size:40px; margin-bottom:15px; opacity:0.3;"></i>
+            <p>לא נמצאו מאמרים תואמים לחיפוש שלך.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+		<p>
+			ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+			טלפון: 054-5882618
+			<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
+				<i class="fab fa-linkedin"></i>
+			</a>
+		</p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות:</strong> התכנים במרכז הידע הינם למטרות השכלה בלבד ואינם מהווים ייעוץ השקעות.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
