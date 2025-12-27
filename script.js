@@ -698,3 +698,84 @@ function calculateInvestmentLeverage() {
         ]
     );
 }
+
+/**
+ * ==========================================
+ * 7. לוגיקה למרכז הידע (חיפוש וסינון)
+ * ==========================================
+ */
+
+function filterArticles() {
+    const input = document.getElementById('searchInput');
+    // בדיקת תקינות למקרה שאנחנו בעמוד אחר שאין בו חיפוש
+    if (!input) return; 
+
+    const filter = input.value.toUpperCase();
+    const grid = document.getElementById('articlesGrid');
+    const articles = grid.getElementsByClassName('article-card');
+    let hasResults = false;
+
+    for (let i = 0; i < articles.length; i++) {
+        const title = articles[i].getElementsByTagName("h3")[0];
+        const excerpt = articles[i].getElementsByClassName("article-excerpt")[0];
+        
+        const txtValue = (title.textContent || title.innerText) + " " + (excerpt.textContent || excerpt.innerText);
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            // כאן אנחנו מניחים שהחיפוש גובר על קטגוריות לצורך פשטות
+            // אם הכרטיס הוסתר ע"י קטגוריה, החיפוש יחשוף אותו אם הוא מתאים לטקסט
+             if (articles[i].style.display !== "none") { 
+                articles[i].style.display = "";
+                hasResults = true;
+            }
+            // תיקון קטן: אם חיפשנו משהו ספציפי, נציג אותו גם אם הוא בקטגוריה אחרת כרגע
+            // (אופציונלי: אפשר להחמיר ולבדוק גם קטגוריה, אך לרוב בחיפוש רוצים לראות הכל)
+            articles[i].style.display = ""; 
+            hasResults = true;
+        } else {
+            articles[i].style.display = "none";
+        }
+    }
+    
+    // הצגת הודעת "לא נמצאו תוצאות"
+    const noResultsMsg = document.getElementById('noResults');
+    if (noResultsMsg) {
+        noResultsMsg.style.display = hasResults ? "none" : "block";
+    }
+}
+
+function filterCategory(category) {
+    const articles = document.getElementsByClassName('article-card');
+    const buttons = document.getElementsByClassName('filter-btn');
+    const searchInput = document.getElementById('searchInput');
+    
+    // איפוס שדה החיפוש במעבר קטגוריה
+    if (searchInput) searchInput.value = '';
+
+    // עדכון כפתורים (הסרת active מכולם והוספה לנוכחי)
+    // הערה: event הוא אובייקט גלובלי בדפדפן, אך עדיף להעביר אותו כפרמטר. 
+    // לצורך פשטות בקוד הקיים, נשתמש בלולאה לניקוי:
+    for (let btn of buttons) {
+        btn.classList.remove('active');
+    }
+    // הוספת המחלקה לכפתור שנלחץ (דרך ה-event הגלובלי)
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
+    // סינון הכרטיסיות
+    let hasResults = false;
+    for (let article of articles) {
+        if (category === 'all' || article.getAttribute('data-category') === category) {
+            article.style.display = "";
+            hasResults = true;
+        } else {
+            article.style.display = "none";
+        }
+    }
+    
+    const noResultsMsg = document.getElementById('noResults');
+    if (noResultsMsg) {
+        noResultsMsg.style.display = hasResults ? "none" : "block";
+    }
+}
