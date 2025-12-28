@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון כדאיות מיחזור הלוואה | NEIL KAPPEL</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="brand-wrapper">
+        <a href="../index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <div class="monogram-header">NK</div>
+            <div class="brand-text">
+                <div class="brand-name">NEIL KAPPEL</div>
+                <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+            </div>
+        </a>
+    </div>
+
+	<nav>
+		<a href="../index.html">ראשי</a>
+		
+		<div class="dropdown">
+			<span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
+			<div class="dropdown-content" id="myDropdown">
+				<a href="tool-compound.html">מחשבון ריבית דריבית</a>
+				<a href="tool-loan.html">מחשבון הלוואה</a>
+				<a href="tool-leverage.html">מחשבון מינוף עצמי</a>
+				<a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
+				<a href="tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+			</div>
+		</div>
+
+		<a href="../resources.html">מקורות מידע</a>
+		<a href="../knowledge.html">מרכז ידע</a>
+		<a href="../about.html">אודות</a>
+		<a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+	</nav>
+</header>
+
+<div class="tool-header">
+    <h1>מחשבון כדאיות מיחזור הלוואות</h1>
+    <p>השוו את ההלוואות הקיימות שלכם להצעה חדשה וחסכו כסף</p>
+</div>
+
+<main class="tool-container">
+    <div class="loans-section">
+        <h3 style="margin-top:0; color:var(--primary-blue);"><i class="fas fa-wallet" style="margin-left:8px;"></i>הלוואות קיימות</h3>
+        <p style="font-size:0.9em; color:#666; margin-bottom:15px;">הוסיפו את כל ההלוואות שאתם רוצים לסגור (יתרה, ריבית ושנים שנותרו)</p>
+        
+        <div id="loans-container">
+            </div>
+
+        <button onclick="addLoanInput()" class="add-btn"><i class="fas fa-plus"></i> הוסף הלוואה נוספת</button>
+
+        <div class="total-balance-strip">
+            <span>סה"כ יתרה לסילוק:</span>
+            <span id="total-current-balance">₪0</span>
+        </div>
+    </div>
+
+    <div class="loans-section" style="background: white; border: 2px solid var(--accent-gold);">
+        <h3 style="margin-top:0; color:var(--primary-blue);"><i class="fas fa-hand-holding-usd" style="margin-left:8px;"></i>תנאי הלוואת המיחזור</h3>
+        
+        <div class="form-group">
+            <label>סכום ההלוואה החדשה (ש"ח)</label>
+            <input type="number" id="new-amount" placeholder="יתעדכן אוטומטית לפי היתרה">
+        </div>
+        
+        <div class="loan-grid">
+            <div class="form-group">
+                <label>ריבית שנתית (%)</label>
+                <input type="number" id="new-rate" step="0.1" placeholder="למשל: 5.5">
+            </div>
+            <div class="form-group">
+                <label>תקופה (שנים)</label>
+                <input type="number" id="new-years" placeholder="למשל: 5">
+            </div>
+             <div class="form-group">
+                <label>עלויות הקמה (ש"ח)</label>
+                <input type="number" id="setup-cost" value="0" placeholder="עמלת פירעון/תיק">
+            </div>
+        </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculateRefinance()">חשב כדאיות מיחזור</button>
+
+    <div class="result-area" id="results-area" style="display:none;">
+        <h3 style="text-align:center; margin-bottom:20px;">תוצאות הבדיקה</h3>
+        
+        <div id="verdict-badge" class="verdict-badge"></div>
+
+        <div class="comparison-grid">
+            <div class="comp-card">
+                <div class="comp-label">הפרש בהחזר החודשי</div>
+                <div id="diff-monthly" class="comp-val">--</div>
+            </div>
+            <div class="comp-card">
+                <div class="comp-label">חיסכון כולל (נומינלי)</div>
+                <div id="diff-total" class="comp-val">--</div>
+            </div>
+        </div>
+
+        <table class="result-table">
+            <thead>
+                <tr>
+                    <th>נתון</th>
+                    <th>מצב קיים</th>
+                    <th>אחרי מיחזור</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>החזר חודשי</td>
+                    <td id="res-curr-monthly">₪0</td>
+                    <td id="res-new-monthly">₪0</td>
+                </tr>
+                <tr>
+                    <td>סה"כ החזר מצטבר</td>
+                    <td id="res-curr-total">₪0</td>
+                    <td id="res-new-total">₪0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+	<p>
+		ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+		טלפון: 054-5882618
+		<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
+			<i class="fab fa-linkedin"></i>
+		</a>
+	</p>
+
+    <div class="legal-disclaimer">
+        <strong>גילוי נאות:</strong>
+        המחשבון נועד להמחשה בלבד ומבוסס על לוח שפיצר ללא הצמדה למדד. התוצאות אינן מהוות התחייבות ואין להסתמך עליהן כייעוץ פיננסי מוסמך.
+    </div>
+</footer>
+
+<a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" title="שלח הודעת וואטסאפ">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="../script.js"></script>
+
+</body>
+</html>
