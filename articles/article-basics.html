@@ -3,41 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="יסודות הכלכלה: מה זה כסף, ריבית ואינפלציה - הסבר פשוט למושגי היסוד שכל משפחה צריכה להכיר.">
     <title>יסודות הכלכלה: כסף, ריבית ואינפלציה | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* עיצוב ספציפי לתוכן הכתבה */
-        .article-content {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #333;
-        }
-        .article-content h2 { color: var(--primary-blue); margin-top: 40px; font-weight: 700; }
-        .article-content h3 { color: #555; margin-top: 25px; font-weight: 600; }
-        .article-content ul { padding-right: 20px; margin-bottom: 20px; }
-        .article-content li { margin-bottom: 10px; }
-        .article-date { color: #888; font-size: 0.9em; margin-bottom: 20px; display: block; }
-        
-        /* עיצוב לדוגמאות */
-        .example-box {
-            background-color: #f8f9fa;
-            border-right: 4px solid var(--accent-gold);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .example-box strong { color: var(--primary-blue); }
+        .article-content { font-size: 1.1em; line-height: 1.9; color: var(--gray-700); }
+        .article-content h2 { color: var(--primary-blue); margin-top: 48px; font-weight: 700; font-size: 1.6em; }
+        .article-content ul { padding-right: 24px; margin-bottom: 24px; }
+        .article-content li { margin-bottom: 12px; }
+        .article-date { color: var(--gray-500); font-size: 0.9em; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+        .example-box { background: var(--gray-50); border-right: 4px solid var(--accent-gold); padding: 20px 24px; margin: 24px 0; border-radius: 8px; }
+        .example-box h3 { margin-top: 0; color: var(--primary-blue); }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
     <header>
         <div class="brand-wrapper">
-            <a href="../index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <a href="../index.html" aria-label="דף הבית">
                 <div class="monogram-header">NK</div>
                 <div class="brand-text">
                     <div class="brand-name">NEIL KAPPEL</div>
@@ -45,154 +35,106 @@
                 </div>
             </a>
         </div>
-        <nav>
+
+        <nav aria-label="ניווט ראשי">
             <a href="../index.html">ראשי</a>
             <div class="dropdown">
-                <span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-                <div class="dropdown-content" id="myDropdown">
-                    <a href="../tools/tool-compound.html">מחשבון ריבית דריבית</a>
-                    <a href="../tools/tool-loan.html">מחשבון הלוואה</a>
-                    <a href="../tools/tool-compound.html">מחשבון מינוף עצמי</a>
-                    <a href="../tools/tool-refinance.html">כדאיות מחזור הלוואה</a>
-                    <a href="../tools/tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="../tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="../tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="../tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="../tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="../tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
                 </div>
             </div>
             <a href="../resources.html">מקורות מידע</a>
-            <a href="../knowledge.html" style="color:var(--accent-gold);">מרכז ידע</a>
+            <a href="../knowledge.html" class="active">מרכז ידע</a>
             <a href="../about.html">אודות</a>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
         </nav>
     </header>
 
     <div class="tool-header" style="padding: 60px 20px;">
-        <h1>חוזרים לבסיס: כסף, ריבית ואינפלציה</h1> 
+        <h1><i class="fas fa-graduation-cap" aria-hidden="true"></i> חוזרים לבסיס: כסף, ריבית ואינפלציה</h1>
         <p>שלושת המושגים שמשפיעים על כל החלטה כלכלית שתקבלו בחייכם, מוסברים בשפה פשוטה</p>
     </div>
 
-    <main class="tool-container" style="max-width: 800px;">
-        <span class="article-date">עודכן לאחרונה: דצמבר 2025</span>
+    <main id="main-content" class="tool-container" style="max-width: 800px;">
+        <span class="article-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> עודכן לאחרונה: דצמבר 2025</span>
         
         <div class="article-content">
-            <p>
-                אנחנו עובדים בשבילו, חוסכים אותו, ולעיתים קרובות דואגים בגללו. אבל כמה מאיתנו עצרו רגע לשאול: מה זה באמת כסף? 
-                איך ייתכן שהערך שלו משתנה כל הזמן? ולמה הבנק משלם או גובה מאיתנו אחוזים עליו?
-                במאמר זה נעשה סדר בשלושת מושגי היסוד שעליהם העולם הפיננסי עומד.
-            </p>
+            <p>אנחנו עובדים בשבילו, חוסכים אותו, ולעיתים קרובות דואגים בגללו. אבל כמה מאיתנו עצרו רגע לשאול: מה זה באמת כסף? איך ייתכן שהערך שלו משתנה כל הזמן? ולמה הבנק משלם או גובה מאיתנו אחוזים עליו? במאמר זה נעשה סדר בשלושת מושגי היסוד שעליהם העולם הפיננסי עומד.</p>
 
-            <h2>חלק 1: מה זה בכלל כסף?</h2>
-            <p>
-                באופן אינטואיטיבי, כסף הוא הנייר שיש לנו בארנק או המספר שמופיע באפליקציה של הבנק. אבל בהגדרה הכלכלית, כסף הוא קודם כל <strong>הסכם של אמון</strong>.
-            </p>
-            <p>
-                בעבר, המסחר התבצע בשיטת "סחר חליפין" (ברטר) – אני אתן לך שק חיטה, ואת תתני לי נעליים. השיטה הזו הייתה מסורבלת. 
-                כדי לפתור זאת, האנושות המציאה את הכסף שמשמש לשלוש מטרות עיקריות:
-            </p>
+            <h2><i class="fas fa-coins" style="color: var(--accent-gold);" aria-hidden="true"></i> חלק 1: מה זה בכלל כסף?</h2>
+            <p>באופן אינטואיטיבי, כסף הוא הנייר שיש לנו בארנק או המספר שמופיע באפליקציה של הבנק. אבל בהגדרה הכלכלית, כסף הוא קודם כל <strong>הסכם של אמון</strong>.</p>
+            <p>בעבר, המסחר התבצע בשיטת "סחר חליפין" (ברטר) – אני אתן לך שק חיטה, ואת תתני לי נעליים. השיטה הזו הייתה מסורבלת. כדי לפתור זאת, האנושות המציאה את הכסף שמשמש לשלוש מטרות עיקריות:</p>
             <ul>
                 <li><strong>אמצעי חליפין:</strong> משהו שכולם מוכנים לקבל בתמורה לסחורה.</li>
                 <li><strong>יחידת מדידה:</strong> דרך נוחה להשוות מחיר של עגבנייה למחיר של מכונית.</li>
                 <li><strong>אוגר ערך:</strong> היכולת לשמור את כוח הקנייה שלי לעתיד (בניגוד לעגבנייה שתרקב).</li>
             </ul>
-            <p>
-                כיום, לכסף שלנו (Fiat Money) אין ערך עצמי כמו לזהב. הערך שלו נובע מכך שכולנו מאמינים שהמדינה והכלכלה שעומדת מאחוריו חזקות ויציבות.
-            </p>
+            <p>כיום, לכסף שלנו (Fiat Money) אין ערך עצמי כמו לזהב. הערך שלו נובע מכך שכולנו מאמינים שהמדינה והכלכלה שעומדת מאחוריו חזקות ויציבות.</p>
 
-            <h2>חלק 2: ריבית – המחיר של הזמן</h2>
-            <p>
-                ריבית היא אולי המושג החשוב ביותר בעולם ההשקעות וההלוואות. ההגדרה הפשוטה ביותר לריבית היא: <strong>מחיר הכסף</strong>.
-            </p>
-            <p>
-                דמיינו שאתם שוכרים דירה. אתם משלמים שכר דירה כדי לגור בנכס שאינו שלכם לתקופה מסוימת. 
-                באותו אופן, כשאתם לוקחים הלוואה מהבנק, אתם "שוכרים" כסף שאינו שלכם. ה"שכירות" שאתם משלמים לבנק נקראת ריבית.
-            </p>
+            <h2><i class="fas fa-percentage" style="color: var(--accent-gold);" aria-hidden="true"></i> חלק 2: ריבית – המחיר של הזמן</h2>
+            <p>ריבית היא אולי המושג החשוב ביותר בעולם ההשקעות וההלוואות. ההגדרה הפשוטה ביותר לריבית היא: <strong>מחיר הכסף</strong>.</p>
+            <p>דמיינו שאתם שוכרים דירה. אתם משלמים שכר דירה כדי לגור בנכס שאינו שלכם לתקופה מסוימת. באותו אופן, כשאתם לוקחים הלוואה מהבנק, אתם "שוכרים" כסף שאינו שלכם. ה"שכירות" שאתם משלמים לבנק נקראת ריבית.</p>
             
             <div class="example-box">
-                <h3>דוגמה מעשית: הלוואה לרכב</h3>
-                <p>
-                    נניח ולקחתם הלוואה של <strong>100,000 ש"ח</strong> כדי לקנות רכב, בריבית של <strong>5%</strong> לשנה.
-                    <br>
-                    הבנק נותן לכם את הכסף עכשיו, אבל דורש "פיצוי" על כך שהוא נפרד מהכסף שלו לתקופה.
-                    בסוף השנה, תצטרכו להחזיר לא רק את ה-100,000 ש"ח (הקרן), אלא תוספת של 5,000 ש"ח.
-                    <br>
-                    <strong>זוהי הריבית: העלות של הקדמת השימוש בכסף.</strong>
-                </p>
+                <h3><i class="fas fa-car" style="color: var(--accent-gold);" aria-hidden="true"></i> דוגמה מעשית: הלוואה לרכב</h3>
+                <p>נניח ולקחתם הלוואה של <strong>100,000 ש"ח</strong> כדי לקנות רכב, בריבית של <strong>5%</strong> לשנה.<br>הבנק נותן לכם את הכסף עכשיו, אבל דורש "פיצוי" על כך שהוא נפרד מהכסף שלו לתקופה. בסוף השנה, תצטרכו להחזיר לא רק את ה-100,000 ש"ח (הקרן), אלא תוספת של 5,000 ש"ח.<br><strong>זוהי הריבית: העלות של הקדמת השימוש בכסף.</strong></p>
             </div>
 
-            <p>
-                חשוב לזכור: זה עובד גם הפוך. כשאתם מפקידים כסף בפיקדון או בחיסכון, אתם למעשה "משכירים" את הכסף שלכם לבנק. לכן, הבנק הוא זה שצריך לשלם לכם ריבית.
-            </p>
+            <p>חשוב לזכור: זה עובד גם הפוך. כשאתם מפקידים כסף בפיקדון או בחיסכון, אתם למעשה "משכירים" את הכסף שלכם לבנק. לכן, הבנק הוא זה שצריך לשלם לכם ריבית.</p>
 
-            <h2>חלק 3: אינפלציה – הרוצח השקט של הכסף</h2>
-            <p>
-                שמתם לב שהעגלה בסופר עולה היום הרבה יותר ממה שהיא עלתה לפני 5 או 10 שנים? זוהי אינפלציה.
-            </p>
-            <p>
-                אינפלציה היא תהליך של עליית מחירים מתמשכת, או במילים אחרות: <strong>שחיקת כוח הקנייה של הכסף</strong>. 
-                אם יש אינפלציה של 3% בשנה, זה אומר שבשנה הבאה תצטרכו 103 שקלים כדי לקנות את מה שקניתם היום ב-100 שקלים.
-            </p>
+            <h2><i class="fas fa-chart-line" style="color: var(--accent-gold);" aria-hidden="true"></i> חלק 3: אינפלציה – הרוצח השקט של הכסף</h2>
+            <p>שמתם לב שהעגלה בסופר עולה היום הרבה יותר ממה שהיא עלתה לפני 5 או 10 שנים? זוהי אינפלציה.</p>
+            <p>אינפלציה היא תהליך של עליית מחירים מתמשכת, או במילים אחרות: <strong>שחיקת כוח הקנייה של הכסף</strong>. אם יש אינפלציה של 3% בשנה, זה אומר שבשנה הבאה תצטרכו 103 שקלים כדי לקנות את מה שקניתם היום ב-100 שקלים.</p>
 
             <div class="example-box">
-                <h3>דוגמה: "מדד כוס הקפה"</h3>
-                <p>
-                    בשנת 2000, יכולתם לקנות כוס קפה ומאפה ב-10 שקלים.
-                    <br>
-                    אם הייתם שמים את השטר של ה-10 שקלים בכספת ומוציאים אותו היום, בשנת 2025, עדיין היה כתוב עליו "10 שקלים". 
-                    אבל כשהייתם מגיעים לבית הקפה, הייתם מגלים שזה בקושי מספיק לאספרסו קצר.
-                    <br>
-                    <strong>הכסף נשאר אותו כסף, אבל הערך שלו (מה אפשר לקנות איתו) ירד משמעותית.</strong>
-                </p>
+                <h3><i class="fas fa-coffee" style="color: var(--accent-gold);" aria-hidden="true"></i> דוגמה: "מדד כוס הקפה"</h3>
+                <p>בשנת 2000, יכולתם לקנות כוס קפה ומאפה ב-10 שקלים.<br>אם הייתם שמים את השטר של ה-10 שקלים בכספת ומוציאים אותו היום, בשנת 2025, עדיין היה כתוב עליו "10 שקלים". אבל כשהייתם מגיעים לבית הקפה, הייתם מגלים שזה בקושי מספיק לאספרסו קצר.<br><strong>הכסף נשאר אותו כסף, אבל הערך שלו (מה אפשר לקנות איתו) ירד משמעותית.</strong></p>
             </div>
 
             <div class="buffett-quote" style="margin: 40px auto;">
-                <i class="fas fa-quote-right quote-icon"></i>
+                <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
                 <div class="quote-text">"אינפלציה היא מס ללא חקיקה."</div>
                 <div class="quote-author">- מילטון פרידמן, זוכה פרס נובל לכלכלה</div>
             </div>
 
-            <h2>איך זה קשור לתכנון הפיננסי שלכם?</h2>
-            <p>
-                הבנה של ריבית ואינפלציה היא קריטית לניהול ההון המשפחתי. 
-                כסף שיושב "מת" בעובר ושב נשחק על ידי האינפלציה ומאבד מערכו מדי שנה. 
-                לעומת זאת, כסף שמושקע ומניב תשואה (ריבית), יכול לשמור על ערכו ואף לצמוח מעבר לעליית המחירים.
-            </p>
-            <p>
-                החכמה היא לדעת לנהל את החובות (לצמצם תשלומי ריבית) ולנהל את ההשקעות (לייצר ריבית הגבוהה מהאינפלציה).
-            </p>
+            <h2><i class="fas fa-lightbulb" style="color: var(--accent-gold);" aria-hidden="true"></i> איך זה קשור לתכנון הפיננסי שלכם?</h2>
+            <p>הבנה של ריבית ואינפלציה היא קריטית לניהול ההון המשפחתי. כסף שיושב "מת" בעובר ושב נשחק על ידי האינפלציה ומאבד מערכו מדי שנה. לעומת זאת, כסף שמושקע ומניב תשואה (ריבית), יכול לשמור על ערכו ואף לצמוח מעבר לעליית המחירים.</p>
+            <p>החכמה היא לדעת לנהל את החובות (לצמצם תשלומי ריבית) ולנהל את ההשקעות (לייצר ריבית הגבוהה מהאינפלציה).</p>
         </div>
 
-        <hr style="margin: 40px 0; border:0; border-top:1px solid #eee;">
+        <hr style="margin: 48px 0; border:0; border-top:1px solid var(--gray-200);">
         
         <div style="text-align: center;">
             <h3 style="color:var(--primary-blue);">רוצים לבדוק איך הריבית משפיעה עליכם?</h3>
-            <p>השתמשו במחשבונים שבאתר כדי לראות את כוחה של הריבית דריבית או את עלות ההלוואות שלכם.</p>
-            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-                <a href="../tools/tool-compound.html" class="cta-button" style="background-color: var(--primary-blue);">מחשבון ריבית דריבית</a>
-                <a href="../tools/tool-loan.html" class="cta-button" style="background-color: #666;">מחשבון הלוואה</a>
+            <p style="color: var(--gray-600);">השתמשו במחשבונים שבאתר כדי לראות את כוחה של הריבית דריבית או את עלות ההלוואות שלכם.</p>
+            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin: 24px 0;">
+                <a href="../tools/tool-compound.html" class="cta-button"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                <a href="../tools/tool-loan.html" class="cta-button" style="background-color: var(--gray-700);"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
             </div>
-            <br><br>
-            <a href="../knowledge.html" style="color:var(--accent-gold); font-weight:bold;">&larr; חזרה למרכז הידע</a>
+            <br>
+            <a href="../knowledge.html" style="color:var(--accent-gold); font-weight:bold; text-decoration: none;"><i class="fas fa-arrow-right" aria-hidden="true"></i> חזרה למרכז הידע</a>
         </div>
-
     </main>
 
     <footer>
         <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-        <p>
-            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-            טלפון: 054-5882618
-            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-                <i class="fab fa-linkedin"></i>
-            </a>
+        <p>ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
         </p>
-        <div class="legal-disclaimer">
-            <strong>גילוי נאות:</strong> התוכן במאמר זה הינו למטרות השכלה בלבד ואינו מהווה ייעוץ השקעות.
-        </div>
+        <div class="legal-disclaimer"><strong>גילוי נאות:</strong> התוכן במאמר זה הינו למטרות השכלה בלבד ואינו מהווה ייעוץ השקעות.</div>
     </footer>
 
-    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
 
     <script src="../script.js"></script>
-
 </body>
 </html>

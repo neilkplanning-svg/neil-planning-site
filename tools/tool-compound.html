@@ -3,121 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="מחשבון ריבית דריבית מתקדם - חשבו כמה יהיה שווה הכסף שלכם בעוד שנים, כולל דמי ניהול ומיסוי.">
     <title>מחשבון ריבית דריבית | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="../style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "מחשבון ריבית דריבית",
+        "description": "מחשבון ריבית דריבית מתקדם כולל דמי ניהול ומיסוי",
+        "applicationCategory": "FinanceApplication"
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
-<header>
-    <div class="brand-wrapper">
-        <div class="monogram-header">NK</div>
-        <div class="brand-text">
-            <div class="brand-name">NEIL KAPPEL</div>
-            <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+    <header>
+        <div class="brand-wrapper">
+            <a href="../index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
         </div>
-    </div>
-	<nav>
-		<a href="../index.html">ראשי</a>
-		
-		<div class="dropdown">
-			<span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-			<div class="dropdown-content" id="myDropdown">
-				<a href="tool-compound.html">מחשבון ריבית דריבית</a>
-				<a href="tool-loan.html">מחשבון הלוואה</a>
-				<a href="tool-leverage.html">מחשבון מינוף עצמי</a>
-				<a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
-				<a href="tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
-			</div>
-		</div>
 
-		<a href="../resources.html">מקורות מידע</a>
-		<a href="../knowledge.html">מרכז ידע</a>
-		<a href="../about.html">אודות</a>
-		<a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
-	</nav>
-</header>
-
-<div class="tool-header">
-    <h1>מחשבון ריבית דריבית מתקדם</h1>
-    <p>כולל התחשבות בדמי ניהול ומיסוי</p>
-</div>
-
-<div class="buffett-quote" style="margin: 30px auto;">
-    <i class="fas fa-quote-right quote-icon"></i>
-    <div class="quote-text" style="font-size: 1.1em;">
-        "ריבית דריבית היא הפלא השמיני של תבל.<br>
-        מי שמבין זאת – מרוויח אותה. מי שלא – משלם אותה."
-    </div>
-    <div class="quote-author">- אלברט איינשטיין</div>
-</div>
-
-<main class="tool-container">
-    <div class="form-group">
-        <label>סכום הפקדה ראשוני (ש"ח)</label>
-        <input type="number" id="principal" value="10000" placeholder="למשל: 10,000">
-    </div>
-    <div class="form-group">
-        <label>הפקדה חודשית קבועה (ש"ח)</label>
-        <input type="number" id="monthlyDeposit" value="1000" placeholder="למשל: 1,500">
-    </div>
-    <div class="form-group">
-        <label>תשואה שנתית משוערת (%)</label>
-        <input type="number" id="rate" value="7" step="0.1" placeholder="למשל: 7">
-    </div>
-    <div class="form-group">
-        <label>משך זמן ההשקעה (שנים)</label>
-        <input type="number" id="years" value="20" placeholder="למשל: 20">
-    </div>
-
-    <div style="display:flex; gap:10px;">
-        <div class="form-group" style="flex:1;">
-            <label>דמי ניהול מצבירה (%)</label>
-            <input type="number" id="mgmtFeeAccumulation" value="0.7" step="0.01" placeholder="שנתי">
-        </div>
-        <div class="form-group" style="flex:1;">
-            <label>דמי ניהול מהפקדה (%)</label>
-            <input type="number" id="mgmtFeeDeposit" value="0" step="0.1" placeholder="מההפקדה">
-        </div>
-    </div>
-
-    <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top:10px;">
-        <input type="checkbox" id="taxCheckbox" style="width:20px; height:20px;">
-        <label for="taxCheckbox" style="margin:0; font-weight:normal;">קזז מס רווחי הון בסוף (25% מהרווח הריאלי)</label>
-    </div>
-
-    <button class="calc-btn" onclick="calculateCompoundInterest()">חשב עתיד כלכלי</button>
-
-    <div class="result-area" id="result" style="display:none;">
-        <h3>תוצאות החישוב:</h3>
-        <p id="resTotal">סכום סופי: <strong>₪0</strong></p>
-        <p id="resDeposits">סך הכל הפקדות: ₪0</p>
-        <p id="resInterest">סך הכל רווח נקי: ₪0</p>
-        <p id="resFees" style="font-size:0.9em; color:#777;">סה"כ דמי ניהול ששולמו: ₪0</p>
-        <p id="resTax" style="font-size:0.9em; color:#777; display:none;">מס ששולם: ₪0</p>
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
         
-        <div style="margin-top: 30px; height: 300px;">
-            <canvas id="growthChart"></canvas>
+        <nav aria-label="ניווט ראשי">
+            <a href="../index.html">ראשי</a>
+            
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tool-compound.html" role="menuitem" class="active"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                </div>
+            </div>
+
+            <a href="../resources.html">מקורות מידע</a>
+            <a href="../knowledge.html">מרכז ידע</a>
+            <a href="../about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית מתקדם</h1>
+        <p>כולל התחשבות בדמי ניהול ומיסוי</p>
+    </div>
+
+    <div class="buffett-quote" style="margin: -20px auto 40px; position: relative; z-index: 2;">
+        <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+        <div class="quote-text" style="font-size: 1.1em;">
+            "ריבית דריבית היא הפלא השמיני של תבל.<br>
+            מי שמבין זאת – מרוויח אותה. מי שלא – משלם אותה."
         </div>
+        <div class="quote-author">- אלברט איינשטיין</div>
     </div>
-</main>
 
-<footer>
-    <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-	<p>
-		ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-		טלפון: 054-5882618
-		<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-			<i class="fab fa-linkedin"></i>
-		</a>
-	</p>
-    <div class="legal-disclaimer">
-        <strong>גילוי נאות:</strong> המחשבון נועד להמחשה בלבד ואינו מהווה התחייבות לתשואה. החישובים מבוססים על הנחות סטטיסטיות ועשויים להיות שונים מהמציאות.
-    </div>
-</footer>
+    <main id="main-content" class="tool-container">
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="principal">
+                    <i class="fas fa-piggy-bank" aria-hidden="true"></i>
+                    סכום הפקדה ראשוני (ש"ח)
+                </label>
+                <input type="number" id="principal" value="10000" placeholder="למשל: 10,000" inputmode="numeric" aria-describedby="principalHint">
+                <div class="form-hint" id="principalHint">הסכום ההתחלתי שתשקיעו</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="monthlyDeposit">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    הפקדה חודשית קבועה (ש"ח)
+                </label>
+                <input type="number" id="monthlyDeposit" value="1000" placeholder="למשל: 1,500" inputmode="numeric">
+            </div>
+        </div>
 
-<script src="../script.js"></script>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="rate">
+                    <i class="fas fa-percentage" aria-hidden="true"></i>
+                    תשואה שנתית משוערת (%)
+                </label>
+                <input type="number" id="rate" value="7" step="0.1" placeholder="למשל: 7">
+                <div class="form-hint">ממוצע היסטורי של S&P500: כ-10%</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="years">
+                    <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+                    משך זמן ההשקעה (שנים)
+                </label>
+                <input type="number" id="years" value="20" placeholder="למשל: 20" min="1" max="50">
+            </div>
+        </div>
+
+        <!-- Advanced Settings -->
+        <details>
+            <summary>
+                <i class="fas fa-cog" aria-hidden="true"></i>
+                הגדרות מתקדמות (דמי ניהול ומס)
+            </summary>
+            <div class="form-row" style="padding: 20px; background: var(--gray-50);">
+                <div class="form-group" style="margin: 0;">
+                    <label for="mgmtFeeAccumulation">דמי ניהול מצבירה (% שנתי)</label>
+                    <input type="number" id="mgmtFeeAccumulation" value="0.7" step="0.01" placeholder="למשל: 0.7">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label for="mgmtFeeDeposit">דמי ניהול מהפקדה (%)</label>
+                    <input type="number" id="mgmtFeeDeposit" value="0" step="0.1" placeholder="למשל: 0">
+                </div>
+            </div>
+            
+            <div class="checkbox-wrapper" style="margin: 0 20px 20px;">
+                <input type="checkbox" id="taxCheckbox">
+                <label for="taxCheckbox">קזז מס רווחי הון בסוף (25% מהרווח הריאלי)</label>
+            </div>
+        </details>
+
+        <button class="calc-btn" onclick="calculateCompoundInterest()">
+            <i class="fas fa-calculator" aria-hidden="true"></i>
+            חשב עתיד כלכלי
+        </button>
+
+        <!-- Results Area -->
+        <div class="result-area" id="result" style="display:none;">
+            <h3><i class="fas fa-chart-pie" aria-hidden="true"></i> תוצאות החישוב</h3>
+            
+            <div class="result-highlight" id="resTotal">
+                <span class="label">סכום סופי</span>
+                <span class="value">₪0</span>
+            </div>
+            
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="label">סך הפקדות</div>
+                    <div class="value" id="resDeposits">₪0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">רווח נטו</div>
+                    <div class="value" id="resInterest">₪0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">תשואה כוללת</div>
+                    <div class="value" id="resROI">0%</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">דמי ניהול</div>
+                    <div class="value" id="resFees">₪0</div>
+                </div>
+            </div>
+            
+            <div id="resTax" style="display:none; text-align:center; padding: 12px; background: var(--warning-light); border-radius: 8px; margin-bottom: 20px;">
+                מס רווחי הון (25%): <strong>₪0</strong>
+            </div>
+            
+            <div class="chart-container">
+                <h4><i class="fas fa-chart-area" aria-hidden="true"></i> צמיחת התיק לאורך זמן</h4>
+                <canvas id="growthChart" aria-label="גרף צמיחת התיק"></canvas>
+            </div>
+            
+            <!-- CTA -->
+            <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%); padding: 24px; border-radius: 12px; text-align: center; margin-top: 24px;">
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 16px;">רוצים לדעת איך למקסם את הרווחים?</p>
+                <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    קבעו שיחת ייעוץ
+                </a>
+            </div>
+        </div>
+
+        <!-- Educational Section -->
+        <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--gray-200);">
+            <h3 style="margin-bottom: 16px;"><i class="fas fa-graduation-cap" style="color: var(--accent-gold);"></i> מה זה ריבית דריבית?</h3>
+            <p style="color: var(--gray-600); line-height: 1.8;">
+                ריבית דריבית היא העיקרון שבו הרווחים שלכם מרוויחים בעצמם. במקום לקבל ריבית רק על הקרן המקורית, 
+                אתם מקבלים ריבית גם על הרווחים שכבר צברתם. ככל שהזמן עובר, האפקט הזה מתחזק באופן אקספוננציאלי - 
+                וזו הסיבה שהתחלה מוקדמת חשובה כל כך להצלחה פיננסית.
+            </p>
+            <p style="color: var(--gray-600); line-height: 1.8; margin-top: 12px;">
+                <strong>למשל:</strong> השקעה של 10,000 ₪ בתשואה שנתית של 7% תהפוך לכ-38,700 ₪ אחרי 20 שנה - 
+                כמעט פי 4! עם הפקדות חודשיות נוספות, הסכום יכול להיות גדול משמעותית יותר.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות:</strong> המחשבון נועד להמחשה בלבד ואינו מהווה התחייבות לתשואה. החישובים מבוססים על הנחות סטטיסטיות ועשויים להיות שונים מהמציאות.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="../script.js"></script>
 </body>
 </html>
-

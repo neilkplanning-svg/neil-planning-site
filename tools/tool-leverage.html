@@ -3,91 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחשבון ריבית דריבית | NEIL KAPPEL</title>
+    <meta name="description" content="מחשבון אחוז מינוף (LTV) - חשבו את יחס ההלוואה לשווי הנכס ונהלו סיכונים בצורה חכמה.">
+    <title>מחשבון מינוף עצמי | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="../style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "מחשבון מינוף עצמי",
+        "description": "חישוב אחוז מינוף וניהול סיכונים",
+        "applicationCategory": "FinanceApplication"
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
-<header>
-    <div class="brand-wrapper">
-        <a href="../index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
-            <div class="monogram-header">NK</div>
-            <div class="brand-text">
-                <div class="brand-name">NEIL KAPPEL</div>
-                <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+    <header>
+        <div class="brand-wrapper">
+            <a href="../index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
+        </div>
+
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+        
+        <nav aria-label="ניווט ראשי">
+            <a href="../index.html">ראשי</a>
+            
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tool-leverage.html" role="menuitem" class="active"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                </div>
             </div>
-        </a>
+
+            <a href="../resources.html">מקורות מידע</a>
+            <a href="../knowledge.html">מרכז ידע</a>
+            <a href="../about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון אחוז מינוף (LTV)</h1>
+        <p>ניהול סיכונים: חשבו את יחס ההלוואה לשווי הנכס</p>
     </div>
-	<nav>
-		<a href="../index.html">ראשי</a>
-		
-		<div class="dropdown">
-			<span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-			<div class="dropdown-content" id="myDropdown">
-				<a href="tool-compound.html">מחשבון ריבית דריבית</a>
-				<a href="tool-loan.html">מחשבון הלוואה</a>
-				<a href="tool-leverage.html">מחשבון מינוף עצמי</a>
-				<a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
-				<a href="tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
-			</div>
-		</div>
 
-		<a href="../resources.html">מקורות מידע</a>
-		<a href="../knowledge.html">מרכז ידע</a>
-		<a href="../about.html">אודות</a>
-		<a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
-	</nav>
-</header>
+    <main id="main-content" class="tool-container">
+        
+        <div class="form-group">
+            <label for="assetValue">
+                <i class="fas fa-home" aria-hidden="true"></i>
+                שווי הנכס הנוכחי (ש"ח)
+            </label>
+            <input type="number" id="assetValue" placeholder="למשל: 2,500,000" inputmode="numeric">
+            <div class="form-hint">הערכת שווי שוק עדכנית של הנכס</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="equity">
+                <i class="fas fa-piggy-bank" aria-hidden="true"></i>
+                הון עצמי קיים (ש"ח)
+            </label>
+            <input type="number" id="equity" placeholder="למשל: 800,000" inputmode="numeric">
+            <div class="form-hint">הסכום ששילמתם מכיסכם על הנכס</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="loans">
+                <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
+                סך כל ההלוואות/משכנתא על הנכס (ש"ח)
+            </label>
+            <input type="number" id="loans" placeholder="למשל: 1,700,000" inputmode="numeric">
+            <div class="form-hint">יתרת המשכנתא + הלוואות נוספות על הנכס</div>
+        </div>
+        
+        <button class="calc-btn" onclick="calculateLeverage()">
+            <i class="fas fa-calculator" aria-hidden="true"></i>
+            חשב אחוז מינוף
+        </button>
 
-<div class="tool-header">
-    <h1>מחשבון אחוז מינוף (LTV)</h1>
-    <p>ניהול סיכונים: חשבו את יחס ההלוואה לשווי הנכס</p>
-</div>
+        <!-- Results Area -->
+        <div class="result-area" id="result" style="display:none;">
+            <h3><i class="fas fa-chart-pie" aria-hidden="true"></i> תוצאות החישוב</h3>
+            
+            <div class="result-highlight" id="resLTV">
+                <span class="label">אחוז מינוף (LTV)</span>
+                <span class="value">0%</span>
+            </div>
+            
+            <div id="resVerdict" style="text-align: center; margin: 20px 0;"></div>
+            
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="label">שווי הנכס</div>
+                    <div class="value" id="resAssetValue">₪0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">סך ההלוואות</div>
+                    <div class="value" id="resLoans">₪0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">הון עצמי בנכס</div>
+                    <div class="value" id="resEquityInAsset">₪0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">אחוז הון עצמי</div>
+                    <div class="value" id="resEquityPercent">0%</div>
+                </div>
+            </div>
+            
+            <!-- Risk Level Indicator -->
+            <div style="margin-top: 24px; padding: 20px; background: var(--gray-50); border-radius: 12px;">
+                <h4 style="margin-bottom: 12px;"><i class="fas fa-shield-alt" style="color: var(--accent-gold);"></i> מדד סיכון</h4>
+                <div class="risk-bar" style="height: 12px; background: linear-gradient(to left, #10b981, #f59e0b, #ef4444); border-radius: 6px; position: relative;">
+                    <div id="riskIndicator" style="position: absolute; top: -4px; width: 20px; height: 20px; background: var(--primary-blue); border: 3px solid white; border-radius: 50%; box-shadow: var(--shadow-md); transition: right 0.5s ease;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--gray-600);">
+                    <span>סיכון גבוה (90%+)</span>
+                    <span>סיכון בינוני (70%)</span>
+                    <span>סיכון נמוך (50%-)</span>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%); padding: 24px; border-radius: 12px; text-align: center; margin-top: 24px;">
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 16px;">רוצים לבדוק אם כדאי להקטין את המינוף?</p>
+                <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    קבעו שיחת ייעוץ
+                </a>
+            </div>
+        </div>
 
-<main class="tool-container">
-    <div class="form-group">
-        <label>שווי הנכס הנוכחי (ש"ח)</label>
-        <input type="number" id="assetValue" placeholder="למשל: 2,500,000">
-    </div>
-    <div class="form-group">
-        <label>הון עצמי קיים (ש"ח)</label>
-        <input type="number" id="equity" placeholder="למשל: 800,000">
-    </div>
-    <div class="form-group">
-        <label>סך כל ההלוואות/משכנתא על הנכס (ש"ח)</label>
-        <input type="number" id="loans" placeholder="למשל: 1,700,000">
-    </div>
-    <button class="calc-btn" onclick="calculateLeverage()">חשב אחוז מינוף</button>
+        <!-- Educational Section -->
+        <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--gray-200);">
+            <h3 style="margin-bottom: 16px;"><i class="fas fa-graduation-cap" style="color: var(--accent-gold);"></i> מהו אחוז מינוף (LTV)?</h3>
+            <p style="color: var(--gray-600); line-height: 1.8;">
+                <strong>LTV (Loan to Value)</strong> הוא היחס בין סכום ההלוואה לשווי הנכס. למשל, אם הנכס שווה 2,000,000 ₪ 
+                וההלוואה עליו היא 1,400,000 ₪, אחוז המינוף הוא 70%.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px;">
+                <div style="background: #d1fae5; padding: 16px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold; color: #10b981;">פחות מ-50%</div>
+                    <div style="font-size: 14px; color: var(--gray-700);">מינוף נמוך - סיכון נמוך</div>
+                </div>
+                <div style="background: #fef3c7; padding: 16px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold; color: #f59e0b;">50%-75%</div>
+                    <div style="font-size: 14px; color: var(--gray-700);">מינוף בינוני - סיכון מתון</div>
+                </div>
+                <div style="background: #fee2e2; padding: 16px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: bold; color: #ef4444;">מעל 75%</div>
+                    <div style="font-size: 14px; color: var(--gray-700);">מינוף גבוה - סיכון גבוה</div>
+                </div>
+            </div>
+        </div>
 
-    <div class="result-area">
-        <h3>תוצאות החישוב:</h3>
-        <p>אחוז המינוף שלך: <strong>0%</strong></p>
-        <p>סטטוס סיכון: --</p>
-    </div>
-</main>
+    </main>
 
-<footer>
-    <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-	<p>
-		ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-		טלפון: 054-5882618
-		<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-			<i class="fab fa-linkedin"></i>
-		</a>
-	</p>
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות והצהרה משפטית:</strong><br>
+            האתר מופעל על ידי ניל קאפל. המידע המוצג באתר, בכלים ובמחשבונים נועד למטרות אינפורמטיביות והשכלה פיננסית בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פנסיוני, ייעוץ מס או תחליף לייעוץ אישי המתחשב בנתונים ובצרכים המיוחדים של כל אדם. ניל קאפל אינו מחזיק ברישיון מכוח חוק הסדרת העיסוק בייעוץ השקעות, בשיווק השקעות ובניהול תיקי השקעות, תשנ"ה-1995. כל הפועל על סמך המידע באתר עושה זאת על דעת עצמו ועל אחריותו הבלעדית. אין באמור משום הבטחה לתשואה כלשהי. ט.ל.ח.
+            <br><br>
+            <strong>הצהרת נגישות:</strong>
+            עסק זה פטור מביצוע התאמות נגישות באתר האינטרנט מתוקף תקנה 35ה (פטור נטל כלכלי לעסק שמחזורו נמוך מ-100,000 ש"ח). עם זאת, אנו רואים חשיבות רבה במתן שירות שוויוני. אם נתקלתם בקושי לגלוש באתר, ניתן לפנות לניל בטלפון 054-5882618 לקבלת המידע בעל פה.
+        </div>
+    </footer>
 
-    <div class="legal-disclaimer">
-        <strong>גילוי נאות והצהרה משפטית:</strong><br>
-        האתר מופעל על ידי ניל קאפל. המידע המוצג באתר, בכלים ובמחשבונים נועד למטרות אינפורמטיביות והשכלה פיננסית בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פנסיוני, ייעוץ מס או תחליף לייעוץ אישי המתחשב בנתונים ובצרכים המיוחדים של כל אדם. ניל קאפל אינו מחזיק ברישיון מכוח חוק הסדרת העיסוק בייעוץ השקעות, בשיווק השקעות ובניהול תיקי השקעות, תשנ"ה-1995. כל הפועל על סמך המידע באתר עושה זאת על דעת עצמו ועל אחריותו הבלעדית. אין באמור משום הבטחה לתשואה כלשהי. ט.ל.ח.
-        <br><br>
-        <strong>הצהרת נגישות:</strong>
-        עסק זה פטור מביצוע התאמות נגישות באתר האינטרנט מתוקף תקנה 35ה (פטור נטל כלכלי לעסק שמחזורו נמוך מ-100,000 ש"ח). עם זאת, אנו רואים חשיבות רבה במתן שירות שוויוני. אם נתקלתם בקושי לגלוש באתר, ניתן לפנות לניל בטלפון 054-5882618 לקבלת המידע בעל פה.
-    </div>
-</footer>
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
 
-<script src="../script.js"></script>
-
+    <script src="../script.js"></script>
 </body>
 </html>
-

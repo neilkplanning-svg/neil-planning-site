@@ -1,0 +1,12 @@
+# robots.txt for Neil Kappel Financial Planning Website
+# https://neil-kappel.co.il
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://neil-kappel.co.il/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

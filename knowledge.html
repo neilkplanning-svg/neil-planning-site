@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="מרכז הידע של ניל קאפל - מאמרים, מדריכים וכלים לניהול ההון המשפחתי. השקעות, נדל״ן, משכנתאות ותכנון פיננסי.">
     <title>מרכז הידע | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "מרכז הידע - Neil Kappel",
+        "description": "מאמרים ומדריכים בנושאי תכנון פיננסי והשקעות"
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
     <header>
         <div class="brand-wrapper">
-            <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <a href="index.html" aria-label="דף הבית">
                 <div class="monogram-header">NK</div>
                 <div class="brand-text">
                     <div class="brand-name">NEIL KAPPEL</div>
@@ -22,72 +35,87 @@
             </a>
         </div>
 
-        <nav>
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+        
+        <nav aria-label="ניווט ראשי">
             <a href="index.html">ראשי</a>
             
             <div class="dropdown">
-                <span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-                <div class="dropdown-content" id="myDropdown">
-                    <a href="tools/tool-compound.html">מחשבון ריבית דריבית</a>
-                    <a href="tools/tool-loan.html">מחשבון הלוואה</a>
-                    <a href="tools/tool-leverage.html">מחשבון מינוף עצמי</a>
-                    <a href="tools/tool-refinance.html">כדאיות מחזור הלוואה</a>
-                    <a href="tools/tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
                 </div>
             </div>
 
             <a href="resources.html">מקורות מידע</a>
-            <a href="knowledge.html" style="color:var(--accent-gold);">מרכז ידע</a>
+            <a href="knowledge.html" class="active">מרכז ידע</a>
             <a href="about.html">אודות</a>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
         </nav>
     </header>
 
     <div class="tool-header">
-        <h1>מרכז ידע ותובנות פיננסיות</h1>
+        <h1><i class="fas fa-lightbulb" aria-hidden="true"></i> מרכז ידע ותובנות פיננסיות</h1>
         <p>ניתוחי עומק, מדריכים וכלים לניהול ההון המשפחתי</p>
     </div>
 
-    <main class="tool-container" style="max-width: 1100px;">
+    <main id="main-content" class="tool-container" style="max-width: 1100px;">
         
         <div class="search-container">
             <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" onkeyup="filterArticles()" placeholder="חפש נושא, מונח או כותרת...">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input type="text" id="searchInput" onkeyup="filterArticles()" placeholder="חפש נושא, מונח או כותרת..." aria-label="חיפוש מאמרים">
             </div>
             
-            <div class="category-filters">
-                <button class="filter-btn active" onclick="filterCategory('all')">הכל</button>
-                <button class="filter-btn" onclick="filterCategory('investing')">השקעות ושוק ההון</button>
-                <button class="filter-btn" onclick="filterCategory('housing')">נדל"ן ומשכנתאות</button>
-                <button class="filter-btn" onclick="filterCategory('family')">כלכלת המשפחה</button>
-                <button class="filter-btn" onclick="filterCategory('macro')">מאקרו כלכלה</button>
+            <div class="category-filters" role="group" aria-label="סינון לפי קטגוריה">
+                <button class="filter-btn active" onclick="filterCategory('all')" aria-pressed="true">הכל</button>
+                <button class="filter-btn" onclick="filterCategory('investing')" aria-pressed="false">השקעות ושוק ההון</button>
+                <button class="filter-btn" onclick="filterCategory('housing')" aria-pressed="false">נדל"ן ומשכנתאות</button>
+                <button class="filter-btn" onclick="filterCategory('family')" aria-pressed="false">כלכלת המשפחה</button>
+                <button class="filter-btn" onclick="filterCategory('macro')" aria-pressed="false">מאקרו כלכלה</button>
             </div>
         </div>
 
+        <!-- Screen reader announcement for filter results -->
+        <div id="filterAnnouncement" class="sr-only" aria-live="polite"></div>
+
         <div class="articles-grid" id="articlesGrid">
             
-			<article class="article-card" data-category="macro">
-				<div class="article-tag">יסודות הכלכלה</div>
-				<h3>יסודות הכלכלה: כסף, ריבית ואינפלציה</h3>
-				<p class="article-excerpt">
-					מה זה באמת כסף, למה הריבית משנה לנו כל כך ואיך האינפלציה שוחקת את הכיס? הסבר פשוט על מושגי היסוד שחובה להכיר לפני כל השקעה.
-				</p>
-				<div class="article-meta">
-					<span><i class="far fa-clock"></i> 4 דק' קריאה</span>
-					<a href="articles/article-basics.html" class="read-more">קרא עוד >></a>
-				</div>
-			</article>
-			
-			
-			
-			<article class="article-card" data-category="housing">
+            <!-- Featured Article -->
+            <article class="article-card" data-category="macro" style="border: 2px solid var(--accent-gold);">
+                <div class="article-tag" style="background: var(--accent-gold); color: white;">
+                    <i class="fas fa-star" aria-hidden="true"></i> מאמר מומלץ
+                </div>
+                <h3>יסודות הכלכלה: כסף, ריבית ואינפלציה</h3>
+                <p class="article-excerpt">
+                    מה זה באמת כסף, למה הריבית משנה לנו כל כך ואיך האינפלציה שוחקת את הכיס? הסבר פשוט על מושגי היסוד שחובה להכיר לפני כל השקעה.
+                </p>
+                <div class="article-meta">
+                    <span><i class="far fa-clock" aria-hidden="true"></i> 4 דק' קריאה</span>
+                    <a href="articles/article-basics.html" class="read-more">קרא עוד <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+                </div>
+            </article>
+            
+            <article class="article-card" data-category="housing">
                 <div class="article-tag">נדל"ן ומשכנתאות</div>
                 <h3>האם כדאי למחזר את המשכנתא כשהפריים עולה?</h3>
                 <p class="article-excerpt">ניתוח הנדסי של השפעת עליית הריבית על ההחזר החודשי, ומתי נקודת האיזון שבה משתלם לשלם קנס יציאה.</p>
                 <div class="article-meta">
-                    <span><i class="far fa-clock"></i> 5 דק' קריאה</span>
-                    <a href="#" class="read-more">קרא עוד >></a>
+                    <span><i class="far fa-clock" aria-hidden="true"></i> 5 דק' קריאה</span>
+                    <a href="#" class="read-more">קרא עוד <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
             </article>
 
@@ -96,8 +124,8 @@
                 <h3>הסוד של הריבית דריבית: המדריך המלא</h3>
                 <p class="article-excerpt">אלברט איינשטיין קרא לזה "הפלא השמיני". איך להשתמש בזמן ובמתמטיקה כדי להגדיל את ההון שלכם באופן פסיבי.</p>
                 <div class="article-meta">
-                    <span><i class="fas fa-headphones"></i> האזנה זמינה</span>
-                    <a href="#" class="read-more">קרא עוד >></a>
+                    <span><i class="fas fa-headphones" aria-hidden="true"></i> האזנה זמינה</span>
+                    <a href="#" class="read-more">קרא עוד <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
             </article>
 
@@ -106,8 +134,8 @@
                 <h3>אינפלציה והכסף שלכם: איך להתגונן?</h3>
                 <p class="article-excerpt">מהי שחיקת הכסף, למה היא קורית, ואיזה אפיקי השקעה היסטוריים הוכחו כהגנה הטובה ביותר מפני עליות מחירים.</p>
                 <div class="article-meta">
-                    <span><i class="far fa-clock"></i> 7 דק' קריאה</span>
-                    <a href="#" class="read-more">קרא עוד >></a>
+                    <span><i class="far fa-clock" aria-hidden="true"></i> 7 דק' קריאה</span>
+                    <a href="#" class="read-more">קרא עוד <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
             </article>
 
@@ -116,39 +144,55 @@
                 <h3>איך בונים תקציב שלא נשאר רק באקסל?</h3>
                 <p class="article-excerpt">השיטה הפרקטית לניהול תזרים מזומנים משפחתי שמחזיקה מעמד לאורך זמן, בלי לוותר על ההנאות הקטנות.</p>
                 <div class="article-meta">
-                    <span><i class="far fa-clock"></i> 4 דק' קריאה</span>
-                    <a href="#" class="read-more">קרא עוד >></a>
+                    <span><i class="far fa-clock" aria-hidden="true"></i> 4 דק' קריאה</span>
+                    <a href="#" class="read-more">קרא עוד <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
             </article>
 
         </div>
 
-        <div id="noResults" style="display:none; text-align:center; padding: 40px; color:#888;">
-            <i class="fas fa-search" style="font-size:40px; margin-bottom:15px; opacity:0.3;"></i>
-            <p>לא נמצאו מאמרים תואמים לחיפוש שלך.</p>
+        <div id="noResults" style="display:none; text-align:center; padding: 60px 20px;">
+            <i class="fas fa-search" style="font-size: 48px; color: var(--gray-300); margin-bottom: 16px; display: block;" aria-hidden="true"></i>
+            <h3 style="color: var(--gray-500); margin-bottom: 8px;">לא נמצאו מאמרים</h3>
+            <p style="color: var(--gray-400);">נסו לחפש מונח אחר או לבחור קטגוריה אחרת</p>
+            <button onclick="resetFilters()" class="cta-button" style="margin-top: 16px;">
+                <i class="fas fa-redo" aria-hidden="true"></i> איפוס חיפוש
+            </button>
+        </div>
+
+        <!-- Newsletter CTA -->
+        <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%); padding: 40px; border-radius: 16px; text-align: center; margin-top: 48px;">
+            <h3 style="color: var(--white); margin-bottom: 12px;">
+                <i class="fas fa-envelope" style="color: var(--accent-gold);" aria-hidden="true"></i>
+                רוצים לקבל תכנים חדשים ישירות למייל?
+            </h3>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 24px;">הרשמו לניוזלטר וקבלו עדכונים, טיפים וכלים חדשים</p>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-user-plus" aria-hidden="true"></i>
+                צרו קשר להרשמה
+            </a>
         </div>
 
     </main>
 
     <footer>
         <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-		<p>
-			ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-			טלפון: 054-5882618
-			<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-				<i class="fab fa-linkedin"></i>
-			</a>
-		</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
         <div class="legal-disclaimer">
             <strong>גילוי נאות:</strong> התכנים במרכז הידע הינם למטרות השכלה בלבד ואינם מהווים ייעוץ השקעות.
         </div>
     </footer>
 
-    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <script src="script.js"></script>
-
 </body>
 </html>

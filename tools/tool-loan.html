@@ -3,138 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="מחשבון הלוואות ומשכנתא - חישוב שפיצר מתקדם כולל הצמדה למדד והלוואת בלון.">
     <title>מחשבון הלוואה ומשכנתא | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="../style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        /* עיצוב ספציפי לכרטיסיות הסיכום בדף זה */
-        .summary-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border-top: 4px solid var(--accent-gold);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .card h3 { margin: 0; font-size: 0.9em; color: #666; font-weight: normal; }
-        .card .value { font-size: 1.4em; font-weight: bold; color: var(--primary-blue); margin-top: 5px; }
-        .hidden { display: none; }
-    </style>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "מחשבון הלוואה ומשכנתא",
+        "description": "חישוב שפיצר מתקדם כולל הצמדה למדד והלוואת בלון",
+        "applicationCategory": "FinanceApplication"
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
-<header>
-    <div class="brand-wrapper">
-        <div class="monogram-header">NK</div>
-        <div class="brand-text">
-            <div class="brand-name">NEIL KAPPEL</div>
-            <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+    <header>
+        <div class="brand-wrapper">
+            <a href="../index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
         </div>
-    </div>
-	<nav>
-		<a href="../index.html">ראשי</a>
-		
-		<div class="dropdown">
-			<span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-			<div class="dropdown-content" id="myDropdown">
-				<a href="tool-compound.html">מחשבון ריבית דריבית</a>
-				<a href="tool-loan.html">מחשבון הלוואה</a>
-				<a href="tool-leverage.html">מחשבון מינוף עצמי</a>
-				<a href="tool-refinance.html">כדאיות מחזור הלוואה</a>
-				<a href="tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
-			</div>
-		</div>
 
-		<a href="../resources.html">מקורות מידע</a>
-		<a href="../knowledge.html">מרכז ידע</a>
-		<a href="../about.html">אודות</a>
-		<a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
-	</nav>
-</header>
-
-<div class="tool-header">
-    <h1>מחשבון הלוואות ומשכנתא</h1>
-    <p>חישוב שפיצר מתקדם כולל הצמדה למדד והלוואת בלון</p>
-</div>
-
-<main class="tool-container">
-    <div class="form-group">
-        <label>סכום ההלוואה (ש"ח)</label>
-        <input type="number" id="loanAmount" value="1000000">
-    </div>
-
-    <div class="form-group">
-        <label>תקופה בשנים</label>
-        <input type="number" id="loanYears" value="20" max="30">
-    </div>
-
-    <div class="form-group">
-        <label>ריבית שנתית נומינלית (%)</label>
-        <input type="number" id="interestRate" value="4.5" step="0.1">
-    </div>
-
-    <div class="form-group" style="display:flex; align-items:center; gap:10px; background:#f9f9f9; padding:10px; border-radius:5px;">
-        <input type="checkbox" id="linkageCheck" onchange="toggleLinkage()" style="width:20px; height:20px;">
-        <label for="linkageCheck" style="margin:0; cursor:pointer;">האם המסלול צמוד למדד?</label>
-    </div>
-
-    <div class="form-group hidden" id="cpiContainer">
-        <label>צפי אינפלציה/מדד שנתי (%)</label>
-        <input type="number" id="cpiRate" value="2.5" step="0.1">
-    </div>
-
-    <div class="form-group">
-        <label>סכום הלוואת בלון בסוף תקופה (ש"ח)</label>
-        <input type="number" id="balloonAmount" value="0" placeholder="אופציונלי - סכום שלא יוחזר בשוטף">
-        <small style="color:#666; display:block; margin-top:3px;">הסכום הזה לא יוחזר בתשלומים החודשיים, אלא בפעימה אחת בסוף (בינתיים משלמים עליו ריבית).</small>
-    </div>
-
-    <button class="calc-btn" onclick="calculateLoan()">חשב לוח סילוקין</button>
-
-    <div class="result-area" id="result" style="display:none;">
-        <div class="summary-cards">
-            <div class="card">
-                <h3>החזר חודשי ראשון</h3>
-                <div class="value" id="resFirstPmt">₪0</div>
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+        
+        <nav aria-label="ניווט ראשי">
+            <a href="../index.html">ראשי</a>
+            
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tool-loan.html" role="menuitem" class="active"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                </div>
             </div>
-            <div class="card">
-                <h3>סה"כ ריבית והצמדה</h3>
-                <div class="value" id="resTotalInterest">₪0</div>
+
+            <a href="../resources.html">מקורות מידע</a>
+            <a href="../knowledge.html">מרכז ידע</a>
+            <a href="../about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואות ומשכנתא</h1>
+        <p>חישוב שפיצר מתקדם כולל הצמדה למדד והלוואת בלון</p>
+    </div>
+
+    <main id="main-content" class="tool-container">
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="loanAmount">
+                    <i class="fas fa-shekel-sign" aria-hidden="true"></i>
+                    סכום ההלוואה (ש"ח)
+                </label>
+                <input type="number" id="loanAmount" value="1000000" placeholder="למשל: 1,000,000" inputmode="numeric">
             </div>
-            <div class="card">
-                <h3>סה"כ לבנק בסוף תקופה</h3>
-                <div class="value" id="resTotalPay">₪0</div>
+            
+            <div class="form-group">
+                <label for="loanYears">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    תקופה בשנים
+                </label>
+                <input type="number" id="loanYears" value="20" max="30" min="1" placeholder="למשל: 20">
             </div>
         </div>
 
-        <div style="height: 350px;">
-            <canvas id="loanChart"></canvas>
+        <div class="form-group">
+            <label for="interestRate">
+                <i class="fas fa-percentage" aria-hidden="true"></i>
+                ריבית שנתית נומינלית (%)
+            </label>
+            <input type="number" id="interestRate" value="4.5" step="0.1" placeholder="למשל: 4.5">
+            <div class="form-hint">לדוגמה: פריים + מרווח = 6% + 1.5% = 7.5%</div>
         </div>
-    </div>
-</main>
 
-<footer>
-    <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-	<p>
-		ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-		טלפון: 054-5882618
-		<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-			<i class="fab fa-linkedin"></i>
-		</a>
-	</p>
-    <div class="legal-disclaimer">
-        <strong>גילוי נאות:</strong> המחשבון נועד להמחשה בלבד. החישובים מתבססים על לוח שפיצר ועל הנחות מדד קבועות. בפועל ייתכנו שינויים בהתאם למועדי החיוב המדויקים, שינויי מדד בפועל ועמלות בנקאיות.
-    </div>
-</footer>
+        <!-- CPI Linkage -->
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="linkageCheck" onchange="toggleLinkage()">
+            <label for="linkageCheck">
+                <i class="fas fa-link" aria-hidden="true"></i>
+                האם המסלול צמוד למדד?
+            </label>
+        </div>
 
-<script src="../script.js"></script>
+        <div class="form-group hidden" id="cpiContainer" style="display: none;">
+            <label for="cpiRate">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                צפי אינפלציה/מדד שנתי (%)
+            </label>
+            <input type="number" id="cpiRate" value="2.5" step="0.1" placeholder="למשל: 2.5">
+            <div class="form-hint">הממוצע ההיסטורי בישראל: כ-2-3%</div>
+        </div>
+
+        <!-- Advanced Settings -->
+        <details>
+            <summary>
+                <i class="fas fa-cog" aria-hidden="true"></i>
+                הגדרות מתקדמות (הלוואת בלון)
+            </summary>
+            <div style="padding: 20px; background: var(--gray-50);">
+                <div class="form-group" style="margin: 0;">
+                    <label for="balloonAmount">סכום הלוואת בלון בסוף תקופה (ש"ח)</label>
+                    <input type="number" id="balloonAmount" value="0" placeholder="אופציונלי - למשל: 200,000">
+                    <div class="form-hint">הסכום הזה לא יוחזר בתשלומים החודשיים, אלא בפעימה אחת בסוף (בינתיים משלמים עליו ריבית).</div>
+                </div>
+            </div>
+        </details>
+
+        <button class="calc-btn" onclick="calculateLoan()">
+            <i class="fas fa-calculator" aria-hidden="true"></i>
+            חשב לוח סילוקין
+        </button>
+
+        <!-- Results Area -->
+        <div class="result-area" id="result" style="display:none;">
+            <h3><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i> תוצאות החישוב</h3>
+            
+            <div class="comparison-grid">
+                <div class="comp-card highlight">
+                    <div class="comp-label">החזר חודשי ראשון</div>
+                    <div class="comp-val" id="resMonthlyPayment">₪0</div>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-label">סה"כ לתשלום</div>
+                    <div class="comp-val" id="resTotalPayment">₪0</div>
+                </div>
+            </div>
+            
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="label">ריבית כוללת</div>
+                    <div class="value" id="resInterest">₪0</div>
+                </div>
+                <div class="result-item" id="resLinkage" style="display: none;">
+                    <div class="label">הפרשי הצמדה</div>
+                    <div class="value">₪0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">עלות ביחס לקרן</div>
+                    <div class="value" id="resCostPercent">0%</div>
+                </div>
+            </div>
+            
+            <div id="resBalloonFinal" style="display: none;"></div>
+            
+            <div class="chart-container">
+                <h4><i class="fas fa-chart-area" aria-hidden="true"></i> יתרת הקרן לאורך זמן</h4>
+                <canvas id="loanChart" aria-label="גרף יתרת קרן"></canvas>
+            </div>
+            
+            <!-- CTA -->
+            <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%); padding: 24px; border-radius: 12px; text-align: center; margin-top: 24px;">
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 16px;">רוצים לבדוק אם כדאי למחזר או לשנות מסלול?</p>
+                <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    קבעו שיחת ייעוץ
+                </a>
+            </div>
+        </div>
+
+        <!-- Educational Section -->
+        <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--gray-200);">
+            <h3 style="margin-bottom: 16px;"><i class="fas fa-graduation-cap" style="color: var(--accent-gold);"></i> שפיצר מול קרן שווה</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: var(--gray-50); padding: 20px; border-radius: 12px;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 8px;">
+                        <i class="fas fa-equals" style="color: var(--accent-gold);"></i> שפיצר (החזר קבוע)
+                    </h4>
+                    <p style="font-size: 14px; color: var(--gray-600); margin: 0;">
+                        התשלום החודשי קבוע לאורך כל התקופה. בתחילה רוב התשלום הולך לריבית, ועם הזמן יותר ויותר הולך לקרן. יתרון: תזרים צפוי. חיסרון: משלמים יותר ריבית בסה"כ.
+                    </p>
+                </div>
+                <div style="background: var(--gray-50); padding: 20px; border-radius: 12px;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 8px;">
+                        <i class="fas fa-sort-amount-down" style="color: var(--accent-gold);"></i> קרן שווה
+                    </h4>
+                    <p style="font-size: 14px; color: var(--gray-600); margin: 0;">
+                        כל חודש מחזירים חלק קבוע מהקרן + ריבית על היתרה. התשלומים יורדים עם הזמן. יתרון: פחות ריבית כוללת. חיסרון: התשלומים הראשונים גבוהים יותר.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות:</strong> המחשבון נועד להמחשה בלבד. החישובים מתבססים על לוח שפיצר ועל הנחות מדד קבועות. בפועל ייתכנו שינויים בהתאם למועדי החיוב המדויקים, שינויי מדד בפועל ועמלות בנקאיות.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="../script.js"></script>
 </body>
 </html>
-

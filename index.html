@@ -3,149 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="תכנון פיננסי למשפחות צעירות - ליווי אישי לבניית הון, ניהול סיכונים וחיסכון לעתיד. ניל קאפל - מהנדס ומתכנן פיננסי.">
+    <meta name="keywords" content="תכנון פיננסי, ייעוץ משכנתא, השקעות, חיסכון, משפחות צעירות, ניהול תקציב">
+    <meta name="author" content="Neil Kappel">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="NEIL KAPPEL | תכנון פיננסי למשפחות">
+    <meta property="og:description" content="תכנון וליווי פיננסי אישי למשפחות צעירות שרוצות לבנות הון ולישון בשקט">
+    <meta property="og:type" content="website">
+    
     <title>NEIL KAPPEL | תכנון פיננסי למשפחות</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Neil Kappel - תכנון פיננסי",
+        "description": "תכנון פיננסי מותאם אישית למשפחות",
+        "url": "https://neilkappel.com",
+        "telephone": "+972-54-5882618",
+        "email": "Neil.k.planning@gmail.com",
+        "founder": {
+            "@type": "Person",
+            "name": "Neil Kappel",
+            "jobTitle": "מתכנן פיננסי"
+        }
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
     <header>
         <div class="brand-wrapper">
-            <div class="monogram-header">NK</div>
-            <div class="brand-text">
-                <div class="brand-name">NEIL KAPPEL</div>
-                <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
-            </div>
+            <a href="index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
         </div>
 
-		<nav>
-			<a href="index.html" style="color:var(--accent-gold);">ראשי</a>
-			
-			<div class="dropdown">
-				<span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-				<div class="dropdown-content" id="myDropdown">
-					<a href="tools/tool-compound.html">מחשבון ריבית דריבית</a>
-					<a href="tools/tool-loan.html">מחשבון הלוואה</a>
-					<a href="tools/tool-leverage.html">מחשבון מינוף עצמי</a>
-					<a href="tools/tool-refinance.html">כדאיות מחזור הלוואה</a>
-					<a href="tools/tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
-				</div>
-			</div>
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+        
+        <nav aria-label="ניווט ראשי">
+            <a href="index.html" class="active">ראשי</a>
+            
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" id="myDropdown" role="menu">
+                    <a href="tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                </div>
+            </div>
 
-			<a href="resources.html">מקורות מידע</a>
-			<a href="knowledge.html">מרכז ידע</a>
-			<a href="about.html">אודות</a>
-			<a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
-		</nav>
+            <a href="resources.html">מקורות מידע</a>
+            <a href="knowledge.html">מרכז ידע</a>
+            <a href="about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
     </header>
 
-    <div class="hero">
-        <h1>תכנון וליווי אישי למטרות שלכם</h1>
-        <p>למשפחות צעירות שרוצות לבנות הון, לנהל סיכונים ולישון בשקט. <br>לוקחים את הכלכלה לידיים בגישה מתוכננת, מדויקת ופרקטית.</p>
-        <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button" style="font-size: 18px; display: inline-block; margin-top: 10px;">מתחילים כאן >></a>
-    </div>
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    100% נאמנות ללקוח (Fiduciary)
+                </div>
+                
+                <h1>תכנון וליווי אישי למטרות שלכם</h1>
+                
+                <p class="hero-subtitle">
+                    למשפחות צעירות שרוצות לבנות הון, לנהל סיכונים ולישון בשקט.<br>
+                    לוקחים את הכלכלה לידיים בגישה מתוכננת, מדויקת ופרקטית.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">10+</div>
+                        <div class="hero-stat-label">שנות ניסיון</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">M.E</div>
+                        <div class="hero-stat-label">תואר שני בהנדסה</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">100%</div>
+                        <div class="hero-stat-label">ללא עמלות</div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        מתחילים כאן >>
+                    </a>
+                    <a href="about.html" class="cta-button cta-button-secondary">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                        קצת עליי
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <section class="pain-points">
-        <h3 style="font-size: 28px; color: var(--primary-blue);">נשמע מוכר?</h3>
-        <div class="pain-grid">
-            <div class="pain-item">
-                <span class="pain-icon">📉</span>
-                <h3>הכסף נעלם</h3>
-                <p>עובדים קשה, מרוויחים יפה, אבל בסוף החודש נשארים עם 0 או במינוס.</p>
+        <!-- Pain Points Section -->
+        <section class="pain-points">
+            <div class="section-header fade-in-up">
+                <div class="section-badge">
+                    <i class="fas fa-question-circle" aria-hidden="true"></i>
+                    נשמע מוכר?
+                </div>
+                <h2 class="section-title">האתגרים שאתם מתמודדים איתם</h2>
             </div>
-            <div class="pain-item">
-                <span class="pain-icon">🏠</span>
-                <h3>חלום הדירה מתרחק</h3>
-                <p>רוצים לקנות נכס אבל לא מבינים איך לחסוך להון עצמי בלי להיחנק.</p>
+            
+            <div class="pain-grid stagger-children">
+                <div class="pain-item card-shine">
+                    <span class="pain-icon">📉</span>
+                    <h3>הכסף נעלם</h3>
+                    <p>עובדים קשה, מרוויחים יפה, אבל בסוף החודש נשארים עם 0 או במינוס.</p>
+                </div>
+                <div class="pain-item card-shine">
+                    <span class="pain-icon">🏠</span>
+                    <h3>חלום הדירה מתרחק</h3>
+                    <p>רוצים לקנות נכס אבל לא מבינים איך לחסוך להון עצמי בלי להיחנק.</p>
+                </div>
+                <div class="pain-item card-shine">
+                    <span class="pain-icon">👶</span>
+                    <h3>חרדה לעתיד הילדים</h3>
+                    <p>האם יהיה לנו איך לממן להם לימודים? חתונה? התחלה טובה לחיים?</p>
+                </div>
             </div>
-            <div class="pain-item">
-                <span class="pain-icon">👶</span>
-                <h3>חרדה לעתיד הילדים</h3>
-                <p>האם יהיה לנו איך לממן להם לימודים? חתונה? התחלה טובה לחיים?</p>
-            </div>
-        </div>
-    </section>
-	
-	<div class="buffett-quote" style="margin: 40px auto;">
-    <i class="fas fa-quote-right quote-icon"></i>
-    <div class="quote-text" style="font-size: 1.1em;">
-        "מי שנכשל בתכנון, מתכנן להיכשל."
-    </div>
-    <div class="quote-author">- בנג'מין פרנקלין</div>
-	</div>
+        </section>
 
-    <section class="process">
-        <h2 class="section-title">השיטה ההנדסית לצמיחה כלכלית</h2>
-        <p class="section-subtitle">תהליך מובנה, מדויק ומדיד – מהכאוס לסדר מוחלט.</p>
-        
-        <div class="steps-container">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <h4>מיפוי ואיסוף נתונים</h4>
-                <p>בדיוק כמו לפני המראה: אוספים את כל הנתונים (ביטוחים, הלוואות, עו"ש) כדי לקבל תמונת מצב אמתית.</p>
+        <!-- Quote Section -->
+        <div class="buffett-quote" style="margin: 60px auto;">
+            <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+            <div class="quote-text">
+                "מי שנכשל בתכנון, מתכנן להיכשל."
             </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <h4>אנליזה הנדסית</h4>
-                <p>ניתוח עומק לאיתור "דליפות" כספיות, כפל ביטוחי והזדמנויות השקעה שלא נוצלו.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <h4>בניית אסטרטגיה</h4>
-                <p>בניית תוכנית עבודה ("Spec") המותאמת למטרות שלכם: דירה, פרישה מוקדמת או השכלה לילדים.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <h4>יישום ובקרה</h4>
-                <p>יוצאים לדרך. אני מלווה אתכם ביישום מול הבנקים ובתי ההשקעות, ומוודא עמידה ביעדים.</p>
-            </div>
+            <div class="quote-author">- בנג'מין פרנקלין</div>
         </div>
-    </section>
 
-    <section class="why-me" id="about">
-        <div class="why-image">
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 80px; margin-bottom: 20px; font-weight: 900;">NK</div>
-            <div style="font-size: 24px; font-weight: bold;">ניל קאפל</div>
-            <div style="font-size: 16px; font-weight: normal; margin-top: 10px; opacity: 0.8;">מהנדס M.E | מתכנן פיננסי</div>
-        </div>
-        <div class="why-content">
-            <h2 style="color: var(--primary-blue); margin-top: 0; font-size: 28px;">למה דווקא כאן?</h2>
-            <ul class="why-list">
-                <li><strong>ראש של מהנדס:</strong> אני מביא את הדיוק, האנליטיות וניהול הסיכונים מעולם ההנדסה וניהול הפרויקטים ישר לכיס שלכם.</li>
-                <li><strong>100% נאמנות אליכם (Fiduciary):</strong> אני לא סוכן ביטוח. אני לא מקבל עמלות מאף בית השקעות. התשלום היחיד הוא מכם, ולכן האינטרס שלי הוא אך ורק הצלחתכם.</li>
-                <li><strong>ארגז כלים מתקדם:</strong> שימוש באפליקציות ואוטומציות שפיתחתי כדי להפוך את ניהול התקציב לקל ופשוט.</li>
-                <li><strong>שקיפות קפיטליסטית:</strong> מאמין בלקיחת אחריות, יוזמה והגדלת ההון, לא רק ב"צמצום".</li>
-            </ul>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button" style="background: var(--primary-blue); margin-top: 20px; display: inline-block;">לקביעת שיחת היכרות >></a>
-        </div>
-    </section>
+        <!-- Process Section -->
+        <section class="process">
+            <div class="section-header fade-in-up">
+                <div class="section-badge">
+                    <i class="fas fa-cogs" aria-hidden="true"></i>
+                    השיטה
+                </div>
+                <h2 class="section-title">השיטה ההנדסית לצמיחה כלכלית</h2>
+                <p class="section-subtitle">תהליך מובנה, מדויק ומדיד – מהכאוס לסדר מוחלט.</p>
+            </div>
+            
+            <div class="steps-container stagger-children">
+                <div class="step-card hover-lift card-shine">
+                    <div class="step-num">1</div>
+                    <h4>מיפוי ואיסוף נתונים</h4>
+                    <p>בדיוק כמו לפני המראה: אוספים את כל הנתונים (ביטוחים, הלוואות, עו"ש) כדי לקבל תמונת מצב אמתית.</p>
+                </div>
+                <div class="step-card hover-lift card-shine">
+                    <div class="step-num">2</div>
+                    <h4>אנליזה הנדסית</h4>
+                    <p>ניתוח עומק לאיתור "דליפות" כספיות, כפל ביטוחי והזדמנויות השקעה שלא נוצלו.</p>
+                </div>
+                <div class="step-card hover-lift card-shine">
+                    <div class="step-num">3</div>
+                    <h4>בניית אסטרטגיה</h4>
+                    <p>בניית תוכנית עבודה ("Spec") המותאמת למטרות שלכם: דירה, פרישה מוקדמת או השכלה לילדים.</p>
+                </div>
+                <div class="step-card hover-lift card-shine">
+                    <div class="step-num">4</div>
+                    <h4>יישום ובקרה</h4>
+                    <p>יוצאים לדרך. אני מלווה אתכם ביישום מול הבנקים ובתי ההשקעות, ומוודא עמידה ביעדים.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Me Section -->
+        <section class="why-me" id="about">
+            <div class="why-me-grid">
+                <div class="why-image">
+                    <div class="monogram-large">NK</div>
+                    <div style="font-size: 24px; font-weight: bold; color: var(--primary-blue);">ניל קאפל</div>
+                    <div style="font-size: 16px; color: var(--gray-600); margin-top: 8px;">מהנדס M.E | מתכנן פיננסי</div>
+                </div>
+                
+                <div class="why-content">
+                    <h2>למה דווקא כאן?</h2>
+                    
+                    <ul class="why-list">
+                        <li>
+                            <strong>ראש של מהנדס:</strong> אני מביא את הדיוק, האנליטיות וניהול הסיכונים מעולם ההנדסה וניהול הפרויקטים ישר לכיס שלכם.
+                        </li>
+                        <li>
+                            <strong>100% נאמנות אליכם (Fiduciary):</strong> אני לא סוכן ביטוח. אני לא מקבל עמלות מאף בית השקעות. התשלום היחיד הוא מכם, ולכן האינטרס שלי הוא אך ורק הצלחתכם.
+                        </li>
+                        <li>
+                            <strong>ארגז כלים מתקדם:</strong> שימוש באפליקציות ואוטומציות שפיתחתי כדי להפוך את ניהול התקציב לקל ופשוט.
+                        </li>
+                        <li>
+                            <strong>שקיפות קפיטליסטית:</strong> מאמין בלקיחת אחריות, יוזמה והגדלת ההון, לא רק ב"צמצום".
+                        </li>
+                    </ul>
+                    
+                    <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button" style="margin-top: 24px;">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        לקביעת שיחת היכרות >>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    המלצות
+                </div>
+                <h2 class="section-title">מה אומרים הלקוחות</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "ניל עזר לנו לסדר את כל התמונה הפיננסית שלנו. תוך חודשיים כבר ראינו שינוי משמעותי בחיסכון החודשי. הגישה ההנדסית שלו פשוט עובדת."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ד.כ</div>
+                        <div class="testimonial-info">
+                            <strong>ד.כ</strong>
+                            <span>זוג צעיר, תל אביב</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "סוף סוף מישהו שמסביר בגובה העיניים ולא מנסה למכור לי ביטוחים. ניל פשוט רוצה לעזור לנו להצליח, וזה מרגיש."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">מ.ר</div>
+                        <div class="testimonial-info">
+                            <strong>מ.ר</strong>
+                            <span>משפחה עם 3 ילדים, חריש</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%); text-align: center; padding: 80px 24px;">
+            <h2 style="color: var(--white); margin-bottom: 16px;">מוכנים להתחיל לתכנן?</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                שיחת היכרות ראשונה ללא עלות וללא התחייבות
+            </p>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button" style="font-size: 18px; padding: 16px 40px;">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                תאמו שיחה עכשיו
+            </a>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-		<p>
-			ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-			טלפון: 054-5882618
-			<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-				<i class="fab fa-linkedin"></i>
-			</a>
-		</p>
-
-        <div class="legal-disclaimer">
-            <strong>גילוי נאות והצהרה משפטית:</strong><br>
-            האתר מופעל על ידי ניל קאפל. המידע המוצג באתר, בכלים ובמחשבונים נועד למטרות אינפורמטיביות והשכלה פיננסית בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פנסיוני, ייעוץ מס או תחליף לייעוץ אישי המתחשב בנתונים ובצרכים המיוחדים של כל אדם. ניל קאפל אינו מחזיק ברישיון מכוח חוק הסדרת העיסוק בייעוץ השקעות, בשיווק השקעות ובניהול תיקי השקעות, תשנ"ה-1995. כל הפועל על סמך המידע באתר עושה זאת על דעת עצמו ועל אחריותו הבלעדית. אין באמור משום הבטחה לתשואה כלשהי. ט.ל.ח.
-            <br><br>
-            <strong>הצהרת נגישות:</strong>
-            עסק זה פטור מביצוע התאמות נגישות באתר האינטרנט מתוקף תקנה 35ה. עם זאת, אנו רואים חשיבות רבה במתן שירות שוויוני. אם נתקלתם בקושי לגלוש באתר, ניתן לפנות לניל בטלפון 054-5882618 לקבלת המידע בעל פה.
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-brand">
+                        <div class="monogram">NK</div>
+                        <span>NEIL KAPPEL</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 12px;">
+                        תכנון פיננסי מותאם אישית למשפחות צעירות שרוצות לבנות הון ולישון בשקט.
+                    </p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>ניווט</h4>
+                    <a href="index.html">ראשי</a>
+                    <a href="about.html">אודות</a>
+                    <a href="knowledge.html">מרכז ידע</a>
+                    <a href="resources.html">מקורות מידע</a>
+                </div>
+                
+                <div class="footer-tools">
+                    <h4>כלים</h4>
+                    <a href="tools/tool-compound.html">ריבית דריבית</a>
+                    <a href="tools/tool-loan.html">מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html">מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html">מחזור הלוואה</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>צור קשר</h4>
+                    <a href="tel:+972545882618"><i class="fas fa-phone"></i> 054-5882618</a>
+                    <a href="mailto:Neil.k.planning@gmail.com"><i class="fas fa-envelope"></i> Neil.k.planning@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> לינקדאין</a>
+                    <a href="https://wa.me/972545882618" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> וואטסאפ</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" aria-label="לינקדאין">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://wa.me/972545882618" target="_blank" rel="noopener" aria-label="וואטסאפ">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <details class="legal-disclaimer">
+                <summary>גילוי נאות והצהרה משפטית</summary>
+                <p>
+                    האתר מופעל על ידי ניל קאפל. המידע המוצג באתר, בכלים ובמחשבונים נועד למטרות אינפורמטיביות והשכלה פיננסית בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פנסיוני, ייעוץ מס או תחליף לייעוץ אישי המתחשב בנתונים ובצרכים המיוחדים של כל אדם. ניל קאפל אינו מחזיק ברישיון מכוח חוק הסדרת העיסוק בייעוץ השקעות, בשיווק השקעות ובניהול תיקי השקעות, תשנ"ה-1995. כל הפועל על סמך המידע באתר עושה זאת על דעת עצמו ועל אחריותו הבלעדית. אין באמור משום הבטחה לתשואה כלשהי. ט.ל.ח.
+                </p>
+                <p>
+                    <strong>הצהרת נגישות:</strong> עסק זה פטור מביצוע התאמות נגישות באתר האינטרנט מתוקף תקנה 35ה. עם זאת, אנו רואים חשיבות רבה במתן שירות שוויוני. אם נתקלתם בקושי לגלוש באתר, ניתן לפנות לניל בטלפון 054-5882618 לקבלת המידע בעל פה.
+                </p>
+            </details>
         </div>
     </footer>
 
-    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <script src="script.js"></script>
-
 </body>
 </html>

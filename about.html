@@ -3,17 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ניל קאפל - מהנדס מערכות ומתכנן פיננסי. רקע אקדמי ומקצועי, גישה כלכלית ופן אישי.">
     <title>אודות | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Neil Kappel",
+        "jobTitle": "מתכנן פיננסי",
+        "description": "מהנדס מערכות ומתכנן פיננסי למשפחות",
+        "email": "Neil.k.planning@gmail.com",
+        "telephone": "+972-54-5882618"
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
     <header>
         <div class="brand-wrapper">
-            <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <a href="index.html" aria-label="דף הבית">
                 <div class="monogram-header">NK</div>
                 <div class="brand-text">
                     <div class="brand-name">NEIL KAPPEL</div>
@@ -22,65 +38,76 @@
             </a>
         </div>
 
-        <nav>
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+        
+        <nav aria-label="ניווט ראשי">
             <a href="index.html">ראשי</a>
             
             <div class="dropdown">
-                <span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-                <div class="dropdown-content" id="myDropdown">
-                    <a href="tolls/tool-compound.html">מחשבון ריבית דריבית</a>
-                    <a href="tools/tool-loan.html">מחשבון הלוואה</a>
-                    <a href="tools/tool-leverage.html">מחשבון מינוף עצמי</a>
-                    <a href="tools/tool-refinance.html">כדאיות מחזור הלוואה</a>
-                    <a href="tools/tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
                 </div>
             </div>
 
             <a href="resources.html">מקורות מידע</a>
-			<a href="knowledge.html">מרכז ידע</a>
-            <a href="about.html" style="color:var(--accent-gold);">אודות</a>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+            <a href="knowledge.html">מרכז ידע</a>
+            <a href="about.html" class="active">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
         </nav>
     </header>
 
     <div class="tool-header">
-        <h1>נעים להכיר, ניל קאפל</h1>
+        <h1><i class="fas fa-user-tie" aria-hidden="true"></i> נעים להכיר, ניל קאפל</h1>
         <p>מהנדס מערכות | מתכנן פיננסי | איש משפחה</p>
     </div>
 
-    <main class="tool-container" style="max-width: 900px;">
+    <main id="main-content" class="tool-container" style="max-width: 900px;">
         
         <div class="about-intro">
             <div class="about-profile-wrapper">
                 <div class="about-profile-img">NK</div>
             </div>
             
-            <h2 style="color:var(--primary-blue); margin-bottom: 10px;">להנדס את ההצלחה הפיננסית שלכם</h2>
-            <p style="font-size: 1.1em; max-width: 700px; margin: 0 auto;">
+            <h2 style="color: var(--primary-blue); margin-bottom: 16px;">להנדס את ההצלחה הפיננסית שלכם</h2>
+            <p style="font-size: 1.1em; max-width: 700px; margin: 0 auto; color: var(--gray-600);">
                 אני מאמין שכלכלת משפחה היא לא עניין של "מזל", אלא של תכנון הנדסי מדויק, הצבת יעדים ברורים וניהול סיכונים חכם.
             </p>
 
-            <div class="buffett-quote">
-                <i class="fas fa-quote-right quote-icon"></i>
+            <div class="buffett-quote" style="margin-top: 32px;">
+                <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
                 <div class="quote-text">
                     "כלל ראשון: לעולם אל תפסיד כסף.<br>
                     כלל שני: לעולם אל תשכח את הכלל הראשון."
                 </div>
                 <div class="quote-author">- וורן באפט</div>
             </div>
-			
-			<div style="margin-top: 20px;">
-				<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="about-social-btn">
-					<i class="fab fa-linkedin"></i>
-					לפרופיל המקצועי שלי
-				</a>
-			</div>
+            
+            <div style="margin-top: 24px;">
+                <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="about-social-btn">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    לפרופיל המקצועי שלי
+                </a>
+            </div>
         </div>
 
         <div class="about-grid-section">
             <div class="about-card">
                 <div class="icon-title">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     <h3>רקע אקדמי ומקצועי</h3>
                 </div>
                 <p>
@@ -93,7 +120,7 @@
 
             <div class="about-card">
                 <div class="icon-title">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
                     <h3>הגישה הכלכלית שלי</h3>
                 </div>
                 <p>
@@ -108,43 +135,74 @@
 
             <div class="about-card">
                 <div class="icon-title">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <h3>הפן האישי</h3>
                 </div>
                 <p>
                     אני בן 33, תושב חריש, נשוי לאנסטסיה ואבא לעופר ושקד.
-                    <br>
+                </p>
+                <p>
                     כאיש משפחה צעירה בעצמי, אני חי את האתגרים שאתם חווים – יוקר המחיה, מחירי הדיור והרצון להעניק לילדים את הטוב ביותר. אני כאן כדי לעזור לכם לצלוח את האתגרים האלו בביטחון ובשקט נפשי.
                 </p>
             </div>
         </div>
 
+        <!-- Values Section -->
+        <div style="background: var(--gray-50); padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+            <h3 style="text-align: center; margin-bottom: 24px;"><i class="fas fa-heart" style="color: var(--accent-gold);"></i> הערכים שמנחים אותי</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 8px;">🎯</div>
+                    <strong style="color: var(--primary-blue);">יושרה</strong>
+                    <p style="font-size: 14px; margin: 8px 0 0;">תמיד האמת, גם כשלא נוח</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 8px;">🔬</div>
+                    <strong style="color: var(--primary-blue);">דיוק</strong>
+                    <p style="font-size: 14px; margin: 8px 0 0;">כל שקל חשוב ונספר</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 8px;">🤝</div>
+                    <strong style="color: var(--primary-blue);">שקיפות</strong>
+                    <p style="font-size: 14px; margin: 8px 0 0;">ללא אג'נדות נסתרות</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 8px;">📈</div>
+                    <strong style="color: var(--primary-blue);">תוצאות</strong>
+                    <p style="font-size: 14px; margin: 8px 0 0;">מדידה והתקדמות מתמדת</p>
+                </div>
+            </div>
+        </div>
+
         <div style="text-align: center; margin-top: 40px;">
             <h3 style="margin-bottom: 20px;">מוכנים להתחיל לתכנן?</h3>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button" style="padding: 15px 40px; font-size: 1.1em;">תאמו פגישת היכרות</a>
+            <p style="color: var(--gray-600); margin-bottom: 24px;">שיחת היכרות ראשונה ללא עלות וללא התחייבות</p>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button" style="padding: 16px 40px; font-size: 1.1em;">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                תאמו פגישת היכרות
+            </a>
         </div>
 
     </main>
 
     <footer>
         <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-		<p>
-			ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-			טלפון: 054-5882618
-			<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-				<i class="fab fa-linkedin"></i>
-			</a>
-		</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
         <div class="legal-disclaimer">
             <strong>גילוי נאות:</strong> המידע באתר אינו מהווה ייעוץ השקעות. ניל קאפל הינו מתכנן פיננסי ואינו מחזיק ברישיון יועץ השקעות או משווק פנסיוני.
         </div>
     </footer>
 
-    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <script src="script.js"></script>
-
 </body>
 </html>

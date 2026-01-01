@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ספריית מקורות מידע וכלים לתכנון פיננסי - נתוני מאקרו, מחקר מניות, כלי השקעות ומשאבים חינוכיים.">
     <title>מקורות מידע וכלים | NEIL KAPPEL</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
     <header>
         <div class="brand-wrapper">
-            <a href="index.html" style="text-decoration:none; display:flex; gap:15px; align-items:center;">
+            <a href="index.html" aria-label="דף הבית">
                 <div class="monogram-header">NK</div>
                 <div class="brand-text">
                     <div class="brand-name">NEIL KAPPEL</div>
@@ -21,124 +26,350 @@
             </a>
         </div>
 
-        <nav>
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+        
+        <nav aria-label="ניווט ראשי">
             <a href="index.html">ראשי</a>
             
             <div class="dropdown">
-                <span onclick="toggleMobileMenu(event)" class="dropbtn">כלים ▼</span>
-                <div class="dropdown-content" id="myDropdown">
-                    <a href="tools/tool-compound.html">מחשבון ריבית דריבית</a>
-                    <a href="tools/tool-loan.html">מחשבון הלוואה</a>
-                    <a href="tools/tool-leverage.html">מחשבון מינוף עצמי</a>
-                    <a href="tools/tool-refinance.html">כדאיות מחזור הלוואה</a>
-                    <a href="tools/tool-invest-leverage.html">כדאיות מינוף להשקעה</a>
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
                 </div>
             </div>
 
-            <a href="resources.html" style="color:var(--accent-gold);">מקורות מידע</a>
-			<a href="knowledge.html">מרכז ידע</a>
+            <a href="resources.html" class="active">מקורות מידע</a>
+            <a href="knowledge.html">מרכז ידע</a>
             <a href="about.html">אודות</a>
-            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" class="cta-button">תיאום פגישה</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
         </nav>
     </header>
 
     <div class="tool-header">
-        <h1>הספרייה המקצועית</h1>
+        <h1><i class="fas fa-book-open" aria-hidden="true"></i> הספרייה המקצועית</h1>
         <p>ארגז כלים, נתונים ומקורות מידע אובייקטיביים לקבלת החלטות מושכלות</p>
     </div>
-	
-	<div class="buffett-quote" style="margin: 20px auto 40px;">
-    <i class="fas fa-quote-right quote-icon"></i>
-    <div class="quote-text" style="font-size: 1.1em;">
-        "דע מה יש בתיק שלך, ודע להסביר מדוע אתה מחזיק את זה."
+
+    <div class="buffett-quote" style="margin: -20px auto 40px; position: relative; z-index: 2;">
+        <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+        <div class="quote-text" style="font-size: 1.1em;">
+            "דע מה יש בתיק שלך, ודע להסביר מדוע אתה מחזיק את זה."
+        </div>
+        <div class="quote-author">- פיטר לינץ'</div>
     </div>
-    <div class="quote-author">- פיטר לינץ'</div>
-	</div>
 
-    <main class="tool-container" style="max-width: 1100px;">
+    <main id="main-content" class="tool-container" style="max-width: 1100px;">
         
-        <h3 style="color:var(--primary-blue); border-bottom:2px solid #eee; padding-bottom:10px; margin-top:0;">נתוני מאקרו ורגולציה</h3>
-        <div class="resources-grid" style="margin-bottom: 50px;">
-            <a href="https://www.funder.co.il/" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-chart-pie"></i></div>
-                <h4>Funder</h4>
-                <p>השוואת קרנות נאמנות, השתלמות וקופות גמל.</p>
-            </a>
-
-            <a href="https://www.cbs.gov.il/he/CBSNewBrand/Pages/Price-Indices-Main.aspx" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-calculator"></i></div>
-                <h4>מדד המחירים לצרכן</h4>
-                <p>נתוני אינפלציה רשמיים מאתר הלמ"ס.</p>
-            </a>
-
-            <a href="https://www.boi.org.il/" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-university"></i></div>
-                <h4>בנק ישראל</h4>
-                <p>מעקב אחר ריבית הפריים והודעות הנגיד.</p>
-            </a>
-
-            <a href="https://www.tase.co.il/" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-building"></i></div>
-                <h4>הבורסה לני"ע</h4>
-                <p>נתוני מסחר רשמיים, אג"ח ומניות בת"א.</p>
-            </a>
-        </div>
-
-        <h3 style="color:var(--primary-blue); border-bottom:2px solid #eee; padding-bottom:10px;">מחקר, מניות והשקעות ערך</h3>
-        <div class="resources-grid">
+        <!-- My Calculators Section - Highlighted -->
+        <section style="background: linear-gradient(135deg, var(--accent-gold-subtle) 0%, rgba(201, 162, 39, 0.05) 100%); padding: 32px; border-radius: 16px; border: 2px solid var(--accent-gold); margin-bottom: 48px;">
+            <h3 style="color: var(--primary-blue); margin-bottom: 8px; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-star" style="color: var(--accent-gold);" aria-hidden="true"></i>
+                המחשבונים שלי
+            </h3>
+            <p style="color: var(--gray-600); margin-bottom: 24px;">כלים שפיתחתי במיוחד עבורכם לקבלת החלטות פיננסיות מושכלות</p>
             
-            <a href="https://www.dataroma.com/m/home.php" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-user-secret"></i></div>
-                <h4>Dataroma</h4>
-                <p>מעקב אחרי התיקים של גדולי המשקיעים (באפט ושות').</p>
-            </a>
+            <div class="resources-grid">
+                <a href="tools/tool-compound.html" class="resource-card" style="border-color: var(--accent-gold);">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-chart-line" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>מחשבון ריבית דריבית</h4>
+                        <p>חשבו כמה יהיה שווה הכסף שלכם בעוד X שנים</p>
+                    </div>
+                </a>
+                
+                <a href="tools/tool-loan.html" class="resource-card" style="border-color: var(--accent-gold);">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-money-bill-wave" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>מחשבון הלוואה</h4>
+                        <p>חישוב החזר חודשי, כולל הצמדה למדד ובלון</p>
+                    </div>
+                </a>
+                
+                <a href="tools/tool-leverage.html" class="resource-card" style="border-color: var(--accent-gold);">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-balance-scale" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>מחשבון מינוף עצמי</h4>
+                        <p>בדקו אם כדאי למנף את הנכס שלכם</p>
+                    </div>
+                </a>
+                
+                <a href="tools/tool-refinance.html" class="resource-card" style="border-color: var(--accent-gold);">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-sync-alt" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>כדאיות מחזור הלוואה</h4>
+                        <p>האם משתלם למחזר את המשכנתא?</p>
+                    </div>
+                </a>
+                
+                <a href="tools/tool-invest-leverage.html" class="resource-card" style="border-color: var(--accent-gold);">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-rocket" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>כדאיות מינוף להשקעה</h4>
+                        <p>השוואת מינוף להשקעה מול הפקדה חודשית</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <a href="https://quickfs.net/" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-database"></i></div>
-                <h4>QuickFS</h4>
-                <p>היסטוריה פיננסית של מניות ודוחות כספיים בצורה מהירה.</p>
-            </a>
+        <!-- Israeli Official Sources -->
+        <section style="margin-bottom: 48px;">
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid var(--gray-200); padding-bottom: 12px; margin-bottom: 24px;">
+                <i class="fas fa-landmark" style="color: var(--accent-gold);" aria-hidden="true"></i>
+                נתוני מאקרו ורגולציה ישראלית
+            </h3>
+            <div class="resources-grid">
+                <a href="https://www.boi.org.il/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-university" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>בנק ישראל</h4>
+                        <p>מעקב אחר ריבית הפריים והודעות הנגיד.</p>
+                    </div>
+                </a>
 
-            <a href="https://il.tradingview.com/screener/Hon7Pxbo/" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-search-dollar"></i></div>
-                <h4>TradingView Screener</h4>
-                <p>סורק מניות טכני ופונדמנטלי עם גרפים מתקדמים.</p>
-            </a>
+                <a href="https://www.cbs.gov.il/he/CBSNewBrand/Pages/Price-Indices-Main.aspx" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>מדד המחירים לצרכן</h4>
+                        <p>נתוני אינפלציה רשמיים מאתר הלמ"ס.</p>
+                    </div>
+                </a>
 
-            <a href="https://www.bizportal.co.il/" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-newspaper"></i></div>
-                <h4>Bizportal</h4>
-                <p>חדשות שוק ההון הישראלי וניתוח מניות מקומיות.</p>
-            </a>
+                <a href="https://www.tase.co.il/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-building" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>הבורסה לני"ע</h4>
+                        <p>נתוני מסחר רשמיים, אג"ח ומניות בת"א.</p>
+                    </div>
+                </a>
 
-            <a href="https://finance.yahoo.com/?guccounter=1" target="_blank" class="resource-card">
-                <div class="resource-icon"><i class="fas fa-globe-americas"></i></div>
-                <h4>Yahoo Finance</h4>
-                <p>הפורטל המוביל לנתונים וחדשות מהשווקים הגלובליים.</p>
-            </a>
-        </div>
+                <a href="https://www.isa.gov.il/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>רשות ניירות ערך</h4>
+                        <p>רגולציה, דוחות והודעות רשמיות.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Investment Research Tools -->
+        <section style="margin-bottom: 48px;">
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid var(--gray-200); padding-bottom: 12px; margin-bottom: 24px;">
+                <i class="fas fa-search-dollar" style="color: var(--accent-gold);" aria-hidden="true"></i>
+                מחקר, מניות והשקעות ערך
+            </h3>
+            <div class="resources-grid">
+                <a href="https://www.dataroma.com/m/home.php" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-user-secret" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Dataroma</h4>
+                        <p>מעקב אחרי התיקים של גדולי המשקיעים (באפט ושות').</p>
+                    </div>
+                </a>
+
+                <a href="https://quickfs.net/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-database" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>QuickFS</h4>
+                        <p>היסטוריה פיננסית של מניות ודוחות כספיים בצורה מהירה.</p>
+                    </div>
+                </a>
+
+                <a href="https://il.tradingview.com/screener/Hon7Pxbo/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-area" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>TradingView Screener</h4>
+                        <p>סורק מניות טכני ופונדמנטלי עם גרפים מתקדמים.</p>
+                    </div>
+                </a>
+
+                <a href="https://finance.yahoo.com/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-globe-americas" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Yahoo Finance</h4>
+                        <p>הפורטל המוביל לנתונים וחדשות מהשווקים הגלובליים.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.morningstar.com/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Morningstar</h4>
+                        <p>דירוג קרנות, מניות וניתוחים מעמיקים.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.sec.gov/cgi-bin/browse-edgar" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>SEC EDGAR</h4>
+                        <p>דוחות רשמיים של חברות אמריקאיות (10-K, 10-Q).</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Israeli Market Tools -->
+        <section style="margin-bottom: 48px;">
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid var(--gray-200); padding-bottom: 12px; margin-bottom: 24px;">
+                <i class="fas fa-shekel-sign" style="color: var(--accent-gold);" aria-hidden="true"></i>
+                כלים לשוק הישראלי
+            </h3>
+            <div class="resources-grid">
+                <a href="https://www.funder.co.il/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-pie" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Funder</h4>
+                        <p>השוואת קרנות נאמנות, השתלמות וקופות גמל.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.bizportal.co.il/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-newspaper" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Bizportal</h4>
+                        <p>חדשות שוק ההון הישראלי וניתוח מניות מקומיות.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.globes.co.il/portal/instrument/instrumentpage.aspx" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>גלובס - מניות</h4>
+                        <p>מידע על מניות ישראליות וחדשות כלכליות.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.calcalist.co.il/stocks/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-coins" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>כלכליסט - שוק ההון</h4>
+                        <p>ניתוחים וחדשות מהשוק הישראלי.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Educational Resources -->
+        <section style="margin-bottom: 32px;">
+            <h3 style="color: var(--primary-blue); border-bottom: 2px solid var(--gray-200); padding-bottom: 12px; margin-bottom: 24px;">
+                <i class="fas fa-graduation-cap" style="color: var(--accent-gold);" aria-hidden="true"></i>
+                משאבים חינוכיים
+            </h3>
+            <div class="resources-grid">
+                <a href="https://www.investopedia.com/" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Investopedia</h4>
+                        <p>אנציקלופדיה מקיפה למונחים פיננסיים.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.khanacademy.org/economics-finance-domain" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Khan Academy - Finance</h4>
+                        <p>קורסים חינמיים בכלכלה ופיננסים.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.bogleheads.org/wiki/Main_Page" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>Bogleheads Wiki</h4>
+                        <p>פילוסופיית השקעות פסיביות לטווח ארוך.</p>
+                    </div>
+                </a>
+
+                <a href="https://www.berkshirehathaway.com/letters/letters.html" target="_blank" rel="noopener" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>מכתבי באפט</h4>
+                        <p>המכתבים השנתיים של וורן באפט למשקיעים.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
     </main>
 
     <footer>
         <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
-		<p>
-			ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
-			טלפון: 054-5882618
-			<a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" class="linkedin-link" title="פרופיל לינקדאין">
-				<i class="fab fa-linkedin"></i>
-			</a>
-		</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | 
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
         <div class="legal-disclaimer">
             <strong>גילוי נאות:</strong> הקישורים בעמוד זה מובילים לאתרים חיצוניים שאינם בשליטתנו. השימוש במידע באחריות המשתמש בלבד.
         </div>
     </footer>
 
-    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <script src="script.js"></script>
-
 </body>
 </html>
