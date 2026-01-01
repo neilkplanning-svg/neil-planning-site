@@ -5583,31 +5583,6 @@ body.dark-mode .dropdown-content a:hover {
     display: none !important;
 }
 
-/* Professional cursor glow */
-.cursor-glow {
-    position: fixed;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201, 162, 39, 0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-body:hover .cursor-glow {
-    opacity: 1;
-}
-
-/* Hide on mobile */
-@media (max-width: 768px), (pointer: coarse) {
-    .cursor-glow {
-        display: none !important;
-    }
-}
-
 /* ============================================
    2. REMOVE FLOATING MONEY ON BUTTONS
    ============================================ */
@@ -8235,9 +8210,6 @@ body.dark-mode::-webkit-scrollbar-thumb {
     .dark-mode-toggle,
     .whatsapp-float,
     .scroll-progress,
-    .cursor-glow {
-        display: none !important;
-    }
     
     body.dark-mode {
         background: white !important;
