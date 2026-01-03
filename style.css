@@ -2483,10 +2483,11 @@ textarea:focus {
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.hover-lift:hover {
+/* Disabled per user request - no hover animation on step cards */
+/* .hover-lift:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
-}
+} */
 
 /* Card shine effect on hover */
 .card-shine {
@@ -2512,11 +2513,12 @@ textarea:focus {
     opacity: 0;
 }
 
-.card-shine:hover::before {
+/* Disabled per user request - no shine animation on step cards */
+/* .card-shine:hover::before {
     opacity: 1;
     top: -50%;
     left: -50%;
-}
+} */
 
 /* Magnetic button effect placeholder */
 .magnetic-btn {
