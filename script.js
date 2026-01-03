@@ -2198,12 +2198,7 @@ console.log('Premium UX Enhancements loaded successfully');
                         // Check if result exists
                         const resultArea = document.querySelector('.result-area:not(.hidden)');
                         if (resultArea) {
-                            // Launch confetti for successful calculation
-                            Confetti.launch({
-                                particleCount: 50,
-                                startX: e.clientX,
-                                startY: e.clientY
-                            });
+                            // Confetti removed per user request
 
                             Toast.show({
                                 type: 'success',
@@ -2290,10 +2285,10 @@ console.log('Premium UX Enhancements loaded successfully');
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
         // Core features
-        DarkMode.init();
+        // DarkMode.init(); // Disabled per user request
         Toast.init();
         ScrollProgress.init();
-        Confetti.init();
+        // Confetti.init(); // Disabled per user request
         LoadingScreen.init();
         PageTransition.init();
         
@@ -2310,8 +2305,8 @@ console.log('Premium UX Enhancements loaded successfully');
 
     // Export for global access
     window.Toast = Toast;
-    window.Confetti = Confetti;
-    window.DarkMode = DarkMode;
+    // window.Confetti = Confetti; // Disabled per user request
+    // window.DarkMode = DarkMode; // Disabled per user request
 
 })();
 
@@ -2784,9 +2779,9 @@ document.head.appendChild(spinnerCSS);
     // INITIALIZE ON DOM READY
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
-        LightModeDefault.init();
+        // LightModeDefault.init(); // Disabled per user request - no dark mode
         CursorGlow.init();
-        FixDarkModeToggle.init();
+        // FixDarkModeToggle.init(); // Disabled per user request - no dark mode
         FixCounter.init();
         CleanButtons.init();
         
@@ -3714,7 +3709,7 @@ document.head.appendChild(spinnerCSS);
         ResultAnimations.init();
         TestimonialsCarousel.init();
         SmoothScroll.init();
-        DarkModeToggle.init();
+        // DarkModeToggle.init(); // Disabled per user request - no dark mode
         CursorGlow.init();
         StatCounter.init();
         HeaderScroll.init();
@@ -3818,14 +3813,15 @@ document.head.appendChild(spinnerCSS);
     // ============================================
     // INITIALIZE ON DOM READY
     // ============================================
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            DarkModeManager.init();
-        });
-    } else {
-        DarkModeManager.init();
-    }
-    
-    console.log('✓ Dark Mode Manager initialized (clean implementation)');
+    // Disabled per user request - no dark mode
+    // if (document.readyState === 'loading') {
+    //     document.addEventListener('DOMContentLoaded', () => {
+    //         DarkModeManager.init();
+    //     });
+    // } else {
+    //     DarkModeManager.init();
+    // }
+
+    console.log('✓ Dark Mode Manager disabled per user request');
     
 })();
