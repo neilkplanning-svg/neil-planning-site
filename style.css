@@ -282,7 +282,7 @@ header::after {
 .monogram-header {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: var(--accent-gold);
     font-family: var(--font-heading);
     font-weight: 900;
@@ -2725,9 +2725,9 @@ header::after {
 /* Monogram enhancement */
 .monogram-header {
     position: relative;
-    background: linear-gradient(145deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
-    box-shadow: 
-        0 4px 15px rgba(201, 162, 39, 0.3),
+    background: linear-gradient(145deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    box-shadow:
+        0 4px 15px rgba(28, 63, 148, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.3),
         inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.4s var(--ease-out-back);
@@ -2735,8 +2735,8 @@ header::after {
 
 .monogram-header:hover {
     transform: scale(1.08) rotate(-3deg);
-    box-shadow: 
-        0 8px 25px rgba(201, 162, 39, 0.4),
+    box-shadow:
+        0 8px 25px rgba(28, 63, 148, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
