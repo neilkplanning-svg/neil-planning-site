@@ -2668,9 +2668,6 @@ body {
    3. ENHANCED HEADER - Glassmorphism Premium
    ============================================ */
 header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
     background: rgba(15, 25, 35, 0.85);
     backdrop-filter: blur(var(--blur-lg)) saturate(180%);
     -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
@@ -2678,6 +2675,36 @@ header {
     box-shadow:
         0 4px 30px rgba(0, 0, 0, 0.1),
         inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Sticky header only on desktop */
+@media (min-width: 769px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+    }
+}
+
+/* Mobile header - fixed positioning for scroll behavior */
+@media (max-width: 768px) {
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        transition: transform 0.3s ease-in-out !important;
+    }
+
+    header.header-hidden {
+        transform: translateY(-100%) !important;
+    }
+
+    /* Add padding to body to prevent content from hiding under fixed header */
+    body {
+        padding-top: 80px;
+    }
 }
 
 /* Animated header border */
@@ -5125,11 +5152,17 @@ input[type="range"]::-webkit-slider-thumb:hover {
    3. HEADER FIXES - ALL DEVICES
    ============================================ */
 header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
     background: rgba(15, 25, 35, 0.98) !important;
     padding: 12px 5% !important;
+}
+
+/* Desktop only - sticky positioning */
+@media (min-width: 769px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+    }
 }
 
 /* Make sure nav is visible */
@@ -5827,11 +5860,17 @@ body.dark-mode .dark-mode-toggle {
    7. HEADER - LIGHT MODE DEFAULT
    ============================================ */
 header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
     background: var(--white) !important;
     border-bottom: 1px solid var(--gray-200) !important;
+}
+
+/* Desktop only - sticky positioning */
+@media (min-width: 769px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+    }
 }
 
 .brand-name {

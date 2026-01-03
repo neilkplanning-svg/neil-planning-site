@@ -3823,5 +3823,70 @@ document.head.appendChild(spinnerCSS);
     // }
 
     console.log('✓ Dark Mode Manager disabled per user request');
-    
+
+})();
+
+// ============================================
+// MOBILE HEADER SCROLL BEHAVIOR
+// Show header on scroll up, hide on scroll down (mobile only)
+// ============================================
+(function() {
+    'use strict';
+
+    let lastScrollTop = 0;
+    let scrollThreshold = 5; // Minimum scroll distance to trigger
+    const header = document.querySelector('header');
+
+    if (!header) return;
+
+    function handleScroll() {
+        // Only apply on mobile (768px and below)
+        if (window.innerWidth > 768) {
+            header.classList.remove('header-hidden');
+            return;
+        }
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Don't hide header if at the top of the page
+        if (scrollTop <= 0) {
+            header.classList.remove('header-hidden');
+            return;
+        }
+
+        // Check scroll direction
+        if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) {
+            return; // Not enough scroll to trigger
+        }
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down - hide header
+            header.classList.add('header-hidden');
+        } else {
+            // Scrolling up - show header
+            header.classList.remove('header-hidden');
+        }
+
+        lastScrollTop = scrollTop;
+    }
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            header.classList.remove('header-hidden');
+        }
+    });
+
 })();
