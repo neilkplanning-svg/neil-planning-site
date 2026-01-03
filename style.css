@@ -10241,3 +10241,21 @@ html[dir="rtl"] .hamburger {
         padding-top: 0 !important;
     }
 }
+
+/* ============================================
+   DISABLE DARK MODE - User Request
+   ============================================ */
+.dark-mode-toggle {
+    display: none !important;
+}
+
+/* Prevent any dark mode styling from being applied */
+body.dark-mode {
+    background-color: var(--white) !important;
+    color: var(--gray-900) !important;
+}
+
+/* Hide confetti canvas */
+.confetti-canvas {
+    display: none !important;
+}
