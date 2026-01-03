@@ -102,16 +102,16 @@
                 
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <div class="hero-stat-value">10+</div>
-                        <div class="hero-stat-label">שנות ניסיון</div>
-                    </div>
-                    <div class="hero-stat">
                         <div class="hero-stat-value">M.E</div>
                         <div class="hero-stat-label">תואר שני בהנדסה</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value">100%</div>
-                        <div class="hero-stat-label">ללא עמלות</div>
+                        <div class="hero-stat-label">נאמנות ללקוח</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">0</div>
+                        <div class="hero-stat-label">עמלות נסתרות</div>
                     </div>
                 </div>
                 
@@ -236,42 +236,61 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials">
+        <!-- Contact Form Section -->
+        <section class="contact-form-section" id="contact">
             <div class="section-header">
                 <div class="section-badge">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    המלצות
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    יצירת קשר
                 </div>
-                <h2 class="section-title">מה אומרים הלקוחות</h2>
+                <h2 class="section-title">השאירו פרטים ואחזור אליכם</h2>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "ניל עזר לנו לסדר את כל התמונה הפיננסית שלנו. תוך חודשיים כבר ראינו שינוי משמעותי בחיסכון החודשי. הגישה ההנדסית שלו פשוט עובדת."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">ד.כ</div>
-                        <div class="testimonial-info">
-                            <strong>ד.כ</strong>
-                            <span>זוג צעיר, תל אביב</span>
+            <div class="contact-form-container">
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/xjgkaowv" method="POST">
+                    <div class="form-group">
+                        <label for="full-name">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            שם מלא <span class="required">*</span>
+                        </label>
+                        <input type="text" id="full-name" name="full-name" required placeholder="הזינו את שמכם המלא">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                אימייל
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                                טלפון
+                            </label>
+                            <input type="tel" id="phone" name="phone" placeholder="050-0000000">
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "סוף סוף מישהו שמסביר בגובה העיניים ולא מנסה למכור לי ביטוחים. ניל פשוט רוצה לעזור לנו להצליח, וזה מרגיש."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">מ.ר</div>
-                        <div class="testimonial-info">
-                            <strong>מ.ר</strong>
-                            <span>משפחה עם 3 ילדים, חריש</span>
-                        </div>
+                    
+                    <p class="form-note">* יש למלא לפחות אימייל או טלפון</p>
+                    
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fas fa-comment-alt" aria-hidden="true"></i>
+                            במה אוכל לעזור? <span class="required">*</span>
+                        </label>
+                        <textarea id="message" name="message" required rows="4" placeholder="ספרו לי קצת על עצמכם ועל הנושא שתרצו לדבר עליו..."></textarea>
                     </div>
-                </div>
+                    
+                    <button type="submit" class="cta-button submit-button">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        שלחו פנייה
+                    </button>
+                    
+                    <div id="form-status" class="form-status" aria-live="polite"></div>
+                </form>
             </div>
         </section>
 

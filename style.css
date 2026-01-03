@@ -10261,3 +10261,148 @@ body.dark-mode {
 .confetti-canvas {
     display: none !important;
 }
+
+/* ============================================
+   STICKY HEADER FOR DESKTOP ONLY
+   ============================================ */
+@media (min-width: 993px) {
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+    }
+    
+    body {
+        padding-top: var(--header-height) !important;
+    }
+    
+    .hero {
+        margin-top: 0 !important;
+    }
+}
+
+/* ============================================
+   CONTACT FORM STYLES
+   ============================================ */
+.contact-form-section {
+    padding: var(--space-20) var(--space-6);
+    background: var(--gray-50);
+}
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    background: var(--white);
+    padding: var(--space-10);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.form-group {
+    margin-bottom: var(--space-6);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: var(--text-base);
+}
+
+.form-group label i {
+    margin-left: var(--space-2);
+    color: var(--accent-gold);
+}
+
+.form-group .required {
+    color: var(--danger);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-4);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    transition: all var(--transition-base);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 4px var(--accent-gold-subtle);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--gray-400);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-note {
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    margin-bottom: var(--space-6);
+    text-align: center;
+}
+
+.submit-button {
+    width: 100%;
+    justify-content: center;
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-8);
+}
+
+.submit-button i {
+    margin-left: var(--space-2);
+}
+
+.form-status {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    background: var(--success-light);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.form-status.error {
+    display: block;
+    background: var(--danger-light);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+.form-status.loading {
+    display: block;
+    background: var(--info-light);
+    color: var(--info);
+    border: 1px solid var(--info);
+}

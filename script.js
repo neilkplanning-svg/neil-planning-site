@@ -3825,3 +3825,74 @@ document.head.appendChild(spinnerCSS);
     console.log('✓ Dark Mode Manager disabled per user request');
     
 })();
+
+/* ============================================
+   CONTACT FORM HANDLING
+   ============================================ */
+(function() {
+    'use strict';
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const statusDiv = document.getElementById('form-status');
+        
+        // Handle form submission via Formspree (or similar)
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            
+            if (!email && !phone) {
+                showStatus('error', 'יש למלא לפחות אימייל או טלפון');
+                return;
+            }
+            
+            showStatus('loading', 'שולח את הפנייה...');
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showStatus('success', 'הפנייה נשלחה בהצלחה! אחזור אליכם בהקדם.');
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    if (data.errors) {
+                        showStatus('error', 'שגיאה בשליחה: ' + data.errors.map(e => e.message).join(', '));
+                    } else {
+                        showStatus('error', 'שגיאה בשליחה. אנא נסו שוב או צרו קשר ישירות.');
+                    }
+                }
+            } catch (error) {
+                showStatus('error', 'שגיאה בשליחה. אנא נסו שוב או צרו קשר ישירות.');
+            }
+        });
+        
+        function showStatus(type, message) {
+            statusDiv.className = 'form-status ' + type;
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            
+            // Auto-hide success message after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+    });
+    
+    console.log('✓ Contact Form Handler initialized');
+})();
