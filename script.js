@@ -2780,11 +2780,11 @@ document.head.appendChild(spinnerCSS);
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
         // LightModeDefault.init(); // Disabled per user request - no dark mode
-        CursorGlow.init();
+        // CursorGlow.init(); // Disabled per user request - no cursor shadow
         // FixDarkModeToggle.init(); // Disabled per user request - no dark mode
         FixCounter.init();
         CleanButtons.init();
-        
+
         console.log('✓ V5.2 Fixes loaded - Professional mode');
     });
 
@@ -3710,7 +3710,7 @@ document.head.appendChild(spinnerCSS);
         TestimonialsCarousel.init();
         SmoothScroll.init();
         // DarkModeToggle.init(); // Disabled per user request - no dark mode
-        CursorGlow.init();
+        // CursorGlow.init(); // Disabled per user request - no cursor shadow
         StatCounter.init();
         HeaderScroll.init();
         ScrollReveal.init();
