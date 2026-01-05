@@ -3,25 +3,25 @@
     <!-- Main Pages -->
     <url>
         <loc>https://neil-kappel.co.il/</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/about.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/knowledge.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/resources.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -29,39 +29,45 @@
     <!-- Calculator Tools -->
     <url>
         <loc>https://neil-kappel.co.il/tools/tool-compound.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/tools/tool-loan.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/tools/tool-leverage.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/tools/tool-refinance.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neil-kappel.co.il/tools/tool-invest-leverage.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://neil-kappel.co.il/tools/tool-budget.html</loc>
+        <lastmod>2025-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
     
     <!-- Articles -->
     <url>
         <loc>https://neil-kappel.co.il/articles/article-basics.html</loc>
-        <lastmod>2025-01-01</lastmod>
+        <lastmod>2025-01-05</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
