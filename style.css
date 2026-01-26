@@ -7,7 +7,8 @@
 /* ============================================
    1. CUSTOM FONTS & IMPORTS
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* Fonts loaded via <link> in HTML for better performance */
+/* @import removed to avoid duplicate font loading */
 
 /* ============================================
    2. CSS CUSTOM PROPERTIES (Design Tokens)

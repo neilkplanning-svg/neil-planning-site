@@ -106,7 +106,7 @@
 
         <!-- CPI Linkage -->
         <div class="checkbox-wrapper">
-            <input type="checkbox" id="linkageCheck" onchange="toggleLinkage()">
+            <input type="checkbox" id="linkageCheck" data-action="toggle-linkage">
             <label for="linkageCheck">
                 <i class="fas fa-link" aria-hidden="true"></i>
                 האם המסלול צמוד למדד?
@@ -137,7 +137,7 @@
             </div>
         </details>
 
-        <button class="calc-btn" onclick="calculateLoan()">
+        <button class="calc-btn" data-calculator="loan">
             <i class="fas fa-calculator" aria-hidden="true"></i>
             חשב לוח סילוקין
         </button>

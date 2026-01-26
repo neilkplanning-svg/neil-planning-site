@@ -62,6 +62,83 @@ function debounce(func, wait) {
     };
 }
 
+/**
+ * Safe DOM manipulation helpers (XSS protection)
+ */
+const SafeDOM = {
+    /**
+     * Safely set text content with optional icon
+     * @param {HTMLElement} element - Target element
+     * @param {string} text - Text content (safe, no HTML)
+     * @param {string} [iconClass] - Optional Font Awesome icon class
+     */
+    setTextWithIcon(element, text, iconClass) {
+        if (!element) return;
+        element.textContent = '';
+        if (iconClass) {
+            const icon = document.createElement('i');
+            icon.className = iconClass;
+            icon.setAttribute('aria-hidden', 'true');
+            element.appendChild(icon);
+            element.appendChild(document.createTextNode(' ' + text));
+        } else {
+            element.textContent = text;
+        }
+    },
+
+    /**
+     * Safely create a result display with label and value
+     * @param {HTMLElement} element - Target element
+     * @param {string} label - Label text
+     * @param {string} value - Value text
+     */
+    setLabelValue(element, label, value) {
+        if (!element) return;
+        element.textContent = '';
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'label';
+        labelSpan.textContent = label;
+        const valueSpan = document.createElement('span');
+        valueSpan.className = 'value';
+        valueSpan.textContent = value;
+        element.appendChild(labelSpan);
+        element.appendChild(valueSpan);
+    },
+
+    /**
+     * Safely create text with strong tag
+     * @param {HTMLElement} element - Target element
+     * @param {string} prefix - Text before strong
+     * @param {string} strongText - Text inside strong tag
+     */
+    setTextWithStrong(element, prefix, strongText) {
+        if (!element) return;
+        element.textContent = '';
+        element.appendChild(document.createTextNode(prefix));
+        const strong = document.createElement('strong');
+        strong.textContent = strongText;
+        element.appendChild(strong);
+    },
+
+    /**
+     * Safely create a verdict badge
+     * @param {HTMLElement} element - Target element
+     * @param {string} badgeClass - CSS class for badge styling
+     * @param {string} iconClass - Font Awesome icon class
+     * @param {string} text - Badge text
+     */
+    setVerdictBadge(element, badgeClass, iconClass, text) {
+        if (!element) return;
+        element.textContent = '';
+        element.className = 'verdict-badge ' + badgeClass;
+        const icon = document.createElement('i');
+        icon.className = iconClass;
+        icon.setAttribute('aria-hidden', 'true');
+        element.appendChild(icon);
+        element.appendChild(document.createTextNode(' ' + text));
+    }
+};
+
 /* ============================================
    2. GLOBAL CHART VARIABLE
    ============================================ */
@@ -221,28 +298,28 @@ function calculateCompoundInterest() {
     if (resultArea) {
         resultArea.style.display = 'block';
         
-        // Main result
+        // Main result - Safe DOM manipulation
         const resTotal = document.getElementById('resTotal');
-        if (resTotal) resTotal.innerHTML = `<span class="label">סכום סופי</span><span class="value">${formatCurrency(totalBalance)}</span>`;
-        
-        // Other results
+        SafeDOM.setLabelValue(resTotal, 'סכום סופי', formatCurrency(totalBalance));
+
+        // Other results - Safe DOM manipulation
         const resDeposits = document.getElementById('resDeposits');
-        if (resDeposits) resDeposits.innerHTML = `סך הכל הפקדות: <strong>${formatCurrency(totalDeposited)}</strong>`;
-        
+        SafeDOM.setTextWithStrong(resDeposits, 'סך הכל הפקדות: ', formatCurrency(totalDeposited));
+
         const resInterest = document.getElementById('resInterest');
-        if (resInterest) resInterest.innerHTML = `רווח נטו: <strong>${formatCurrency(totalBalance - totalDeposited)}</strong>`;
-        
+        SafeDOM.setTextWithStrong(resInterest, 'רווח נטו: ', formatCurrency(totalBalance - totalDeposited));
+
         const resROI = document.getElementById('resROI');
-        if (resROI) resROI.innerHTML = `תשואה כוללת: <strong>${roi.toFixed(1)}%</strong>`;
-        
+        SafeDOM.setTextWithStrong(resROI, 'תשואה כוללת: ', roi.toFixed(1) + '%');
+
         const resFees = document.getElementById('resFees');
-        if (resFees) resFees.innerHTML = `דמי ניהול ששולמו: <strong>${formatCurrency(totalFeesPaid)}</strong>`;
-        
+        SafeDOM.setTextWithStrong(resFees, 'דמי ניהול ששולמו: ', formatCurrency(totalFeesPaid));
+
         const resTax = document.getElementById('resTax');
         if (resTax) {
             if (includeTax) {
                 resTax.style.display = 'block';
-                resTax.innerHTML = `מס רווחי הון (25%): <strong>${formatCurrency(taxAmount)}</strong>`;
+                SafeDOM.setTextWithStrong(resTax, 'מס רווחי הון (25%): ', formatCurrency(taxAmount));
             } else {
                 resTax.style.display = 'none';
             }
@@ -390,33 +467,37 @@ function calculateLoan() {
     if (resultArea) {
         resultArea.style.display = 'block';
         
+        // Safe DOM manipulation for loan results
         const resMonthlyPayment = document.getElementById('resMonthlyPayment');
-        if (resMonthlyPayment) resMonthlyPayment.innerHTML = `<span class="label">החזר חודשי ראשון</span><span class="value">${formatCurrency(firstMonthPayment)}</span>`;
-        
+        SafeDOM.setLabelValue(resMonthlyPayment, 'החזר חודשי ראשון', formatCurrency(firstMonthPayment));
+
         const resTotalPayment = document.getElementById('resTotalPayment');
-        if (resTotalPayment) resTotalPayment.innerHTML = `<span class="label">סה"כ לתשלום</span><span class="value">${formatCurrency(grandTotal)}</span>`;
-        
+        SafeDOM.setLabelValue(resTotalPayment, 'סה"כ לתשלום', formatCurrency(grandTotal));
+
         const resInterest = document.getElementById('resInterest');
-        if (resInterest) resInterest.innerHTML = `ריבית כוללת: <strong>${formatCurrency(totalInterestPaid)}</strong>`;
-        
+        SafeDOM.setTextWithStrong(resInterest, 'ריבית כוללת: ', formatCurrency(totalInterestPaid));
+
         const resLinkage = document.getElementById('resLinkage');
         if (resLinkage) {
             if (isLinked && totalLinkagePaid > 0) {
                 resLinkage.style.display = 'block';
-                resLinkage.innerHTML = `הפרשי הצמדה: <strong>${formatCurrency(totalLinkagePaid)}</strong>`;
+                SafeDOM.setTextWithStrong(resLinkage, 'הפרשי הצמדה: ', formatCurrency(totalLinkagePaid));
             } else {
                 resLinkage.style.display = 'none';
             }
         }
-        
+
         const resCostPercent = document.getElementById('resCostPercent');
-        if (resCostPercent) resCostPercent.innerHTML = `עלות ביחס לקרן: <strong>${costPercentage.toFixed(1)}%</strong>`;
-        
+        SafeDOM.setTextWithStrong(resCostPercent, 'עלות ביחס לקרן: ', costPercentage.toFixed(1) + '%');
+
         const resBalloonFinal = document.getElementById('resBalloonFinal');
         if (resBalloonFinal) {
             if (finalBalloonToPay > 0) {
                 resBalloonFinal.style.display = 'block';
-                resBalloonFinal.innerHTML = `<div class="verdict-badge verdict-warning"><i class="fas fa-exclamation-triangle"></i> תשלום בלון בסוף התקופה: ${formatCurrency(finalBalloonToPay)}</div>`;
+                resBalloonFinal.textContent = '';
+                const badgeDiv = document.createElement('div');
+                SafeDOM.setVerdictBadge(badgeDiv, 'verdict-warning', 'fas fa-exclamation-triangle', 'תשלום בלון בסוף התקופה: ' + formatCurrency(finalBalloonToPay));
+                resBalloonFinal.appendChild(badgeDiv);
             } else {
                 resBalloonFinal.style.display = 'none';
             }
@@ -657,10 +738,12 @@ function announceFilterResults(count) {
 function showError(message) {
     // Check if there's already an error message
     let errorDiv = document.querySelector('.error-notification');
-    
+
     if (!errorDiv) {
         errorDiv = document.createElement('div');
         errorDiv.className = 'error-notification';
+        errorDiv.setAttribute('role', 'alert');
+        errorDiv.setAttribute('aria-live', 'assertive');
         errorDiv.style.cssText = `
             position: fixed;
             top: 100px;
@@ -681,9 +764,10 @@ function showError(message) {
         `;
         document.body.appendChild(errorDiv);
     }
-    
-    errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-    
+
+    // Safe DOM manipulation (XSS protection)
+    SafeDOM.setTextWithIcon(errorDiv, message, 'fas fa-exclamation-circle');
+
     // Remove after 4 seconds
     setTimeout(() => {
         errorDiv.style.animation = 'slideUp 0.3s ease-out';
@@ -692,7 +776,114 @@ function showError(message) {
 }
 
 /* ============================================
-   10. FORM ENHANCEMENTS
+   10. EVENT DELEGATION (Replaces inline handlers)
+   ============================================ */
+
+/**
+ * Centralized event delegation for calculator buttons and controls
+ * This replaces all inline onclick/onchange handlers for better security
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Calculator button click handler
+    document.addEventListener('click', function(e) {
+        const calcBtn = e.target.closest('[data-calculator]');
+        if (calcBtn) {
+            const calcType = calcBtn.dataset.calculator;
+            switch(calcType) {
+                case 'loan':
+                    if (typeof calculateLoan === 'function') calculateLoan();
+                    break;
+                case 'compound':
+                    if (typeof calculateCompoundInterest === 'function') calculateCompoundInterest();
+                    break;
+                case 'leverage':
+                    if (typeof calculateLeverage === 'function') calculateLeverage();
+                    break;
+                case 'refinance':
+                    if (typeof calculateRefinance === 'function') calculateRefinance();
+                    break;
+                case 'budget':
+                    if (typeof calculateBudget === 'function') calculateBudget();
+                    break;
+                case 'invest-leverage':
+                    if (typeof calculateInvestmentLeverage === 'function') calculateInvestmentLeverage();
+                    break;
+            }
+        }
+
+        // Add loan button
+        if (e.target.closest('[data-action="add-loan"]')) {
+            if (typeof addLoanInput === 'function') addLoanInput();
+        }
+
+        // Remove loan button
+        if (e.target.closest('[data-action="remove-loan"]')) {
+            const loanCard = e.target.closest('.loan-card');
+            if (loanCard) {
+                const loanId = parseInt(loanCard.dataset.loanId || loanCard.id?.replace('loan-', ''));
+                if (typeof removeLoan === 'function') removeLoan(loanId);
+            }
+        }
+
+        // Filter category buttons
+        if (e.target.matches('.filter-btn[data-category]')) {
+            const category = e.target.dataset.category;
+            if (typeof filterCategory === 'function') filterCategory(category, e);
+        }
+
+        // Reset filters button
+        if (e.target.closest('[data-action="reset-filters"]')) {
+            if (typeof resetFilters === 'function') resetFilters();
+        }
+    });
+
+    // Change event handler for checkboxes and selects
+    document.addEventListener('change', function(e) {
+        const action = e.target.dataset.action;
+
+        switch(action) {
+            case 'toggle-linkage':
+                if (typeof toggleLinkage === 'function') toggleLinkage();
+                break;
+            case 'toggle-lev-linkage':
+                if (typeof toggleLevLinkage === 'function') toggleLevLinkage();
+                break;
+            case 'toggle-keren':
+                if (typeof toggleSection === 'function') {
+                    toggleSection('kerenSection', e.target.checked);
+                }
+                if (typeof calculateBudget === 'function') calculateBudget();
+                break;
+            case 'toggle-pension':
+                if (typeof toggleSection === 'function') {
+                    toggleSection('pensionSection', e.target.checked);
+                }
+                if (typeof calculateBudget === 'function') calculateBudget();
+                break;
+        }
+
+        // Update total balance for loan inputs
+        if (e.target.closest('.loan-balance') || e.target.dataset.action === 'update-balance') {
+            if (typeof updateTotalBalance === 'function') updateTotalBalance();
+        }
+    });
+
+    // Input event handler for budget calculator real-time updates
+    document.addEventListener('input', function(e) {
+        // Budget tool inputs - trigger calculation on any budget input change
+        if (e.target.closest('.budget-section') && e.target.matches('input[type="number"]')) {
+            if (typeof calculateBudget === 'function') calculateBudget();
+        }
+
+        // Filter articles on search input
+        if (e.target.dataset.action === 'filter-articles') {
+            if (typeof filterArticles === 'function') filterArticles();
+        }
+    });
+});
+
+/* ============================================
+   11. FORM ENHANCEMENTS
    ============================================ */
 
 // Add input formatting on blur
@@ -817,18 +1008,24 @@ function calculateLeverage() {
         badgeClass = "verdict-danger"; 
     }
 
-    // Update results
+    // Update results - Safe DOM manipulation
     const resultArea = document.getElementById('result');
     if (resultArea) {
         resultArea.style.display = 'block';
-        
+
         const ltvEl = document.getElementById('resLTV');
-        if (ltvEl) ltvEl.innerHTML = `<span class="label">אחוז מינוף</span><span class="value">${ltv.toFixed(1)}%</span>`;
-        
+        SafeDOM.setLabelValue(ltvEl, 'אחוז מינוף', ltv.toFixed(1) + '%');
+
         const statusEl = document.getElementById('resStatus');
-        if (statusEl) statusEl.innerHTML = `<div class="verdict-badge ${badgeClass}">${status}</div>`;
+        if (statusEl) {
+            statusEl.textContent = '';
+            const badgeDiv = document.createElement('div');
+            badgeDiv.className = 'verdict-badge ' + badgeClass;
+            badgeDiv.textContent = status;
+            statusEl.appendChild(badgeDiv);
+        }
     }
-    
+
     resultArea?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -847,27 +1044,59 @@ function addLoanInput() {
     loanCounter++;
     const container = document.getElementById('loans-container');
     if (!container) return;
-    
-    const loanHTML = `
-        <div id="loan-${loanCounter}" class="loan-card">
-            <button onclick="removeLoan(${loanCounter})" class="remove-btn" title="מחק הלוואה"><i class="fas fa-trash-alt"></i></button>
-            <div class="loan-grid">
-                <div class="form-group" style="margin-bottom:0;">
-                    <label style="font-size:0.85em;">יתרה לסילוק (₪)</label>
-                    <input type="number" class="loan-balance" oninput="updateTotalBalance()" placeholder="0">
-                </div>
-                <div class="form-group" style="margin-bottom:0;">
-                    <label style="font-size:0.85em;">ריבית (%)</label>
-                    <input type="number" step="0.1" class="loan-rate" placeholder="0">
-                </div>
-                <div class="form-group" style="margin-bottom:0;">
-                    <label style="font-size:0.85em;">שנים שנותרו</label>
-                    <input type="number" step="0.5" class="loan-years" placeholder="0">
-                </div>
-            </div>
-        </div>
-    `;
-    container.insertAdjacentHTML('beforeend', loanHTML);
+
+    // Safe DOM creation (no innerHTML)
+    const loanCard = document.createElement('div');
+    loanCard.id = 'loan-' + loanCounter;
+    loanCard.className = 'loan-card';
+    loanCard.dataset.loanId = loanCounter;
+
+    // Remove button
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'remove-btn';
+    removeBtn.setAttribute('title', 'מחק הלוואה');
+    removeBtn.setAttribute('type', 'button');
+    removeBtn.dataset.action = 'remove-loan';
+    const trashIcon = document.createElement('i');
+    trashIcon.className = 'fas fa-trash-alt';
+    trashIcon.setAttribute('aria-hidden', 'true');
+    removeBtn.appendChild(trashIcon);
+
+    // Grid container
+    const loanGrid = document.createElement('div');
+    loanGrid.className = 'loan-grid';
+
+    // Helper to create form group
+    const createFormGroup = (labelText, inputClass, inputType, step, placeholder) => {
+        const group = document.createElement('div');
+        group.className = 'form-group';
+        group.style.marginBottom = '0';
+
+        const label = document.createElement('label');
+        label.style.fontSize = '0.85em';
+        label.textContent = labelText;
+
+        const input = document.createElement('input');
+        input.type = inputType;
+        input.className = inputClass;
+        input.placeholder = placeholder;
+        if (step) input.step = step;
+        if (inputClass === 'loan-balance') {
+            input.dataset.action = 'update-balance';
+        }
+
+        group.appendChild(label);
+        group.appendChild(input);
+        return group;
+    };
+
+    loanGrid.appendChild(createFormGroup('יתרה לסילוק (₪)', 'loan-balance', 'number', null, '0'));
+    loanGrid.appendChild(createFormGroup('ריבית (%)', 'loan-rate', 'number', '0.1', '0'));
+    loanGrid.appendChild(createFormGroup('שנים שנותרו', 'loan-years', 'number', '0.5', '0'));
+
+    loanCard.appendChild(removeBtn);
+    loanCard.appendChild(loanGrid);
+    container.appendChild(loanCard);
 }
 
 function removeLoan(id) {
@@ -984,20 +1213,15 @@ function renderRefinanceResults(currMonthly, newMonthly, currTotal, newTotal) {
     }
 
     if (verdictEl) {
-        verdictEl.className = 'verdict-badge';
-        
+        // Safe DOM manipulation for refinance verdict
         if (totalSave > 0 && monthlySave > 0) {
-            verdictEl.classList.add('verdict-success');
-            verdictEl.innerHTML = '<i class="fas fa-check-circle"></i> מיחזור משתלם מאוד! גם מקטין החזר וגם חוסך ריבית.';
+            SafeDOM.setVerdictBadge(verdictEl, 'verdict-success', 'fas fa-check-circle', 'מיחזור משתלם מאוד! גם מקטין החזר וגם חוסך ריבית.');
         } else if (monthlySave > 0 && totalSave < 0) {
-            verdictEl.classList.add('verdict-warning');
-            verdictEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> מקטין את הלחץ החודשי, אך מייקר את ההלוואה בסה"כ.';
+            SafeDOM.setVerdictBadge(verdictEl, 'verdict-warning', 'fas fa-exclamation-circle', 'מקטין את הלחץ החודשי, אך מייקר את ההלוואה בסה"כ.');
         } else if (totalSave > 0 && monthlySave < 0) {
-            verdictEl.classList.add('verdict-info');
-            verdictEl.innerHTML = '<i class="fas fa-piggy-bank"></i> חוסך כסף בטווח הארוך, אך יגדיל את ההחזר החודשי.';
+            SafeDOM.setVerdictBadge(verdictEl, 'verdict-info', 'fas fa-piggy-bank', 'חוסך כסף בטווח הארוך, אך יגדיל את ההחזר החודשי.');
         } else {
-            verdictEl.classList.add('verdict-danger');
-            verdictEl.innerHTML = '<i class="fas fa-times-circle"></i> לא משתלם כלל.';
+            SafeDOM.setVerdictBadge(verdictEl, 'verdict-danger', 'fas fa-times-circle', 'לא משתלם כלל.');
         }
     }
     
@@ -1146,14 +1370,13 @@ function calculateInvestmentLeverage() {
 
         const badge = document.getElementById('levVerdictBadge');
         const diff = scenarioA_NetProfit - scenarioB_NetProfit;
-        
+
+        // Safe DOM manipulation for investment leverage verdict
         if (badge) {
             if (diff > 0) {
-                badge.className = 'verdict-badge verdict-success';
-                badge.innerHTML = `<i class="fas fa-check-circle"></i> המינוף משתלם! רווח עודף של ${formatCurrency(diff)}`;
+                SafeDOM.setVerdictBadge(badge, 'verdict-success', 'fas fa-check-circle', 'המינוף משתלם! רווח עודף של ' + formatCurrency(diff));
             } else {
-                badge.className = 'verdict-badge verdict-danger';
-                badge.innerHTML = `<i class="fas fa-times-circle"></i> לא משתלם למנף. עדיף להשקיע חודשית. (הפסד אלטרנטיבי: ${formatCurrency(Math.abs(diff))})`;
+                SafeDOM.setVerdictBadge(badge, 'verdict-danger', 'fas fa-times-circle', 'לא משתלם למנף. עדיף להשקיע חודשית. (הפסד אלטרנטיבי: ' + formatCurrency(Math.abs(diff)) + ')');
             }
         }
     }
@@ -1689,7 +1912,7 @@ window.smoothScrollTo = smoothScrollTo;
 window.validateInput = validateInput;
 window.setButtonLoading = setButtonLoading;
 
-console.log('Premium UX Enhancements loaded successfully');
+// Premium UX Enhancements loaded
 /* ============================================
    ULTIMATE UX/UI JAVASCRIPT v5.0
    All Features Implementation
@@ -2300,7 +2523,7 @@ console.log('Premium UX Enhancements loaded successfully');
         SmoothScroll.init();
         KeyboardNav.init();
 
-        console.log('🚀 All UX/UI enhancements loaded successfully!');
+        // All UX/UI enhancements loaded
     });
 
     // Export for global access
@@ -2613,7 +2836,7 @@ document.head.appendChild(spinnerCSS);
         // Remove custom-cursor class
         document.body.classList.remove('custom-cursor');
         
-        console.log('💰 Money Trail Effect & UX Fixes loaded!');
+        // Money Trail Effect & UX Fixes loaded
     });
 
 })();
@@ -2785,7 +3008,7 @@ document.head.appendChild(spinnerCSS);
         FixCounter.init();
         CleanButtons.init();
 
-        console.log('✓ V5.2 Fixes loaded - Professional mode');
+        // V5.2 Fixes loaded - Professional mode
     });
 
 })();
@@ -3155,7 +3378,7 @@ document.head.appendChild(spinnerCSS);
         Accessibility.init();
         ScrollProgress.init();
         
-        console.log('✓ UX/UI Audit Fixes loaded');
+        // UX/UI Audit Fixes loaded
     });
 
 })();
@@ -3314,7 +3537,7 @@ document.head.appendChild(spinnerCSS);
                             try {
                                 eval(originalOnclick);
                             } catch (err) {
-                                console.error('Calculator error:', err);
+                                // Calculator error handled silently
                             }
                             
                             setTimeout(() => {
@@ -3715,7 +3938,7 @@ document.head.appendChild(spinnerCSS);
         HeaderScroll.init();
         ScrollReveal.init();
         
-        console.log('✓ All UX/UI improvements loaded');
+        // All UX/UI improvements loaded
     });
 
     // Re-init testimonials carousel on resize
@@ -3822,7 +4045,7 @@ document.head.appendChild(spinnerCSS);
     //     DarkModeManager.init();
     // }
 
-    console.log('✓ Dark Mode Manager disabled per user request');
+    // Dark Mode Manager disabled per user request
     
 })();
 
@@ -3894,5 +4117,5 @@ document.head.appendChild(spinnerCSS);
         }
     });
     
-    console.log('✓ Contact Form Handler initialized');
+    // Contact Form Handler initialized
 })();
