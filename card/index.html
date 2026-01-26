@@ -310,7 +310,7 @@
         <div class="card-title">מתכנן פיננסי | יועץ לכלכלת המשפחה</div>
 
         <div class="actions-list">
-            <button onclick="downloadVCard()" class="action-btn btn-save">
+            <button id="downloadVCardBtn" class="action-btn btn-save">
                 <i class="fas fa-user-plus"></i>
                 שמור איש קשר
             </button>
@@ -392,6 +392,14 @@ END:VCARD`;
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
         }
+
+        // Event delegation for download button
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.getElementById('downloadVCardBtn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', downloadVCard);
+            }
+        });
     </script>
 </body>
 </html>

@@ -141,10 +141,10 @@
         <div class="budget-section income-section">
             <h3><i class="fas fa-arrow-down" aria-hidden="true"></i> הכנסות חודשיות</h3>
             <div class="budget-grid">
-                <div class="budget-item"><label><i class="fas fa-briefcase"></i> משכורת נטו (מפרנס/ת ראשי/ת)</label><input type="number" id="salary1" value="12000" oninput="calculateBudget()"></div>
-                <div class="budget-item"><label><i class="fas fa-briefcase"></i> משכורת נטו (מפרנס/ת שני/ה)</label><input type="number" id="salary2" value="8000" oninput="calculateBudget()"></div>
-                <div class="budget-item"><label><i class="fas fa-baby"></i> קצבת ילדים</label><input type="number" id="childAllowance" value="300" oninput="calculateBudget()"></div>
-                <div class="budget-item"><label><i class="fas fa-plus-circle"></i> הכנסות נוספות</label><input type="number" id="otherIncome" value="0" oninput="calculateBudget()"></div>
+                <div class="budget-item"><label><i class="fas fa-briefcase"></i> משכורת נטו (מפרנס/ת ראשי/ת)</label><input type="number" id="salary1" value="12000"></div>
+                <div class="budget-item"><label><i class="fas fa-briefcase"></i> משכורת נטו (מפרנס/ת שני/ה)</label><input type="number" id="salary2" value="8000"></div>
+                <div class="budget-item"><label><i class="fas fa-baby"></i> קצבת ילדים</label><input type="number" id="childAllowance" value="300"></div>
+                <div class="budget-item"><label><i class="fas fa-plus-circle"></i> הכנסות נוספות</label><input type="number" id="otherIncome" value="0"></div>
             </div>
             <div class="section-total"><span>סה"כ הכנסות:</span><span id="totalIncome">₪20,300</span></div>
         </div>
@@ -154,15 +154,15 @@
             <h3><i class="fas fa-piggy-bank" aria-hidden="true"></i> חיסכון (הוראות קבע והפרשות)</h3>
             
             <div class="budget-grid">
-                <div class="budget-item"><label><i class="fas fa-landmark"></i> קופת גמל להשקעה</label><input type="number" id="savingsGemel" value="0" oninput="calculateBudget()"></div>
-                <div class="budget-item"><label><i class="fas fa-coins"></i> השקעות / ברוקר</label><input type="number" id="savingsInvest" value="0" oninput="calculateBudget()"></div>
-                <div class="budget-item"><label><i class="fas fa-wallet"></i> חיסכון אחר</label><input type="number" id="savingsOther" value="0" oninput="calculateBudget()"></div>
+                <div class="budget-item"><label><i class="fas fa-landmark"></i> קופת גמל להשקעה</label><input type="number" id="savingsGemel" value="0"></div>
+                <div class="budget-item"><label><i class="fas fa-coins"></i> השקעות / ברוקר</label><input type="number" id="savingsInvest" value="0"></div>
+                <div class="budget-item"><label><i class="fas fa-wallet"></i> חיסכון אחר</label><input type="number" id="savingsOther" value="0"></div>
             </div>
             
             <!-- Keren Hishtalmut Toggle -->
             <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--gray-200);">
                 <div class="checkbox-group">
-                    <input type="checkbox" id="includeKeren" onchange="toggleSection('kerenSection', this.checked); calculateBudget();">
+                    <input type="checkbox" id="includeKeren" data-action="toggle-keren">
                     <label for="includeKeren"><strong>שקלל קרן השתלמות בחיסכון</strong></label>
                 </div>
                 <p style="font-size: 12px; color: var(--gray-400); margin: 4px 0 0 26px;">הפרשות עובד כבר נוכו מהנטו - יתווספו לחישוב האחוזים. הפרשות מעביד יוצגו בנפרד.</p>
@@ -170,15 +170,15 @@
                     <div class="sub-category">
                         <h5><i class="fas fa-user"></i> מפרנס/ת ראשי/ת</h5>
                         <div class="budget-grid">
-                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="keren1Employee" value="0" oninput="calculateBudget()"></div>
-                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="keren1Employer" value="0" oninput="calculateBudget()"></div>
+                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="keren1Employee" value="0"></div>
+                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="keren1Employer" value="0"></div>
                         </div>
                     </div>
                     <div class="sub-category" style="margin-top: 8px;">
                         <h5><i class="fas fa-user"></i> מפרנס/ת שני/ה</h5>
                         <div class="budget-grid">
-                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="keren2Employee" value="0" oninput="calculateBudget()"></div>
-                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="keren2Employer" value="0" oninput="calculateBudget()"></div>
+                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="keren2Employee" value="0"></div>
+                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="keren2Employer" value="0"></div>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
             <!-- Pension Toggle -->
             <div style="margin-top: 16px;">
                 <div class="checkbox-group">
-                    <input type="checkbox" id="includePension" onchange="toggleSection('pensionSection', this.checked); calculateBudget();">
+                    <input type="checkbox" id="includePension" data-action="toggle-pension">
                     <label for="includePension"><strong>שקלל פנסיה בחיסכון</strong></label>
                 </div>
                 <p style="font-size: 12px; color: var(--gray-400); margin: 4px 0 0 26px;">הפרשות עובד כבר נוכו מהנטו - יתווספו לחישוב האחוזים. הפרשות מעביד יוצגו בנפרד.</p>
@@ -195,15 +195,15 @@
                     <div class="sub-category">
                         <h5><i class="fas fa-user"></i> מפרנס/ת ראשי/ת</h5>
                         <div class="budget-grid">
-                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="pension1Employee" value="0" oninput="calculateBudget()"></div>
-                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="pension1Employer" value="0" oninput="calculateBudget()"></div>
+                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="pension1Employee" value="0"></div>
+                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="pension1Employer" value="0"></div>
                         </div>
                     </div>
                     <div class="sub-category" style="margin-top: 8px;">
                         <h5><i class="fas fa-user"></i> מפרנס/ת שני/ה</h5>
                         <div class="budget-grid">
-                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="pension2Employee" value="0" oninput="calculateBudget()"></div>
-                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="pension2Employer" value="0" oninput="calculateBudget()"></div>
+                            <div class="budget-item"><label>הפרשת עובד</label><input type="number" id="pension2Employee" value="0"></div>
+                            <div class="budget-item"><label>הפרשת מעביד</label><input type="number" id="pension2Employer" value="0"></div>
                         </div>
                     </div>
                 </div>
@@ -228,9 +228,9 @@
             <div class="expense-category">
                 <h4><i class="fas fa-home"></i> דיור</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>משכנתא / שכר דירה</label><input type="number" id="housing" value="5000" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ועד בית</label><input type="number" id="vaadBayit" value="200" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ארנונה (חודשי)</label><input type="number" id="arnona" value="400" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>משכנתא / שכר דירה</label><input type="number" id="housing" value="5000"></div>
+                    <div class="budget-item"><label>ועד בית</label><input type="number" id="vaadBayit" value="200"></div>
+                    <div class="budget-item"><label>ארנונה (חודשי)</label><input type="number" id="arnona" value="400"></div>
                 </div>
             </div>
             
@@ -238,10 +238,10 @@
             <div class="expense-category">
                 <h4><i class="fas fa-credit-card"></i> הלוואות ותשלומים</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>החזר הלוואה בנקאית</label><input type="number" id="bankLoan" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>החזר הלוואת רכב</label><input type="number" id="carLoan" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>תשלומים (קרדיט)</label><input type="number" id="creditPayments" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>הלוואות אחרות</label><input type="number" id="otherLoans" value="0" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>החזר הלוואה בנקאית</label><input type="number" id="bankLoan" value="0"></div>
+                    <div class="budget-item"><label>החזר הלוואת רכב</label><input type="number" id="carLoan" value="0"></div>
+                    <div class="budget-item"><label>תשלומים (קרדיט)</label><input type="number" id="creditPayments" value="0"></div>
+                    <div class="budget-item"><label>הלוואות אחרות</label><input type="number" id="otherLoans" value="0"></div>
                 </div>
             </div>
             
@@ -249,11 +249,11 @@
             <div class="expense-category">
                 <h4><i class="fas fa-bolt"></i> חשבונות שוטפים</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>חשמל</label><input type="number" id="electricity" value="350" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>מים</label><input type="number" id="water" value="150" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>גז</label><input type="number" id="gas" value="100" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>אינטרנט וטלוויזיה</label><input type="number" id="internet" value="200" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>טלפון נייד</label><input type="number" id="phone" value="150" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>חשמל</label><input type="number" id="electricity" value="350"></div>
+                    <div class="budget-item"><label>מים</label><input type="number" id="water" value="150"></div>
+                    <div class="budget-item"><label>גז</label><input type="number" id="gas" value="100"></div>
+                    <div class="budget-item"><label>אינטרנט וטלוויזיה</label><input type="number" id="internet" value="200"></div>
+                    <div class="budget-item"><label>טלפון נייד</label><input type="number" id="phone" value="150"></div>
                 </div>
             </div>
             
@@ -261,11 +261,11 @@
             <div class="expense-category">
                 <h4><i class="fas fa-car"></i> תחבורה</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>ליסינג / החזר רכב / תח"צ</label><input type="number" id="carPayment" value="2000" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>דלק</label><input type="number" id="fuel" value="800" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ביטוח רכב (חודשי)</label><input type="number" id="carInsurance" value="350" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>טסט + טיפולים (חודשי)</label><input type="number" id="carMaintenance" value="150" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>שונות (אגרה, חניה וכו')</label><input type="number" id="transportMisc" value="0" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>ליסינג / החזר רכב / תח"צ</label><input type="number" id="carPayment" value="2000"></div>
+                    <div class="budget-item"><label>דלק</label><input type="number" id="fuel" value="800"></div>
+                    <div class="budget-item"><label>ביטוח רכב (חודשי)</label><input type="number" id="carInsurance" value="350"></div>
+                    <div class="budget-item"><label>טסט + טיפולים (חודשי)</label><input type="number" id="carMaintenance" value="150"></div>
+                    <div class="budget-item"><label>שונות (אגרה, חניה וכו')</label><input type="number" id="transportMisc" value="0"></div>
                 </div>
             </div>
             
@@ -273,8 +273,8 @@
             <div class="expense-category">
                 <h4><i class="fas fa-shopping-cart"></i> מזון וצריכה</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>סופר / מכולת</label><input type="number" id="groceries" value="3000" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>מסעדות ואוכל בחוץ</label><input type="number" id="restaurants" value="500" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>סופר / מכולת</label><input type="number" id="groceries" value="3000"></div>
+                    <div class="budget-item"><label>מסעדות ואוכל בחוץ</label><input type="number" id="restaurants" value="500"></div>
                 </div>
             </div>
             
@@ -282,9 +282,9 @@
             <div class="expense-category">
                 <h4><i class="fas fa-child"></i> ילדים</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>מעון / גן / צהרון</label><input type="number" id="childcare" value="2500" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>חוגים לילדים</label><input type="number" id="childActivities" value="400" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ביגוד ילדים</label><input type="number" id="childClothes" value="200" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>מעון / גן / צהרון</label><input type="number" id="childcare" value="2500"></div>
+                    <div class="budget-item"><label>חוגים לילדים</label><input type="number" id="childActivities" value="400"></div>
+                    <div class="budget-item"><label>ביגוד ילדים</label><input type="number" id="childClothes" value="200"></div>
                 </div>
             </div>
             
@@ -292,9 +292,9 @@
             <div class="expense-category">
                 <h4><i class="fas fa-paw"></i> חיות מחמד</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>מזון לחיות</label><input type="number" id="petFood" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>וטרינר וביטוח</label><input type="number" id="petVet" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ציוד ואחר</label><input type="number" id="petOther" value="0" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>מזון לחיות</label><input type="number" id="petFood" value="0"></div>
+                    <div class="budget-item"><label>וטרינר וביטוח</label><input type="number" id="petVet" value="0"></div>
+                    <div class="budget-item"><label>ציוד ואחר</label><input type="number" id="petOther" value="0"></div>
                 </div>
             </div>
             
@@ -302,12 +302,12 @@
             <div class="expense-category">
                 <h4><i class="fas fa-shield-alt"></i> ביטוח ובריאות</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>ביטוחים (סה"כ חודשי)</label><input type="number" id="insuranceTotal" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ביטוח חיים</label><input type="number" id="lifeInsurance" value="300" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ביטוח בריאות פרטי</label><input type="number" id="healthInsurance" value="250" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>קופת חולים משלים</label><input type="number" id="kupat" value="100" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>תרופות ורופאים</label><input type="number" id="medical" value="150" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>פארמה (קוסמטיקה, היגיינה)</label><input type="number" id="pharma" value="200" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>ביטוחים (סה"כ חודשי)</label><input type="number" id="insuranceTotal" value="0"></div>
+                    <div class="budget-item"><label>ביטוח חיים</label><input type="number" id="lifeInsurance" value="300"></div>
+                    <div class="budget-item"><label>ביטוח בריאות פרטי</label><input type="number" id="healthInsurance" value="250"></div>
+                    <div class="budget-item"><label>קופת חולים משלים</label><input type="number" id="kupat" value="100"></div>
+                    <div class="budget-item"><label>תרופות ורופאים</label><input type="number" id="medical" value="150"></div>
+                    <div class="budget-item"><label>פארמה (קוסמטיקה, היגיינה)</label><input type="number" id="pharma" value="200"></div>
                 </div>
             </div>
             
@@ -315,11 +315,11 @@
             <div class="expense-category">
                 <h4><i class="fas fa-smile"></i> פנאי ואורח חיים</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>בילויים ויציאות</label><input type="number" id="entertainment" value="400" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>מנויים (נטפליקס, ספוטיפיי...)</label><input type="number" id="subscriptions" value="150" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>חדר כושר / חוגים למבוגרים</label><input type="number" id="gym" value="0" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>ביגוד ונעליים (מבוגרים)</label><input type="number" id="clothing" value="300" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>טיפוח ויופי</label><input type="number" id="beauty" value="200" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>בילויים ויציאות</label><input type="number" id="entertainment" value="400"></div>
+                    <div class="budget-item"><label>מנויים (נטפליקס, ספוטיפיי...)</label><input type="number" id="subscriptions" value="150"></div>
+                    <div class="budget-item"><label>חדר כושר / חוגים למבוגרים</label><input type="number" id="gym" value="0"></div>
+                    <div class="budget-item"><label>ביגוד ונעליים (מבוגרים)</label><input type="number" id="clothing" value="300"></div>
+                    <div class="budget-item"><label>טיפוח ויופי</label><input type="number" id="beauty" value="200"></div>
                 </div>
             </div>
             
@@ -327,15 +327,15 @@
             <div class="expense-category">
                 <h4><i class="fas fa-ellipsis-h"></i> אחר</h4>
                 <div class="budget-grid">
-                    <div class="budget-item"><label>מתנות ותרומות</label><input type="number" id="gifts" value="200" oninput="calculateBudget()"></div>
-                    <div class="budget-item"><label>הוצאות בלתי צפויות</label><input type="number" id="unexpected" value="300" oninput="calculateBudget()"></div>
+                    <div class="budget-item"><label>מתנות ותרומות</label><input type="number" id="gifts" value="200"></div>
+                    <div class="budget-item"><label>הוצאות בלתי צפויות</label><input type="number" id="unexpected" value="300"></div>
                 </div>
             </div>
             
             <div class="section-total"><span>סה"כ הוצאות:</span><span id="totalExpenses">₪0</span></div>
         </div>
 
-        <button class="calc-btn" onclick="calculateBudget()"><i class="fas fa-calculator" aria-hidden="true"></i> חשב תקציב</button>
+        <button class="calc-btn" data-calculator="budget"><i class="fas fa-calculator" aria-hidden="true"></i> חשב תקציב</button>
 
         <!-- Results Section -->
         <div id="results" class="result-area" style="display: block; margin-top: 32px;">
@@ -575,19 +575,26 @@
             document.getElementById('wantsPercent').textContent = wantsPercent;
             document.getElementById('savingsPercent').textContent = Math.max(savingsPercent, 0);
             
+            // Safe DOM manipulation for rule status (XSS protection)
             const ruleStatus = document.getElementById('ruleStatus');
+            const setRuleStatus = (iconClass, iconColor, text, bgColor, textColor) => {
+                ruleStatus.textContent = '';
+                const icon = document.createElement('i');
+                icon.className = iconClass;
+                icon.style.color = iconColor;
+                icon.setAttribute('aria-hidden', 'true');
+                ruleStatus.appendChild(icon);
+                ruleStatus.appendChild(document.createTextNode(' ' + text));
+                ruleStatus.style.background = bgColor;
+                ruleStatus.style.color = textColor;
+            };
+
             if (needsPercent <= 50 && wantsPercent <= 30 && savingsPercent >= 20) {
-                ruleStatus.innerHTML = '<i class="fas fa-check-circle" style="color: var(--success);"></i> מצוין! אתם עומדים בכלל 50/30/20';
-                ruleStatus.style.background = 'var(--success-light)';
-                ruleStatus.style.color = 'var(--success)';
+                setRuleStatus('fas fa-check-circle', 'var(--success)', 'מצוין! אתם עומדים בכלל 50/30/20', 'var(--success-light)', 'var(--success)');
             } else if (balance < 0) {
-                ruleStatus.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i> אתם בגירעון! ההוצאות גבוהות מההכנסות';
-                ruleStatus.style.background = 'var(--danger-light)';
-                ruleStatus.style.color = 'var(--danger)';
+                setRuleStatus('fas fa-exclamation-triangle', 'var(--danger)', 'אתם בגירעון! ההוצאות גבוהות מההכנסות', 'var(--danger-light)', 'var(--danger)');
             } else {
-                ruleStatus.innerHTML = '<i class="fas fa-info-circle" style="color: var(--warning);"></i> יש מקום לשיפור - ראו המלצות למטה';
-                ruleStatus.style.background = 'var(--warning-light)';
-                ruleStatus.style.color = '#92400e';
+                setRuleStatus('fas fa-info-circle', 'var(--warning)', 'יש מקום לשיפור - ראו המלצות למטה', 'var(--warning-light)', '#92400e');
             }
             
             generateRecommendations(adjustedIncome, totalNeeds, totalWants, balance, needsPercent, wantsPercent, savingsPercent, needs, wants, personalSavings);
@@ -606,7 +613,14 @@
             if (needsObj.housing > income * 0.3) recommendations.push('הוצאות הדיור גבוהות מ-30% מההכנסה.');
             if (savingsP >= 20) recommendations.push('כל הכבוד! אתם חוסכים 20% או יותר מהכנסתכם (לא כולל הפרשות מעביד).');
             if (recommendations.length === 0) recommendations.push('התקציב שלכם מאוזן יפה!');
-            document.getElementById('recommendationsList').innerHTML = recommendations.map(r => '<li>' + r + '</li>').join('');
+            // Safe DOM manipulation for recommendations (XSS protection)
+            const recList = document.getElementById('recommendationsList');
+            recList.textContent = '';
+            recommendations.forEach(r => {
+                const li = document.createElement('li');
+                li.textContent = r;
+                recList.appendChild(li);
+            });
         }
         
         function updateCharts(needs, wants, income, expenses, balance, personalSavings, employerContrib) {

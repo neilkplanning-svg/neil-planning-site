@@ -97,7 +97,7 @@
             <div class="options-row">
                 <div class="option-card">
                     <div class="option-header">
-                        <input type="checkbox" id="levLinkageCheck" onchange="toggleLevLinkage()">
+                        <input type="checkbox" id="levLinkageCheck" data-action="toggle-lev-linkage">
                         <label for="levLinkageCheck">
                             <i class="fas fa-link"></i>
                             <span>הצמדה למדד?</span>
@@ -143,7 +143,7 @@
             </div>
         </div>
 
-        <button class="calc-btn" onclick="calculateInvestmentLeverage()">
+        <button class="calc-btn" data-calculator="invest-leverage">
             <i class="fas fa-calculator" aria-hidden="true"></i>
             נתח כדאיות עסקה
         </button>

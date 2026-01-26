@@ -78,15 +78,15 @@
         <div class="search-container">
             <div class="search-box">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="text" id="searchInput" onkeyup="filterArticles()" placeholder="חפש נושא, מונח או כותרת..." aria-label="חיפוש מאמרים">
+                <input type="text" id="searchInput" data-action="filter-articles" placeholder="חפש נושא, מונח או כותרת..." aria-label="חיפוש מאמרים">
             </div>
             
             <div class="category-filters" role="group" aria-label="סינון לפי קטגוריה">
-                <button class="filter-btn active" onclick="filterCategory('all')" aria-pressed="true">הכל</button>
-                <button class="filter-btn" onclick="filterCategory('investing')" aria-pressed="false">השקעות ושוק ההון</button>
-                <button class="filter-btn" onclick="filterCategory('housing')" aria-pressed="false">נדל"ן ומשכנתאות</button>
-                <button class="filter-btn" onclick="filterCategory('family')" aria-pressed="false">כלכלת המשפחה</button>
-                <button class="filter-btn" onclick="filterCategory('macro')" aria-pressed="false">מאקרו כלכלה</button>
+                <button class="filter-btn active" data-category="all" aria-pressed="true">הכל</button>
+                <button class="filter-btn" data-category="investing" aria-pressed="false">השקעות ושוק ההון</button>
+                <button class="filter-btn" data-category="housing" aria-pressed="false">נדל"ן ומשכנתאות</button>
+                <button class="filter-btn" data-category="family" aria-pressed="false">כלכלת המשפחה</button>
+                <button class="filter-btn" data-category="macro" aria-pressed="false">מאקרו כלכלה</button>
             </div>
         </div>
 
@@ -156,7 +156,7 @@
             <i class="fas fa-search" style="font-size: 48px; color: var(--gray-300); margin-bottom: 16px; display: block;" aria-hidden="true"></i>
             <h3 style="color: var(--gray-500); margin-bottom: 8px;">לא נמצאו מאמרים</h3>
             <p style="color: var(--gray-400);">נסו לחפש מונח אחר או לבחור קטגוריה אחרת</p>
-            <button onclick="resetFilters()" class="cta-button" style="margin-top: 16px;">
+            <button data-action="reset-filters" class="cta-button" style="margin-top: 16px;">
                 <i class="fas fa-redo" aria-hidden="true"></i> איפוס חיפוש
             </button>
         </div>
