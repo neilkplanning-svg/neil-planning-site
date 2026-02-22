@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="השוואת פלטפורמות מסחר עצמאי וקופות גמל להשקעה מומלצות. עמלות, דמי טיפול והטבות הצטרפות – כל מה שצריך לדעת לפני פתיחת חשבון.">
+    <title>השקעות ומסחר – ממולצים | NEIL KAPPEL</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Comparison Table Styles */
+        .broker-comparison { width: 100%; border-collapse: separate; border-spacing: 0; margin: 32px 0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .broker-comparison thead th { background: var(--primary-blue); color: white; padding: 16px 12px; font-family: var(--font-heading); font-size: 0.85em; font-weight: 600; text-align: center; border-left: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
+        .broker-comparison thead th:last-child { border-left: none; }
+        .broker-comparison tbody tr { transition: var(--transition-base); }
+        .broker-comparison tbody tr:nth-child(even) { background: var(--gray-50); }
+        .broker-comparison tbody tr:hover { background: var(--accent-gold-subtle); }
+        .broker-comparison tbody td { padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--gray-200); border-left: 1px solid var(--gray-100); font-size: 0.9em; line-height: 1.5; color: var(--gray-700); vertical-align: middle; }
+        .broker-comparison tbody td:last-child { border-left: none; }
+        .broker-comparison .broker-name { font-weight: 700; color: var(--primary-blue); font-size: 1em; white-space: nowrap; }
+        .broker-comparison .broker-name small { display: block; font-weight: 400; color: var(--gray-500); font-size: 0.8em; margin-top: 2px; }
+        .broker-comparison .highlight-row { background: linear-gradient(135deg, var(--accent-gold-subtle) 0%, rgba(201,162,39,0.05) 100%) !important; border-right: 3px solid var(--accent-gold); }
+        .broker-comparison .open-btn { display: inline-block; padding: 8px 16px; background: var(--accent-gold); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.85em; transition: var(--transition-base); white-space: nowrap; }
+        .broker-comparison .open-btn:hover { background: var(--accent-gold-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .broker-comparison .notes-cell { text-align: right; font-size: 0.82em; line-height: 1.6; max-width: 200px; }
+        .broker-comparison .fee-free { color: var(--success); font-weight: 600; }
+        .broker-comparison .no-fee { color: var(--gray-400); }
+
+        /* Responsive table */
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 0 16px; }
+        @media (max-width: 768px) {
+            .broker-comparison { font-size: 0.85em; }
+            .broker-comparison thead th, .broker-comparison tbody td { padding: 10px 8px; }
+            .broker-comparison .notes-cell { max-width: 150px; }
+        }
+
+        /* Section styling */
+        .partner-section { margin-bottom: 48px; }
+        .partner-section-header { color: var(--primary-blue); border-bottom: 2px solid var(--gray-200); padding-bottom: 12px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+        .partner-section-header i { color: var(--accent-gold); }
+        .partner-section-desc { color: var(--gray-600); margin-bottom: 24px; line-height: 1.7; }
+
+        /* Gemel Section */
+        .gemel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 24px; }
+        .gemel-card { background: white; border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200); text-align: center; transition: var(--transition-base); }
+        .gemel-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .gemel-card h4 { color: var(--primary-blue); margin-bottom: 8px; }
+        .gemel-card p { color: var(--gray-600); font-size: 0.9em; margin-bottom: 16px; line-height: 1.6; }
+        .gemel-card .cta-button { font-size: 0.9em; padding: 10px 20px; }
+
+        /* Affiliate notice */
+        .affiliate-notice { background: linear-gradient(135deg, var(--info-light) 0%, rgba(59,130,246,0.05) 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: flex-start; gap: 12px; }
+        .affiliate-notice i { color: var(--info); font-size: 1.2em; margin-top: 2px; flex-shrink: 0; }
+        .affiliate-notice p { color: var(--gray-700); font-size: 0.9em; line-height: 1.7; margin: 0; }
+
+        /* Cross-link banner */
+        .cross-link { background: linear-gradient(135deg, var(--gray-50) 0%, var(--accent-gold-subtle) 100%); border-radius: 12px; padding: 24px; margin-top: 16px; display: flex; align-items: center; gap: 16px; border: 1px solid var(--gray-200); }
+        .cross-link i.section-icon { font-size: 2em; color: var(--accent-gold); flex-shrink: 0; }
+        .cross-link .cross-link-text h4 { color: var(--primary-blue); margin: 0 0 4px; }
+        .cross-link .cross-link-text p { color: var(--gray-600); font-size: 0.9em; margin: 0; }
+        .cross-link .cta-button { margin-right: auto; white-space: nowrap; flex-shrink: 0; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <header>
+        <div class="brand-wrapper">
+            <a href="index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
+        </div>
+
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+
+        <nav aria-label="ניווט ראשי">
+            <a href="index.html">ראשי</a>
+
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                    <a href="tools/tool-budget.html" role="menuitem"><i class="fas fa-wallet" aria-hidden="true"></i> מחשבון תקציב משפחתי</a>
+                </div>
+            </div>
+
+            <a href="resources.html">מקורות מידע</a>
+            <a href="knowledge.html">מרכז ידע</a>
+
+            <div class="dropdown">
+                <span class="dropbtn active" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-star" aria-hidden="true"></i> ממולצים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="recommended-invest.html" role="menuitem" class="active"><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר</a>
+                    <a href="recommended-insurance.html" role="menuitem"><i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה</a>
+                </div>
+            </div>
+
+            <a href="about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר – ממולצים</h1>
+        <p>פלטפורמות מסחר עצמאי וקופות גמל להשקעה שאני מכיר, בדקתי וממליץ עליהם</p>
+    </div>
+
+    <main id="main-content" class="tool-container" style="max-width: 1200px;">
+
+        <div class="affiliate-notice">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+            <p><strong>גילוי נאות:</strong> חלק מהקישורים בעמוד זה הם קישורי שותפים (affiliate). המשמעות היא שאם תפתחו חשבון דרך הקישור, אני עשוי לקבל תגמול מהגוף הפיננסי. <strong>זה לא משפיע על המחיר שלכם</strong> – התנאים זהים לפתיחה ישירה. אני ממליץ רק על מוצרים ופלטפורמות שאני מכיר, בדקתי ומאמין שיתרמו לכם.</p>
+        </div>
+
+        <!-- ==================== SELF-TRADING COMPARISON ==================== -->
+        <section class="partner-section">
+            <h2 class="partner-section-header">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                השוואת פלטפורמות מסחר עצמאי
+            </h2>
+            <p class="partner-section-desc">פתיחת חשבון מסחר עצמאי מאפשרת לכם לקנות ולמכור מניות, קרנות מחקות ותעודות סל בעצמכם – ללא תלות ביועץ, עם עמלות נמוכות בהרבה. להלן השוואה מקיפה של בתי ההשקעות המובילים בישראל.</p>
+
+            <div class="table-wrapper">
+                <table class="broker-comparison">
+                    <thead>
+                        <tr>
+                            <th>בית השקעות</th>
+                            <th>מינימום פתיחה</th>
+                            <th>דמי טיפול חודשי</th>
+                            <th>מתנת הצטרפות</th>
+                            <th>עמלות ני"ע ישראל</th>
+                            <th>עמלות ני"ע חו"ל</th>
+                            <th>הערות</th>
+                            <th>פתיחת חשבון</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- אקסלנס טרייד - HIGHLIGHTED (affiliate) -->
+                        <tr class="highlight-row">
+                            <td>
+                                <div class="broker-name">אקסלנס טרייד<small>הפניקס בית השקעות</small></div>
+                            </td>
+                            <td>15,000 ש"ח</td>
+                            <td>15 ש"ח (מתקזז)</td>
+                            <td>100 ש"ח + פטור דמי טיפול לשנתיים</td>
+                            <td>0.07% <br><small>מינימום 3 ש"ח</small></td>
+                            <td>1 סנט <br><small>מינ' $5/$6.5</small></td>
+                            <td class="notes-cell">מסחר עצמאי במניות ותעודות סל בארה"ב. שברי מניות.</td>
+                            <td><a href="https://xnestrade.xnes.co.il/page/101?customerCode=6f837bbf" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                        <!-- פסגות -->
+                        <tr>
+                            <td>
+                                <div class="broker-name">פסגות</div>
+                            </td>
+                            <td>10,000 ש"ח</td>
+                            <td class="no-fee">אין</td>
+                            <td class="fee-free">פטור מדמי טיפול לכל החיים</td>
+                            <td>0.06% <br><small>מינימום 2 ש"ח</small></td>
+                            <td>1 סנט <br><small>מינ' $6</small></td>
+                            <td class="notes-cell">ללא עמלות ק/מ בקרנות אקטיביות (כולל כספיות). אופציה להוראת קבע.</td>
+                            <td><a href="https://www.psagottrade.co.il/" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                        <!-- מיטב טרייד -->
+                        <tr>
+                            <td>
+                                <div class="broker-name">מיטב טרייד</div>
+                            </td>
+                            <td>5,000 ש"ח</td>
+                            <td>15 ש"ח</td>
+                            <td>פטור דמי טיפול לשנתיים + 100 ש"ח מתנת הצטרפות</td>
+                            <td>0.07%-0.08% <br><small>מינימום 4.65 ש"ח</small></td>
+                            <td>1 סנט <br><small>מינ' $5/$7.5</small></td>
+                            <td class="notes-cell">ללא עמלות ק/מ בקרנות אקטיביות (כולל כספיות). VOD הדרכות מיטב.</td>
+                            <td><a href="https://trade.meitav.co.il/" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                        <!-- IBI בית השקעות -->
+                        <tr>
+                            <td>
+                                <div class="broker-name">IBI בית השקעות</div>
+                            </td>
+                            <td>15,000 ש"ח</td>
+                            <td>15 ש"ח (מתקזז)</td>
+                            <td>300 ש"ח למצטרפים חדשים</td>
+                            <td>0.08% <br><small>מינימום 2.35 ש"ח</small></td>
+                            <td>1 סנט <br><small>מינ' $7.5</small></td>
+                            <td class="notes-cell">מסחר עצמאי במניות ותעודות סל בארה"ב. מינימום $10 למניה.</td>
+                            <td><a href="https://online.ibi.co.il/" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                        <!-- אלטשולר שחם -->
+                        <tr>
+                            <td>
+                                <div class="broker-name">אלטשולר שחם</div>
+                            </td>
+                            <td>5,000 ש"ח</td>
+                            <td class="no-fee">אין</td>
+                            <td>200 ש"ח + קורס שוק ההון במתנה + פטור מלא מדמי טיפול ללא הגבלת זמן</td>
+                            <td>0.07% <br><small>מינ' 2.9 ש"ח, פטור עמלות על קרנות אקטיביות</small></td>
+                            <td>סנט למניה <br><small>(מינ' $6), עמלה בשברים עד $3 (1 נקוב)</small></td>
+                            <td class="notes-cell">מערכת מסחר מתקדמת. הוראות קבע + המרת מט"ח בזמן אמת. הכלים במקום אחד.</td>
+                            <td><a href="https://www.as-invest.co.il/trade/" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                        <!-- Fair -->
+                        <tr>
+                            <td>
+                                <div class="broker-name">Fair</div>
+                            </td>
+                            <td>250 ש"ח</td>
+                            <td class="no-fee">אין</td>
+                            <td>העברת תיק קרנות מהבנק בחינם</td>
+                            <td>0.07% <br><small>מינ' 3 ש"ח, רק לקרן מחקה</small></td>
+                            <td class="no-fee">אין</td>
+                            <td class="notes-cell">ללא עמלות ק/מ בקרנות אקטיביות (כולל כספיות).</td>
+                            <td><a href="https://www.fair.co.il/" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                        <!-- אינטראקטיב ישראל -->
+                        <tr>
+                            <td>
+                                <div class="broker-name">אינטראקטיב ישראל</div>
+                            </td>
+                            <td>אין מינימום</td>
+                            <td class="no-fee">אין</td>
+                            <td>עד $50 החזר עמלות <br><small>*מותנה בהפקדה ראשונית של מינ' $3,000</small></td>
+                            <td class="no-fee">אין מסחר בני"ע ישראלי</td>
+                            <td>1 סנט <br><small>מינ' $2.5, עמלת המרה – שער רציף</small></td>
+                            <td class="notes-cell">ברוקר זר – ני"ע זרים בלבד. באינטראקטיב ישראל טיפול במיסוי ללא תשלום. אופציה להוראת קבע.</td>
+                            <td><a href="https://www.interactiveisrael.co.il/" target="_blank" rel="noopener" class="open-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחה</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="color: var(--gray-500); font-size: 0.82em; margin-top: 12px; line-height: 1.6;"><i class="fas fa-info-circle" aria-hidden="true"></i> הנתונים מעודכנים לפברואר 2026 ועשויים להשתנות. מומלץ לבדוק באתר כל גוף לפני פתיחת חשבון. מקור נוסף: <a href="https://www.supermarker.themarker.com/Account/CompareInvestmentAccounts.aspx" target="_blank" rel="noopener" style="color: var(--accent-gold);">השוואת הטבות מסחר עצמאי – TheMarker</a>.</p>
+        </section>
+
+        <!-- ==================== GEMEL / KUPOT SECTION ==================== -->
+        <section class="partner-section">
+            <h2 class="partner-section-header">
+                <i class="fas fa-piggy-bank" aria-hidden="true"></i>
+                קופות גמל להשקעה
+            </h2>
+            <p class="partner-section-desc">קופת גמל להשקעה היא אפיק חיסכון גמיש עם הטבת מס משמעותית: בגיל פרישה ניתן למשוך את הכסף כקצבה פטורה ממס רווחי הון. מתאימה במיוחד למשפחות צעירות שרוצות לבנות הון לטווח ארוך. להלן מספר אפשרויות:</p>
+
+            <div class="gemel-grid">
+                <div class="gemel-card">
+                    <h4><i class="fas fa-chart-line" style="color: var(--accent-gold);" aria-hidden="true"></i> אלטשולר שחם</h4>
+                    <p>מגוון מסלולי השקעה, כולל מסלול מנייתי מוטה חו"ל. דמי ניהול תחרותיים.</p>
+                    <a href="https://www.as-invest.co.il/gemel/" target="_blank" rel="noopener" class="cta-button"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחת קופה</a>
+                </div>
+                <div class="gemel-card">
+                    <h4><i class="fas fa-chart-line" style="color: var(--accent-gold);" aria-hidden="true"></i> מיטב</h4>
+                    <p>מסלולים מגוונים כולל מסלולי מדד S&P 500. ממשק ניהול מתקדם.</p>
+                    <a href="https://www.meitav.co.il/saving-and-investment/saving-plans/gemel-lehaskaa/" target="_blank" rel="noopener" class="cta-button"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחת קופה</a>
+                </div>
+                <div class="gemel-card">
+                    <h4><i class="fas fa-chart-line" style="color: var(--accent-gold);" aria-hidden="true"></i> הפניקס</h4>
+                    <p>מסלולי השקעה מגוונים. ניהול דיגיטלי מלא וממשק נוח.</p>
+                    <a href="https://www.fnx.co.il/pension-and-savings/gemel-for-investment/" target="_blank" rel="noopener" class="cta-button"><i class="fas fa-external-link-alt" aria-hidden="true"></i> פתיחת קופה</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CROSS LINK TO INSURANCE ==================== -->
+        <div class="cross-link">
+            <i class="fas fa-user-shield section-icon" aria-hidden="true"></i>
+            <div class="cross-link-text">
+                <h4>מחפשים סוכן ביטוח מומלץ?</h4>
+                <p>סוכנים שאני מכיר ועובד איתם – ביטוח חיים, בריאות, פנסיה והשתלמות</p>
+            </div>
+            <a href="recommended-insurance.html" class="cta-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> לעמוד ביטוח ופנסיה</a>
+        </div>
+
+        <!-- ==================== RELATED ARTICLES ==================== -->
+        <section class="partner-section" style="margin-top: 48px;">
+            <h2 class="partner-section-header">
+                <i class="fas fa-book-open" aria-hidden="true"></i>
+                מאמרים רלוונטיים
+            </h2>
+            <p class="partner-section-desc">לפני שפותחים חשבון מסחר – כדאי להבין את הבסיס:</p>
+
+            <div class="resources-grid" style="margin-top: 16px;">
+                <a href="articles/article-value-investing.html" class="resource-card">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-landmark" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>עקרונות השקעות ערך</h4>
+                        <p>חפיר כלכלי, שולי ביטחון וכוח הזמן</p>
+                    </div>
+                </a>
+                <a href="articles/article-compound.html" class="resource-card">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-chart-line" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>הסוד של ריבית דריבית</h4>
+                        <p>המדריך המלא לצמיחה מעריכית</p>
+                    </div>
+                </a>
+                <a href="articles/article-inflation-opportunity.html" class="resource-card">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-seedling" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>אינפלציה כהזדמנות</h4>
+                        <p>ריביות, חפיר כלכלי והמשקיע הרציונלי</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> |
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות:</strong> עמוד זה מכיל קישורי שותפים (affiliate links). אני עשוי לקבל תגמול מהגופים המופיעים בעמוד. המידע אינו מהווה ייעוץ השקעות, והוא למטרות מידע בלבד.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

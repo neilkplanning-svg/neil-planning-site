@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="האם כדאי למחזר את המשכנתא כשהפריים עולה? ניתוח הנדסי של נקודת האיזון, קנסות יציאה והשפעת הריבית על ההחזר החודשי.">
+    <title>האם כדאי למחזר את המשכנתא כשהפריים עולה? | NEIL KAPPEL</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .article-content { font-size: 1.1em; line-height: 1.9; color: var(--gray-700); }
+        .article-content h2 { color: var(--primary-blue); margin-top: 48px; font-weight: 700; font-size: 1.6em; }
+        .article-content ul { padding-right: 24px; margin-bottom: 24px; }
+        .article-content li { margin-bottom: 12px; }
+        .article-date { color: var(--gray-500); font-size: 0.9em; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+        .example-box { background: var(--gray-50); border-right: 4px solid var(--accent-gold); padding: 20px 24px; margin: 24px 0; border-radius: 8px; }
+        .example-box h3 { margin-top: 0; color: var(--primary-blue); }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <header>
+        <div class="brand-wrapper">
+            <a href="../index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
+        </div>
+
+        <nav aria-label="ניווט ראשי">
+            <a href="../index.html">ראשי</a>
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="../tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="../tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="../tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="../tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="../tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                    <a href="../tools/tool-budget.html" role="menuitem"><i class="fas fa-wallet" aria-hidden="true"></i> מחשבון תקציב משפחתי</a>
+                </div>
+            </div>
+            <a href="../resources.html">מקורות מידע</a>
+            <a href="../knowledge.html" class="active">מרכז ידע</a>
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-star" aria-hidden="true"></i> ממולצים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="../recommended-invest.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר</a>
+                    <a href="../recommended-insurance.html" role="menuitem"><i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה</a>
+                </div>
+            </div>
+            <a href="../about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
+    </header>
+
+    <div class="tool-header" style="padding: 60px 20px;">
+        <h1><i class="fas fa-home" aria-hidden="true"></i> האם כדאי למחזר את המשכנתא כשהפריים עולה?</h1>
+        <p>ניתוח הנדסי של נקודת האיזון, קנסות יציאה והשפעת שינויי ריבית על ההחזר החודשי</p>
+    </div>
+
+    <main id="main-content" class="tool-container" style="max-width: 800px;">
+        <span class="article-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> עודכן לאחרונה: פברואר 2026</span>
+
+        <div class="article-content">
+            <p>כשריבית הפריים עולה, בעלי משכנתאות עם מסלולי פריים מרגישים את זה מיידית בארנק. ההחזר החודשי קופץ, והשאלה הטבעית שעולה היא: <strong>האם כדאי למחזר?</strong> התשובה, כמו ברוב הנושאים הפיננסיים, היא "תלוי" – ובמאמר הזה נבנה את המסגרת לקבלת ההחלטה.</p>
+
+            <h2><i class="fas fa-chart-bar" style="color: var(--accent-gold);" aria-hidden="true"></i> מה זה מחזור משכנתא ומתי שוקלים אותו?</h2>
+            <p>מחזור משכנתא הוא למעשה <strong>לקיחת הלוואה חדשה שמחליפה את הישנה</strong>, בתנאים שונים (ריבית, תקופה, סוג מסלול). המטרה: להוזיל את העלות הכוללת או להקטין את ההחזר החודשי.</p>
+
+            <div class="example-box">
+                <h3><i class="fas fa-exclamation-circle" style="color: var(--accent-gold);" aria-hidden="true"></i> מתי שווה לבדוק מחזור?</h3>
+                <ul>
+                    <li><strong>הריבית השתנתה משמעותית:</strong> הפריים עלה או ירד ב-0.5% ומעלה מאז לקחתם את המשכנתא.</li>
+                    <li><strong>המשכנתא עדיין "צעירה":</strong> בשנים הראשונות רוב ההחזר הולך לריבית, ולכן שינוי ריבית משפיע יותר.</li>
+                    <li><strong>יש יתרה גדולה:</strong> על משכנתא של 300,000 ש"ח ההבדל קטן. על 1,000,000 ש"ח – כל רבע אחוז שווה אלפים.</li>
+                    <li><strong>תמהיל המסלולים לא אופטימלי:</strong> ריכוז גבוה מדי בפריים חושף אתכם לתנודות.</li>
+                </ul>
+            </div>
+
+            <h2><i class="fas fa-calculator" style="color: var(--accent-gold);" aria-hidden="true"></i> ניתוח נקודת האיזון</h2>
+            <p>מחזור אינו חינמי. יש עלויות: <strong>קנס פירעון מוקדם</strong> (בעיקר במסלולים קבועים), שמאות, עורך דין ורישום. לכן, השאלה הקריטית היא: <strong>בכמה זמן החיסכון החודשי יכסה את עלויות המחזור?</strong></p>
+
+            <div class="example-box">
+                <h3><i class="fas fa-balance-scale-right" style="color: var(--accent-gold);" aria-hidden="true"></i> דוגמה: חישוב נקודת איזון</h3>
+                <p>משפחת לוי עם משכנתא של <strong>800,000 ש"ח</strong>, 20 שנה שנותרו:</p>
+                <ul>
+                    <li><strong>החזר נוכחי:</strong> 5,200 ש"ח/חודש (ריבית ממוצעת 4.8%)</li>
+                    <li><strong>החזר לאחר מחזור:</strong> 4,750 ש"ח/חודש (ריבית ממוצעת 4.1%)</li>
+                    <li><strong>חיסכון חודשי:</strong> 450 ש"ח</li>
+                    <li><strong>עלויות מחזור:</strong> קנס 8,000 ש"ח + שמאות 2,000 ש"ח + עו"ד 3,000 ש"ח = <strong>13,000 ש"ח</strong></li>
+                    <li><strong>נקודת איזון:</strong> 13,000 ÷ 450 = <strong>29 חודשים</strong> (כ-2.5 שנים)</li>
+                </ul>
+                <p>אם מתכננים להישאר בדירה יותר מ-2.5 שנים – <strong>המחזור משתלם</strong>. אם שוקלים לעבור דירה בקרוב – לא בטוח.</p>
+            </div>
+
+            <h2><i class="fas fa-exclamation-triangle" style="color: var(--accent-gold);" aria-hidden="true"></i> קנסות פירעון מוקדם: מה צריך לדעת</h2>
+            <p>לא כל המסלולים שווים מבחינת קנסות:</p>
+
+            <div class="example-box">
+                <h3><i class="fas fa-file-invoice-dollar" style="color: var(--accent-gold);" aria-hidden="true"></i> סוגי קנסות לפי מסלול</h3>
+                <ul>
+                    <li><strong>פריים:</strong> ללא קנס פירעון מוקדם – ניתן לסגור בכל רגע.</li>
+                    <li><strong>קבועה לא צמודה:</strong> קנס מוגדר בחוק – תלוי בהפרש בין הריבית שלכם לריבית הנוכחית. אם הריבית עלתה, הקנס עשוי להיות <strong>אפס</strong>.</li>
+                    <li><strong>קבועה צמודה למדד:</strong> קנס דומה, אך יש להוסיף את מרכיב ההצמדה שנצבר.</li>
+                    <li><strong>משתנה כל 5 שנים:</strong> קנס מחושב עד נקודת השינוי הקרובה בלבד – לרוב נמוך.</li>
+                </ul>
+                <p><strong>טיפ חשוב:</strong> בקשו מהבנק <strong>טופס "פירוט יתרות לסילוק"</strong> – בו מפורטים הקנסות המדויקים לכל מסלול.</p>
+            </div>
+
+            <h2><i class="fas fa-puzzle-piece" style="color: var(--accent-gold);" aria-hidden="true"></i> אסטרטגיות מחזור חכמות</h2>
+            <p>מחזור אינו חייב להיות "הכל או כלום". הנה כמה גישות:</p>
+
+            <div class="example-box">
+                <h3><i class="fas fa-lightbulb" style="color: var(--accent-gold);" aria-hidden="true"></i> אפשרויות שכדאי לשקול</h3>
+                <ul>
+                    <li><strong>מחזור חלקי:</strong> מחזרים רק את המסלולים היקרים ומשאירים מסלולים שהקנס עליהם גבוה.</li>
+                    <li><strong>קיצור תקופה:</strong> שומרים על אותו החזר חודשי אבל מקצרים את תקופת ההלוואה – חיסכון עצום בריבית כוללת.</li>
+                    <li><strong>שינוי תמהיל:</strong> מפזרים את הסיכון בין מסלולים שונים כדי להקטין חשיפה לתנודות פריים.</li>
+                    <li><strong>מו"מ עם הבנק:</strong> לפני שרצים למחזר בבנק אחר, נסו לנהל משא ומתן עם הבנק הנוכחי – לעיתים ישפרו תנאים כדי לשמור אתכם.</li>
+                </ul>
+            </div>
+
+            <div class="buffett-quote" style="margin: 40px auto;">
+                <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+                <div class="quote-text">"הכלל הראשון: לעולם אל תפסיד כסף. הכלל השני: לעולם אל תשכח את הכלל הראשון."</div>
+                <div class="quote-author">- וורן באפט</div>
+            </div>
+
+            <h2><i class="fas fa-check-circle" style="color: var(--accent-gold);" aria-hidden="true"></i> לסיכום: צ'קליסט לפני מחזור</h2>
+            <ul>
+                <li>בקשו טופס יתרות לסילוק מהבנק וחשבו את הקנסות המדויקים.</li>
+                <li>השוו הצעות מ-2-3 בנקים לפחות – אל תסתפקו בהצעה הראשונה.</li>
+                <li>חשבו את נקודת האיזון – ודאו שתישארו בנכס מספיק זמן כדי "להחזיר" את עלויות המחזור.</li>
+                <li>שקלו מחזור חלקי אם הקנסות על חלק מהמסלולים גבוהים מדי.</li>
+                <li>אל תשכחו עלויות נלוות: שמאות, עו"ד, רישום משכנתא.</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 48px 0; border:0; border-top:1px solid var(--gray-200);">
+
+        <div style="text-align: center;">
+            <h3 style="color:var(--primary-blue);">רוצים לבדוק אם המחזור משתלם לכם?</h3>
+            <p style="color: var(--gray-600);">השתמשו במחשבון כדאיות מחזור הלוואה לחישוב מדויק של נקודת האיזון.</p>
+            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin: 24px 0;">
+                <a href="../tools/tool-refinance.html" class="cta-button"><i class="fas fa-sync-alt" aria-hidden="true"></i> מחשבון כדאיות מחזור</a>
+                <a href="../tools/tool-loan.html" class="cta-button" style="background-color: var(--gray-700);"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+            </div>
+            <br>
+            <a href="../knowledge.html" style="color:var(--accent-gold); font-weight:bold; text-decoration: none;"><i class="fas fa-arrow-right" aria-hidden="true"></i> חזרה למרכז הידע</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> | טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        </p>
+        <div class="legal-disclaimer"><strong>גילוי נאות:</strong> התוכן במאמר זה הינו למטרות השכלה בלבד ואינו מהווה ייעוץ משכנתאות או תחליף לייעוץ מקצועי.</div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+
+    <script src="../script.js"></script>
+</body>
+</html>

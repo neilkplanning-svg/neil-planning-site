@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="סוכני ביטוח מומלצים – פנסיה, גמל, השתלמות, ביטוחי חיים, בריאות ועוד. בדיקה חינם וללא התחייבות.">
+    <title>ביטוח ופנסיה – ממולצים | NEIL KAPPEL</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Agent Cards */
+        .agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; margin-top: 24px; }
+        .agent-card { background: white; border-radius: 16px; padding: 28px; box-shadow: var(--shadow-md); border: 1px solid var(--gray-200); transition: var(--transition-base); display: flex; flex-direction: column; gap: 16px; }
+        .agent-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+        .agent-card.featured { border: 2px solid var(--accent-gold); position: relative; }
+        .agent-card.featured::before { content: "מומלץ"; position: absolute; top: -12px; left: 20px; background: var(--accent-gold); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 700; }
+        .agent-header { display: flex; align-items: center; gap: 16px; }
+        .agent-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-gold-subtle) 0%, var(--gray-100) 100%); display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--accent-gold); flex-shrink: 0; border: 2px solid var(--accent-gold-subtle); overflow: hidden; }
+        .agent-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .agent-info h4 { color: var(--primary-blue); margin: 0 0 4px; font-size: 1.15em; }
+        .agent-info .agent-specialty { color: var(--accent-gold-dark); font-size: 0.9em; font-weight: 600; }
+        .agent-info .agent-languages { color: var(--gray-500); font-size: 0.8em; margin-top: 2px; }
+        .agent-desc { color: var(--gray-600); font-size: 0.92em; line-height: 1.7; }
+        .agent-services { display: flex; flex-wrap: wrap; gap: 8px; }
+        .agent-services .service-tag { background: var(--accent-gold-subtle); color: var(--primary-blue); padding: 5px 12px; border-radius: 20px; font-size: 0.82em; font-weight: 600; white-space: nowrap; }
+        .agent-details { font-size: 0.9em; color: var(--gray-600); line-height: 1.7; }
+        .agent-details li { margin-bottom: 4px; list-style: none; }
+        .agent-details li i { color: var(--accent-gold); width: 20px; margin-left: 6px; }
+        .agent-contact { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+        .agent-contact a { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 0.88em; font-weight: 600; text-decoration: none; transition: var(--transition-base); }
+        .agent-contact .phone-btn { background: var(--primary-blue); color: white; }
+        .agent-contact .phone-btn:hover { background: var(--primary-blue-light); }
+        .agent-contact .whatsapp-btn { background: #25d366; color: white; }
+        .agent-contact .whatsapp-btn:hover { background: #1ea952; }
+
+        /* Section styling */
+        .partner-section { margin-bottom: 48px; }
+        .partner-section-header { color: var(--primary-blue); border-bottom: 2px solid var(--gray-200); padding-bottom: 12px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+        .partner-section-header i { color: var(--accent-gold); }
+        .partner-section-desc { color: var(--gray-600); margin-bottom: 24px; line-height: 1.7; }
+
+        /* Affiliate notice */
+        .affiliate-notice { background: linear-gradient(135deg, var(--info-light) 0%, rgba(59,130,246,0.05) 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: flex-start; gap: 12px; }
+        .affiliate-notice i { color: var(--info); font-size: 1.2em; margin-top: 2px; flex-shrink: 0; }
+        .affiliate-notice p { color: var(--gray-700); font-size: 0.9em; line-height: 1.7; margin: 0; }
+
+        /* Free check banner */
+        .free-check-banner { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1px solid #86efac; border-radius: 12px; padding: 24px; margin-bottom: 32px; text-align: center; }
+        .free-check-banner h3 { color: #166534; margin: 0 0 8px; font-size: 1.15em; }
+        .free-check-banner p { color: #15803d; font-size: 0.92em; margin: 0; line-height: 1.6; }
+        .free-check-banner i { color: #22c55e; }
+
+        /* Cross-link banner */
+        .cross-link { background: linear-gradient(135deg, var(--gray-50) 0%, var(--accent-gold-subtle) 100%); border-radius: 12px; padding: 24px; margin-top: 16px; display: flex; align-items: center; gap: 16px; border: 1px solid var(--gray-200); }
+        .cross-link i.section-icon { font-size: 2em; color: var(--accent-gold); flex-shrink: 0; }
+        .cross-link .cross-link-text h4 { color: var(--primary-blue); margin: 0 0 4px; }
+        .cross-link .cross-link-text p { color: var(--gray-600); font-size: 0.9em; margin: 0; }
+        .cross-link .cta-button { margin-right: auto; white-space: nowrap; flex-shrink: 0; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <header>
+        <div class="brand-wrapper">
+            <a href="index.html" aria-label="דף הבית">
+                <div class="monogram-header">NK</div>
+                <div class="brand-text">
+                    <div class="brand-name">NEIL KAPPEL</div>
+                    <div class="brand-slogan">תכנון פיננסי מותאם אישית</div>
+                </div>
+            </a>
+        </div>
+
+        <button class="hamburger" aria-label="תפריט ניווט" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
+
+        <nav aria-label="ניווט ראשי">
+            <a href="index.html">ראשי</a>
+
+            <div class="dropdown">
+                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-calculator" aria-hidden="true"></i> כלים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="tools/tool-compound.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> מחשבון ריבית דריבית</a>
+                    <a href="tools/tool-loan.html" role="menuitem"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> מחשבון הלוואה</a>
+                    <a href="tools/tool-leverage.html" role="menuitem"><i class="fas fa-balance-scale" aria-hidden="true"></i> מחשבון מינוף עצמי</a>
+                    <a href="tools/tool-refinance.html" role="menuitem"><i class="fas fa-sync-alt" aria-hidden="true"></i> כדאיות מחזור הלוואה</a>
+                    <a href="tools/tool-invest-leverage.html" role="menuitem"><i class="fas fa-rocket" aria-hidden="true"></i> כדאיות מינוף להשקעה</a>
+                    <a href="tools/tool-budget.html" role="menuitem"><i class="fas fa-wallet" aria-hidden="true"></i> מחשבון תקציב משפחתי</a>
+                </div>
+            </div>
+
+            <a href="resources.html">מקורות מידע</a>
+            <a href="knowledge.html">מרכז ידע</a>
+
+            <div class="dropdown">
+                <span class="dropbtn active" tabindex="0" role="button" aria-haspopup="true">
+                    <i class="fas fa-star" aria-hidden="true"></i> ממולצים ▼
+                </span>
+                <div class="dropdown-content" role="menu">
+                    <a href="recommended-invest.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר</a>
+                    <a href="recommended-insurance.html" role="menuitem" class="active"><i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה</a>
+                </div>
+            </div>
+
+            <a href="about.html">אודות</a>
+            <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
+            </a>
+        </nav>
+    </header>
+
+    <div class="tool-header">
+        <h1><i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה – ממולצים</h1>
+        <p>סוכני ביטוח שאני מכיר ועובד איתם, ויכולים לעזור לכם לבנות מעטפת ביטוחית מותאמת</p>
+    </div>
+
+    <main id="main-content" class="tool-container" style="max-width: 1000px;">
+
+        <div class="affiliate-notice">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+            <p><strong>גילוי נאות:</strong> אני עשוי לקבל תגמול מסוכני הביטוח המופיעים בעמוד זה. ההמלצה מבוססת על היכרות אישית ושביעות רצון מהשירות. <strong>הבדיקה עבורכם ללא עלות וללא התחייבות.</strong></p>
+        </div>
+
+        <div class="free-check-banner">
+            <h3><i class="fas fa-check-circle" aria-hidden="true"></i> בדיקה חינם וללא התחייבות</h3>
+            <p>כל הסוכנים המומלצים מציעים סקירת תיק ביטוח קיים ללא עלות – כדי לבדוק אם אפשר לשפר תנאים, לחסוך בפרמיה, או לזהות כפל ביטוחים.</p>
+        </div>
+
+        <!-- ==================== INSURANCE AGENTS ==================== -->
+        <section class="partner-section">
+            <h2 class="partner-section-header">
+                <i class="fas fa-user-shield" aria-hidden="true"></i>
+                סוכני ביטוח מומלצים
+            </h2>
+            <p class="partner-section-desc">כל אחד מהסוכנים מתמחה בתחום מעט שונה, כך שתמצאו מענה מדויק לצרכים שלכם. מתאים לשכירים ועצמאים.</p>
+
+            <div class="agents-grid">
+
+                <!-- Agent 1 - סטס יהונתן שקלובסקי -->
+                <div class="agent-card featured">
+                    <div class="agent-header">
+                        <div class="agent-avatar">
+                            <img src="images/sys-logo.svg" alt="SYS - סטס יהונתן שקלובסקי - סוכן ביטוח" loading="lazy">
+                        </div>
+                        <div class="agent-info">
+                            <h4>סטס יהונתן שקלובסקי</h4>
+                            <div class="agent-specialty">סוכן ביטוח – מעטפת ביטוחית מקיפה</div>
+                            <div class="agent-languages"><i class="fas fa-globe" aria-hidden="true"></i> עברית ורוסית</div>
+                        </div>
+                    </div>
+                    <p class="agent-desc">ליווי אישי ומקצועי לאורך כל הדרך – סקירה על המצב הקיים ובדיקת אופציה לשיפור התנאים. מתאים לשכירים ועצמאים.</p>
+                    <div class="agent-services">
+                        <span class="service-tag"><i class="fas fa-check" aria-hidden="true"></i> פנסיה</span>
+                        <span class="service-tag"><i class="fas fa-check" aria-hidden="true"></i> גמל</span>
+                        <span class="service-tag"><i class="fas fa-check" aria-hidden="true"></i> השתלמות</span>
+                        <span class="service-tag"><i class="fas fa-check" aria-hidden="true"></i> ביטוחי חיים</span>
+                        <span class="service-tag"><i class="fas fa-check" aria-hidden="true"></i> בריאות</span>
+                        <span class="service-tag"><i class="fas fa-check" aria-hidden="true"></i> ועוד</span>
+                    </div>
+                    <ul class="agent-details">
+                        <li><i class="fas fa-check" aria-hidden="true"></i> בדיקה חינם וללא התחייבות</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> סקירת תיק ביטוחי קיים ושיפור תנאים</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> ליווי אישי ומקצועי לאורך כל הדרך</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> מתאים לשכירים ועצמאים</li>
+                    </ul>
+                    <div class="agent-contact">
+                        <a href="tel:+972542469096" class="phone-btn"><i class="fas fa-phone" aria-hidden="true"></i> 054-246-9096</a>
+                        <a href="https://wa.me/972542469096" target="_blank" rel="noopener" class="whatsapp-btn"><i class="fab fa-whatsapp" aria-hidden="true"></i> וואטסאפ</a>
+                    </div>
+                </div>
+
+                <!-- Agent 2 - PLACEHOLDER -->
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        </div>
+                        <div class="agent-info">
+                            <h4>[שם הסוכן/ת]</h4>
+                            <div class="agent-specialty">ביטוח בריאות ומחלות קשות</div>
+                        </div>
+                    </div>
+                    <ul class="agent-details">
+                        <li><i class="fas fa-check" aria-hidden="true"></i> ביטוח בריאות פרטי</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> ביטוח מחלות קשות</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> השתלות ותרופות מחוץ לסל</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> ביטול כפל ביטוחים</li>
+                    </ul>
+                    <div class="agent-contact">
+                        <a href="tel:+97250000000" class="phone-btn"><i class="fas fa-phone" aria-hidden="true"></i> 050-000-0000</a>
+                        <a href="https://wa.me/97250000000" target="_blank" rel="noopener" class="whatsapp-btn"><i class="fab fa-whatsapp" aria-hidden="true"></i> וואטסאפ</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <p style="color: var(--gray-500); font-size: 0.85em; margin-top: 20px; line-height: 1.6;"><i class="fas fa-info-circle" aria-hidden="true"></i> אם תציינו שהגעתם דרך NEIL KAPPEL, הסוכנים יידעו לתת לכם את מלוא תשומת הלב. גילוי נאות: אני עשוי לקבל תגמול מסוכני הביטוח.</p>
+        </section>
+
+        <!-- ==================== CROSS LINK TO INVEST ==================== -->
+        <div class="cross-link">
+            <i class="fas fa-chart-line section-icon" aria-hidden="true"></i>
+            <div class="cross-link-text">
+                <h4>מחפשים לפתוח חשבון מסחר?</h4>
+                <p>השוואת פלטפורמות מסחר עצמאי וקופות גמל להשקעה</p>
+            </div>
+            <a href="recommended-invest.html" class="cta-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> לעמוד השקעות ומסחר</a>
+        </div>
+
+        <!-- ==================== RELATED ARTICLES ==================== -->
+        <section class="partner-section" style="margin-top: 48px;">
+            <h2 class="partner-section-header">
+                <i class="fas fa-book-open" aria-hidden="true"></i>
+                מאמרים רלוונטיים
+            </h2>
+            <p class="partner-section-desc">לפני שרוכשים ביטוח – כדאי להבין את הבסיס:</p>
+
+            <div class="resources-grid" style="margin-top: 16px;">
+                <a href="articles/article-risk.html" class="resource-card">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-shield-alt" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>ניהול סיכונים מחושב</h4>
+                        <p>איך להגן על המשפחה בלי לזרוק כסף</p>
+                    </div>
+                </a>
+                <a href="articles/article-new-child.html" class="resource-card">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-baby" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>היערכות כלכלית לילד חדש</h4>
+                        <p>תכנון תקציב, ביטוח והון מהיום הראשון</p>
+                    </div>
+                </a>
+                <a href="articles/article-budget.html" class="resource-card">
+                    <div class="resource-icon" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);">
+                        <i class="fas fa-wallet" style="color: white;" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h4>שליטה בתקציב המשפחתי</h4>
+                        <p>הבסיס לביטחון כלכלי של כל משפחה</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+        <p>
+            ליצירת קשר: <a href="mailto:Neil.k.planning@gmail.com">Neil.k.planning@gmail.com</a> |
+            טלפון: <a href="tel:+972545882618">054-5882618</a>
+            <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" class="linkedin-link" title="פרופיל לינקדאין">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </p>
+        <div class="legal-disclaimer">
+            <strong>גילוי נאות:</strong> עמוד זה מכיל המלצות לסוכני ביטוח. אני עשוי לקבל תגמול מהסוכנים המופיעים בעמוד. המידע אינו מהווה ייעוץ ביטוח, והוא למטרות מידע בלבד.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972545882618" class="whatsapp-float" target="_blank" rel="noopener" aria-label="יצירת קשר בוואטסאפ">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
