@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <meta name="theme-color" content="#0f1923">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -54,7 +56,7 @@
             <a href="../knowledge.html">מרכז ידע</a>
             <div class="dropdown">
                 <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
-                    <i class="fas fa-star" aria-hidden="true"></i> ממולצים ▼
+                    <i class="fas fa-star" aria-hidden="true"></i> מומלצים ▼
                 </span>
                 <div class="dropdown-content" role="menu">
                     <a href="../recommended-invest.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר</a>
@@ -108,7 +110,7 @@
                     <div class="option-header">
                         <input type="checkbox" id="levLinkageCheck" data-action="toggle-lev-linkage">
                         <label for="levLinkageCheck">
-                            <i class="fas fa-link"></i>
+                            <i class="fas fa-link" aria-hidden="true"></i>
                             <span>הצמדה למדד?</span>
                         </label>
                     </div>
@@ -241,6 +243,6 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
 </body>
 </html>

@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <meta name="theme-color" content="#0f1923">
 </head>
 <body>
     <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
@@ -54,7 +56,7 @@
             <a href="knowledge.html">מרכז ידע</a>
             <div class="dropdown">
                 <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
-                    <i class="fas fa-star" aria-hidden="true"></i> ממולצים ▼
+                    <i class="fas fa-star" aria-hidden="true"></i> מומלצים ▼
                 </span>
                 <div class="dropdown-content" role="menu">
                     <a href="recommended-invest.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר</a>
@@ -144,10 +146,10 @@
             </div>
             <div style="text-align: center; margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
                 <a href="recommended-invest.html" class="cta-button" style="padding: 12px 28px;">
-                    <i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר – ממולצים
+                    <i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר – מומלצים
                 </a>
                 <a href="recommended-insurance.html" class="cta-button" style="padding: 12px 28px; background: var(--primary-blue);">
-                    <i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה – ממולצים
+                    <i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה – מומלצים
                 </a>
             </div>
         </section>
@@ -388,6 +390,6 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
