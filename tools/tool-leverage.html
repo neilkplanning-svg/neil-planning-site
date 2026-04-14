@@ -10,10 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <meta name="theme-color" content="#0f1923">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -64,15 +62,6 @@
 
             <a href="../resources.html">מקורות מידע</a>
             <a href="../knowledge.html">מרכז ידע</a>
-            <div class="dropdown">
-                <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true">
-                    <i class="fas fa-star" aria-hidden="true"></i> מומלצים ▼
-                </span>
-                <div class="dropdown-content" role="menu">
-                    <a href="../recommended-invest.html" role="menuitem"><i class="fas fa-chart-line" aria-hidden="true"></i> השקעות ומסחר</a>
-                    <a href="../recommended-insurance.html" role="menuitem"><i class="fas fa-user-shield" aria-hidden="true"></i> ביטוח ופנסיה</a>
-                </div>
-            </div>
             <a href="../about.html">אודות</a>
             <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
                 <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
@@ -114,7 +103,7 @@
             <div class="form-hint">יתרת המשכנתא + הלוואות נוספות על הנכס</div>
         </div>
         
-        <button class="calc-btn" data-calculator="leverage">
+        <button class="calc-btn" onclick="calculateLeverage()">
             <i class="fas fa-calculator" aria-hidden="true"></i>
             חשב אחוז מינוף
         </button>
@@ -212,7 +201,7 @@
             האתר מופעל על ידי ניל קאפל. המידע המוצג באתר, בכלים ובמחשבונים נועד למטרות אינפורמטיביות והשכלה פיננסית בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פנסיוני, ייעוץ מס או תחליף לייעוץ אישי המתחשב בנתונים ובצרכים המיוחדים של כל אדם. ניל קאפל אינו מחזיק ברישיון מכוח חוק הסדרת העיסוק בייעוץ השקעות, בשיווק השקעות ובניהול תיקי השקעות, תשנ"ה-1995. כל הפועל על סמך המידע באתר עושה זאת על דעת עצמו ועל אחריותו הבלעדית. אין באמור משום הבטחה לתשואה כלשהי. ט.ל.ח.
             <br><br>
             <strong>הצהרת נגישות:</strong>
-            עסק זה פטור מביצוע התאמות נגישות באתר האינטרנט מתוקף תקנה 35ה (פטור נטל כלכלי לעסק שמחזורו נמוך מ-100,000 ש"ח). עם זאת, אנו רואים חשיבות רבה במתן שירות שוויוני. אם נתקלתם בקושי לגלוש באתר, ניתן לפנות לניל בטלפון 054-5882618 לקבלת המידע בעל פה.
+            אתר זה הונגש בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות והתקן הישראלי ת"י 5568 ברמת AA. באתר מותקן תפריט נגישות מלא (כפתור העיגול בפינה הימנית-תחתונה של המסך) המאפשר התאמת גודל טקסט, ניגודיות, גופן קריא, הדגשת קישורים, מדריך קריאה ועוד. לפרטים מלאים, פנייה לרכז הנגישות ודיווח על ליקוי — ראו את <a href="../accessibility.html"><strong>הצהרת הנגישות המלאה</strong></a>. לשירות בערוצים חלופיים: 054-5882618.
         </div>
     </footer>
 
@@ -220,6 +209,6 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <script src="../script.js" defer></script>
+    <script src="../script.js"></script>
 </body>
 </html>

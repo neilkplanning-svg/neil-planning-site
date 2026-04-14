@@ -62,83 +62,6 @@ function debounce(func, wait) {
     };
 }
 
-/**
- * Safe DOM manipulation helpers (XSS protection)
- */
-const SafeDOM = {
-    /**
-     * Safely set text content with optional icon
-     * @param {HTMLElement} element - Target element
-     * @param {string} text - Text content (safe, no HTML)
-     * @param {string} [iconClass] - Optional Font Awesome icon class
-     */
-    setTextWithIcon(element, text, iconClass) {
-        if (!element) return;
-        element.textContent = '';
-        if (iconClass) {
-            const icon = document.createElement('i');
-            icon.className = iconClass;
-            icon.setAttribute('aria-hidden', 'true');
-            element.appendChild(icon);
-            element.appendChild(document.createTextNode(' ' + text));
-        } else {
-            element.textContent = text;
-        }
-    },
-
-    /**
-     * Safely create a result display with label and value
-     * @param {HTMLElement} element - Target element
-     * @param {string} label - Label text
-     * @param {string} value - Value text
-     */
-    setLabelValue(element, label, value) {
-        if (!element) return;
-        element.textContent = '';
-        const labelSpan = document.createElement('span');
-        labelSpan.className = 'label';
-        labelSpan.textContent = label;
-        const valueSpan = document.createElement('span');
-        valueSpan.className = 'value';
-        valueSpan.textContent = value;
-        element.appendChild(labelSpan);
-        element.appendChild(valueSpan);
-    },
-
-    /**
-     * Safely create text with strong tag
-     * @param {HTMLElement} element - Target element
-     * @param {string} prefix - Text before strong
-     * @param {string} strongText - Text inside strong tag
-     */
-    setTextWithStrong(element, prefix, strongText) {
-        if (!element) return;
-        element.textContent = '';
-        element.appendChild(document.createTextNode(prefix));
-        const strong = document.createElement('strong');
-        strong.textContent = strongText;
-        element.appendChild(strong);
-    },
-
-    /**
-     * Safely create a verdict badge
-     * @param {HTMLElement} element - Target element
-     * @param {string} badgeClass - CSS class for badge styling
-     * @param {string} iconClass - Font Awesome icon class
-     * @param {string} text - Badge text
-     */
-    setVerdictBadge(element, badgeClass, iconClass, text) {
-        if (!element) return;
-        element.textContent = '';
-        element.className = 'verdict-badge ' + badgeClass;
-        const icon = document.createElement('i');
-        icon.className = iconClass;
-        icon.setAttribute('aria-hidden', 'true');
-        element.appendChild(icon);
-        element.appendChild(document.createTextNode(' ' + text));
-    }
-};
-
 /* ============================================
    2. GLOBAL CHART VARIABLE
    ============================================ */
@@ -298,28 +221,28 @@ function calculateCompoundInterest() {
     if (resultArea) {
         resultArea.style.display = 'block';
         
-        // Main result - Safe DOM manipulation
+        // Main result
         const resTotal = document.getElementById('resTotal');
-        SafeDOM.setLabelValue(resTotal, 'סכום סופי', formatCurrency(totalBalance));
-
-        // Other results - Safe DOM manipulation
+        if (resTotal) resTotal.innerHTML = `<span class="label">סכום סופי</span><span class="value">${formatCurrency(totalBalance)}</span>`;
+        
+        // Other results
         const resDeposits = document.getElementById('resDeposits');
-        SafeDOM.setTextWithStrong(resDeposits, 'סך הכל הפקדות: ', formatCurrency(totalDeposited));
-
+        if (resDeposits) resDeposits.innerHTML = `סך הכל הפקדות: <strong>${formatCurrency(totalDeposited)}</strong>`;
+        
         const resInterest = document.getElementById('resInterest');
-        SafeDOM.setTextWithStrong(resInterest, 'רווח נטו: ', formatCurrency(totalBalance - totalDeposited));
-
+        if (resInterest) resInterest.innerHTML = `רווח נטו: <strong>${formatCurrency(totalBalance - totalDeposited)}</strong>`;
+        
         const resROI = document.getElementById('resROI');
-        SafeDOM.setTextWithStrong(resROI, 'תשואה כוללת: ', roi.toFixed(1) + '%');
-
+        if (resROI) resROI.innerHTML = `תשואה כוללת: <strong>${roi.toFixed(1)}%</strong>`;
+        
         const resFees = document.getElementById('resFees');
-        SafeDOM.setTextWithStrong(resFees, 'דמי ניהול ששולמו: ', formatCurrency(totalFeesPaid));
-
+        if (resFees) resFees.innerHTML = `דמי ניהול ששולמו: <strong>${formatCurrency(totalFeesPaid)}</strong>`;
+        
         const resTax = document.getElementById('resTax');
         if (resTax) {
             if (includeTax) {
                 resTax.style.display = 'block';
-                SafeDOM.setTextWithStrong(resTax, 'מס רווחי הון (25%): ', formatCurrency(taxAmount));
+                resTax.innerHTML = `מס רווחי הון (25%): <strong>${formatCurrency(taxAmount)}</strong>`;
             } else {
                 resTax.style.display = 'none';
             }
@@ -467,37 +390,33 @@ function calculateLoan() {
     if (resultArea) {
         resultArea.style.display = 'block';
         
-        // Safe DOM manipulation for loan results
         const resMonthlyPayment = document.getElementById('resMonthlyPayment');
-        SafeDOM.setLabelValue(resMonthlyPayment, 'החזר חודשי ראשון', formatCurrency(firstMonthPayment));
-
+        if (resMonthlyPayment) resMonthlyPayment.innerHTML = `<span class="label">החזר חודשי ראשון</span><span class="value">${formatCurrency(firstMonthPayment)}</span>`;
+        
         const resTotalPayment = document.getElementById('resTotalPayment');
-        SafeDOM.setLabelValue(resTotalPayment, 'סה"כ לתשלום', formatCurrency(grandTotal));
-
+        if (resTotalPayment) resTotalPayment.innerHTML = `<span class="label">סה"כ לתשלום</span><span class="value">${formatCurrency(grandTotal)}</span>`;
+        
         const resInterest = document.getElementById('resInterest');
-        SafeDOM.setTextWithStrong(resInterest, 'ריבית כוללת: ', formatCurrency(totalInterestPaid));
-
+        if (resInterest) resInterest.innerHTML = `ריבית כוללת: <strong>${formatCurrency(totalInterestPaid)}</strong>`;
+        
         const resLinkage = document.getElementById('resLinkage');
         if (resLinkage) {
             if (isLinked && totalLinkagePaid > 0) {
                 resLinkage.style.display = 'block';
-                SafeDOM.setTextWithStrong(resLinkage, 'הפרשי הצמדה: ', formatCurrency(totalLinkagePaid));
+                resLinkage.innerHTML = `הפרשי הצמדה: <strong>${formatCurrency(totalLinkagePaid)}</strong>`;
             } else {
                 resLinkage.style.display = 'none';
             }
         }
-
+        
         const resCostPercent = document.getElementById('resCostPercent');
-        SafeDOM.setTextWithStrong(resCostPercent, 'עלות ביחס לקרן: ', costPercentage.toFixed(1) + '%');
-
+        if (resCostPercent) resCostPercent.innerHTML = `עלות ביחס לקרן: <strong>${costPercentage.toFixed(1)}%</strong>`;
+        
         const resBalloonFinal = document.getElementById('resBalloonFinal');
         if (resBalloonFinal) {
             if (finalBalloonToPay > 0) {
                 resBalloonFinal.style.display = 'block';
-                resBalloonFinal.textContent = '';
-                const badgeDiv = document.createElement('div');
-                SafeDOM.setVerdictBadge(badgeDiv, 'verdict-warning', 'fas fa-exclamation-triangle', 'תשלום בלון בסוף התקופה: ' + formatCurrency(finalBalloonToPay));
-                resBalloonFinal.appendChild(badgeDiv);
+                resBalloonFinal.innerHTML = `<div class="verdict-badge verdict-warning"><i class="fas fa-exclamation-triangle"></i> תשלום בלון בסוף התקופה: ${formatCurrency(finalBalloonToPay)}</div>`;
             } else {
                 resBalloonFinal.style.display = 'none';
             }
@@ -738,12 +657,10 @@ function announceFilterResults(count) {
 function showError(message) {
     // Check if there's already an error message
     let errorDiv = document.querySelector('.error-notification');
-
+    
     if (!errorDiv) {
         errorDiv = document.createElement('div');
         errorDiv.className = 'error-notification';
-        errorDiv.setAttribute('role', 'alert');
-        errorDiv.setAttribute('aria-live', 'assertive');
         errorDiv.style.cssText = `
             position: fixed;
             top: 100px;
@@ -764,10 +681,9 @@ function showError(message) {
         `;
         document.body.appendChild(errorDiv);
     }
-
-    // Safe DOM manipulation (XSS protection)
-    SafeDOM.setTextWithIcon(errorDiv, message, 'fas fa-exclamation-circle');
-
+    
+    errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+    
     // Remove after 4 seconds
     setTimeout(() => {
         errorDiv.style.animation = 'slideUp 0.3s ease-out';
@@ -776,114 +692,7 @@ function showError(message) {
 }
 
 /* ============================================
-   10. EVENT DELEGATION (Replaces inline handlers)
-   ============================================ */
-
-/**
- * Centralized event delegation for calculator buttons and controls
- * This replaces all inline onclick/onchange handlers for better security
- */
-document.addEventListener('DOMContentLoaded', function() {
-    // Calculator button click handler
-    document.addEventListener('click', function(e) {
-        const calcBtn = e.target.closest('[data-calculator]');
-        if (calcBtn) {
-            const calcType = calcBtn.dataset.calculator;
-            switch(calcType) {
-                case 'loan':
-                    if (typeof calculateLoan === 'function') calculateLoan();
-                    break;
-                case 'compound':
-                    if (typeof calculateCompoundInterest === 'function') calculateCompoundInterest();
-                    break;
-                case 'leverage':
-                    if (typeof calculateLeverage === 'function') calculateLeverage();
-                    break;
-                case 'refinance':
-                    if (typeof calculateRefinance === 'function') calculateRefinance();
-                    break;
-                case 'budget':
-                    if (typeof calculateBudget === 'function') calculateBudget();
-                    break;
-                case 'invest-leverage':
-                    if (typeof calculateInvestmentLeverage === 'function') calculateInvestmentLeverage();
-                    break;
-            }
-        }
-
-        // Add loan button
-        if (e.target.closest('[data-action="add-loan"]')) {
-            if (typeof addLoanInput === 'function') addLoanInput();
-        }
-
-        // Remove loan button
-        if (e.target.closest('[data-action="remove-loan"]')) {
-            const loanCard = e.target.closest('.loan-card');
-            if (loanCard) {
-                const loanId = parseInt(loanCard.dataset.loanId || loanCard.id?.replace('loan-', ''));
-                if (typeof removeLoan === 'function') removeLoan(loanId);
-            }
-        }
-
-        // Filter category buttons
-        if (e.target.matches('.filter-btn[data-category]')) {
-            const category = e.target.dataset.category;
-            if (typeof filterCategory === 'function') filterCategory(category, e);
-        }
-
-        // Reset filters button
-        if (e.target.closest('[data-action="reset-filters"]')) {
-            if (typeof resetFilters === 'function') resetFilters();
-        }
-    });
-
-    // Change event handler for checkboxes and selects
-    document.addEventListener('change', function(e) {
-        const action = e.target.dataset.action;
-
-        switch(action) {
-            case 'toggle-linkage':
-                if (typeof toggleLinkage === 'function') toggleLinkage();
-                break;
-            case 'toggle-lev-linkage':
-                if (typeof toggleLevLinkage === 'function') toggleLevLinkage();
-                break;
-            case 'toggle-keren':
-                if (typeof toggleSection === 'function') {
-                    toggleSection('kerenSection', e.target.checked);
-                }
-                if (typeof calculateBudget === 'function') calculateBudget();
-                break;
-            case 'toggle-pension':
-                if (typeof toggleSection === 'function') {
-                    toggleSection('pensionSection', e.target.checked);
-                }
-                if (typeof calculateBudget === 'function') calculateBudget();
-                break;
-        }
-
-        // Update total balance for loan inputs
-        if (e.target.closest('.loan-balance') || e.target.dataset.action === 'update-balance') {
-            if (typeof updateTotalBalance === 'function') updateTotalBalance();
-        }
-    });
-
-    // Input event handler for budget calculator real-time updates
-    document.addEventListener('input', function(e) {
-        // Budget tool inputs - trigger calculation on any budget input change
-        if (e.target.closest('.budget-section') && e.target.matches('input[type="number"]')) {
-            if (typeof calculateBudget === 'function') calculateBudget();
-        }
-
-        // Filter articles on search input
-        if (e.target.dataset.action === 'filter-articles') {
-            if (typeof filterArticles === 'function') filterArticles();
-        }
-    });
-});
-
-/* ============================================
-   11. FORM ENHANCEMENTS
+   10. FORM ENHANCEMENTS
    ============================================ */
 
 // Add input formatting on blur
@@ -1008,24 +817,18 @@ function calculateLeverage() {
         badgeClass = "verdict-danger"; 
     }
 
-    // Update results - Safe DOM manipulation
+    // Update results
     const resultArea = document.getElementById('result');
     if (resultArea) {
         resultArea.style.display = 'block';
-
+        
         const ltvEl = document.getElementById('resLTV');
-        SafeDOM.setLabelValue(ltvEl, 'אחוז מינוף', ltv.toFixed(1) + '%');
-
+        if (ltvEl) ltvEl.innerHTML = `<span class="label">אחוז מינוף</span><span class="value">${ltv.toFixed(1)}%</span>`;
+        
         const statusEl = document.getElementById('resStatus');
-        if (statusEl) {
-            statusEl.textContent = '';
-            const badgeDiv = document.createElement('div');
-            badgeDiv.className = 'verdict-badge ' + badgeClass;
-            badgeDiv.textContent = status;
-            statusEl.appendChild(badgeDiv);
-        }
+        if (statusEl) statusEl.innerHTML = `<div class="verdict-badge ${badgeClass}">${status}</div>`;
     }
-
+    
     resultArea?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -1044,59 +847,27 @@ function addLoanInput() {
     loanCounter++;
     const container = document.getElementById('loans-container');
     if (!container) return;
-
-    // Safe DOM creation (no innerHTML)
-    const loanCard = document.createElement('div');
-    loanCard.id = 'loan-' + loanCounter;
-    loanCard.className = 'loan-card';
-    loanCard.dataset.loanId = loanCounter;
-
-    // Remove button
-    const removeBtn = document.createElement('button');
-    removeBtn.className = 'remove-btn';
-    removeBtn.setAttribute('title', 'מחק הלוואה');
-    removeBtn.setAttribute('type', 'button');
-    removeBtn.dataset.action = 'remove-loan';
-    const trashIcon = document.createElement('i');
-    trashIcon.className = 'fas fa-trash-alt';
-    trashIcon.setAttribute('aria-hidden', 'true');
-    removeBtn.appendChild(trashIcon);
-
-    // Grid container
-    const loanGrid = document.createElement('div');
-    loanGrid.className = 'loan-grid';
-
-    // Helper to create form group
-    const createFormGroup = (labelText, inputClass, inputType, step, placeholder) => {
-        const group = document.createElement('div');
-        group.className = 'form-group';
-        group.style.marginBottom = '0';
-
-        const label = document.createElement('label');
-        label.style.fontSize = '0.85em';
-        label.textContent = labelText;
-
-        const input = document.createElement('input');
-        input.type = inputType;
-        input.className = inputClass;
-        input.placeholder = placeholder;
-        if (step) input.step = step;
-        if (inputClass === 'loan-balance') {
-            input.dataset.action = 'update-balance';
-        }
-
-        group.appendChild(label);
-        group.appendChild(input);
-        return group;
-    };
-
-    loanGrid.appendChild(createFormGroup('יתרה לסילוק (₪)', 'loan-balance', 'number', null, '0'));
-    loanGrid.appendChild(createFormGroup('ריבית (%)', 'loan-rate', 'number', '0.1', '0'));
-    loanGrid.appendChild(createFormGroup('שנים שנותרו', 'loan-years', 'number', '0.5', '0'));
-
-    loanCard.appendChild(removeBtn);
-    loanCard.appendChild(loanGrid);
-    container.appendChild(loanCard);
+    
+    const loanHTML = `
+        <div id="loan-${loanCounter}" class="loan-card">
+            <button onclick="removeLoan(${loanCounter})" class="remove-btn" title="מחק הלוואה"><i class="fas fa-trash-alt"></i></button>
+            <div class="loan-grid">
+                <div class="form-group" style="margin-bottom:0;">
+                    <label style="font-size:0.85em;">יתרה לסילוק (₪)</label>
+                    <input type="number" class="loan-balance" oninput="updateTotalBalance()" placeholder="0">
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label style="font-size:0.85em;">ריבית (%)</label>
+                    <input type="number" step="0.1" class="loan-rate" placeholder="0">
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label style="font-size:0.85em;">שנים שנותרו</label>
+                    <input type="number" step="0.5" class="loan-years" placeholder="0">
+                </div>
+            </div>
+        </div>
+    `;
+    container.insertAdjacentHTML('beforeend', loanHTML);
 }
 
 function removeLoan(id) {
@@ -1213,15 +984,20 @@ function renderRefinanceResults(currMonthly, newMonthly, currTotal, newTotal) {
     }
 
     if (verdictEl) {
-        // Safe DOM manipulation for refinance verdict
+        verdictEl.className = 'verdict-badge';
+        
         if (totalSave > 0 && monthlySave > 0) {
-            SafeDOM.setVerdictBadge(verdictEl, 'verdict-success', 'fas fa-check-circle', 'מיחזור משתלם מאוד! גם מקטין החזר וגם חוסך ריבית.');
+            verdictEl.classList.add('verdict-success');
+            verdictEl.innerHTML = '<i class="fas fa-check-circle"></i> מיחזור משתלם מאוד! גם מקטין החזר וגם חוסך ריבית.';
         } else if (monthlySave > 0 && totalSave < 0) {
-            SafeDOM.setVerdictBadge(verdictEl, 'verdict-warning', 'fas fa-exclamation-circle', 'מקטין את הלחץ החודשי, אך מייקר את ההלוואה בסה"כ.');
+            verdictEl.classList.add('verdict-warning');
+            verdictEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> מקטין את הלחץ החודשי, אך מייקר את ההלוואה בסה"כ.';
         } else if (totalSave > 0 && monthlySave < 0) {
-            SafeDOM.setVerdictBadge(verdictEl, 'verdict-info', 'fas fa-piggy-bank', 'חוסך כסף בטווח הארוך, אך יגדיל את ההחזר החודשי.');
+            verdictEl.classList.add('verdict-info');
+            verdictEl.innerHTML = '<i class="fas fa-piggy-bank"></i> חוסך כסף בטווח הארוך, אך יגדיל את ההחזר החודשי.';
         } else {
-            SafeDOM.setVerdictBadge(verdictEl, 'verdict-danger', 'fas fa-times-circle', 'לא משתלם כלל.');
+            verdictEl.classList.add('verdict-danger');
+            verdictEl.innerHTML = '<i class="fas fa-times-circle"></i> לא משתלם כלל.';
         }
     }
     
@@ -1370,13 +1146,14 @@ function calculateInvestmentLeverage() {
 
         const badge = document.getElementById('levVerdictBadge');
         const diff = scenarioA_NetProfit - scenarioB_NetProfit;
-
-        // Safe DOM manipulation for investment leverage verdict
+        
         if (badge) {
             if (diff > 0) {
-                SafeDOM.setVerdictBadge(badge, 'verdict-success', 'fas fa-check-circle', 'המינוף משתלם! רווח עודף של ' + formatCurrency(diff));
+                badge.className = 'verdict-badge verdict-success';
+                badge.innerHTML = `<i class="fas fa-check-circle"></i> המינוף משתלם! רווח עודף של ${formatCurrency(diff)}`;
             } else {
-                SafeDOM.setVerdictBadge(badge, 'verdict-danger', 'fas fa-times-circle', 'לא משתלם למנף. עדיף להשקיע חודשית. (הפסד אלטרנטיבי: ' + formatCurrency(Math.abs(diff)) + ')');
+                badge.className = 'verdict-badge verdict-danger';
+                badge.innerHTML = `<i class="fas fa-times-circle"></i> לא משתלם למנף. עדיף להשקיע חודשית. (הפסד אלטרנטיבי: ${formatCurrency(Math.abs(diff))})`;
             }
         }
     }
@@ -1912,7 +1689,7 @@ window.smoothScrollTo = smoothScrollTo;
 window.validateInput = validateInput;
 window.setButtonLoading = setButtonLoading;
 
-// Premium UX Enhancements loaded
+console.log('Premium UX Enhancements loaded successfully');
 /* ============================================
    ULTIMATE UX/UI JAVASCRIPT v5.0
    All Features Implementation
@@ -2523,7 +2300,7 @@ window.setButtonLoading = setButtonLoading;
         SmoothScroll.init();
         KeyboardNav.init();
 
-        // All UX/UI enhancements loaded
+        console.log('🚀 All UX/UI enhancements loaded successfully!');
     });
 
     // Export for global access
@@ -2836,7 +2613,7 @@ document.head.appendChild(spinnerCSS);
         // Remove custom-cursor class
         document.body.classList.remove('custom-cursor');
         
-        // Money Trail Effect & UX Fixes loaded
+        console.log('💰 Money Trail Effect & UX Fixes loaded!');
     });
 
 })();
@@ -3008,7 +2785,7 @@ document.head.appendChild(spinnerCSS);
         FixCounter.init();
         CleanButtons.init();
 
-        // V5.2 Fixes loaded - Professional mode
+        console.log('✓ V5.2 Fixes loaded - Professional mode');
     });
 
 })();
@@ -3378,7 +3155,7 @@ document.head.appendChild(spinnerCSS);
         Accessibility.init();
         ScrollProgress.init();
         
-        // UX/UI Audit Fixes loaded
+        console.log('✓ UX/UI Audit Fixes loaded');
     });
 
 })();
@@ -3537,7 +3314,7 @@ document.head.appendChild(spinnerCSS);
                             try {
                                 eval(originalOnclick);
                             } catch (err) {
-                                // Calculator error handled silently
+                                console.error('Calculator error:', err);
                             }
                             
                             setTimeout(() => {
@@ -3938,7 +3715,7 @@ document.head.appendChild(spinnerCSS);
         HeaderScroll.init();
         ScrollReveal.init();
         
-        // All UX/UI improvements loaded
+        console.log('✓ All UX/UI improvements loaded');
     });
 
     // Re-init testimonials carousel on resize
@@ -4045,7 +3822,7 @@ document.head.appendChild(spinnerCSS);
     //     DarkModeManager.init();
     // }
 
-    // Dark Mode Manager disabled per user request
+    console.log('✓ Dark Mode Manager disabled per user request');
     
 })();
 
@@ -4117,5 +3894,416 @@ document.head.appendChild(spinnerCSS);
         }
     });
     
-    // Contact Form Handler initialized
+    console.log('✓ Contact Form Handler initialized');
+})();
+
+/* ============================================
+   ACCESSIBILITY WIDGET — UserWay-style
+   ============================================ */
+(function () {
+    'use strict';
+
+    const STORAGE_KEY = 'nk-a11y-settings-v2';
+    const STATEMENT_URL = 'accessibility.html';
+    const FONT_LEVELS = 4;      // 0..4
+    const SPACING_LEVELS = 2;   // 0..2
+    const LINE_LEVELS = 2;      // 0..2
+
+    const defaultSettings = {
+        // content
+        fontLevel: 0,
+        spacingLevel: 0,
+        lineLevel: 0,
+        readable: false,
+        links: false,
+        titles: false,
+        hideImages: false,
+        noMotion: false,
+        // color
+        contrast: false,         // dark (black/yellow)
+        contrastLight: false,    // light (white/black bold borders)
+        grayscale: false,
+        invert: false,
+        saturation: false,
+        // navigation
+        bigCursor: false,
+        bigCursorWhite: false,
+        readingGuide: false,
+        readingMask: false,
+        focus: false
+    };
+
+    function loadSettings() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return { ...defaultSettings };
+            return { ...defaultSettings, ...JSON.parse(raw) };
+        } catch (e) {
+            return { ...defaultSettings };
+        }
+    }
+    function saveSettings(s) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch (e) {}
+    }
+
+    let settings = loadSettings();
+
+    // Helper to get root path prefix for accessibility.html (articles/tools subfolders)
+    function getStatementHref() {
+        const path = window.location.pathname.replace(/\\/g, '/');
+        if (/\/(tools|articles|card)\//i.test(path)) return '../' + STATEMENT_URL;
+        return STATEMENT_URL;
+    }
+
+    function clearLeveledClass(html, prefix, max) {
+        for (let i = 1; i <= max; i++) html.classList.remove(prefix + i);
+    }
+
+    function applySettings() {
+        const html = document.documentElement;
+
+        clearLeveledClass(html, 'a11y-font-', FONT_LEVELS);
+        if (settings.fontLevel > 0) html.classList.add('a11y-font-' + settings.fontLevel);
+
+        clearLeveledClass(html, 'a11y-spacing-', SPACING_LEVELS);
+        if (settings.spacingLevel > 0) html.classList.add('a11y-spacing-' + settings.spacingLevel);
+
+        clearLeveledClass(html, 'a11y-line-', LINE_LEVELS);
+        if (settings.lineLevel > 0) html.classList.add('a11y-line-' + settings.lineLevel);
+
+        html.classList.toggle('a11y-readable', !!settings.readable);
+        html.classList.toggle('a11y-links', !!settings.links);
+        html.classList.toggle('a11y-titles', !!settings.titles);
+        html.classList.toggle('a11y-hide-images', !!settings.hideImages);
+        html.classList.toggle('a11y-no-motion', !!settings.noMotion);
+
+        html.classList.toggle('a11y-contrast', !!settings.contrast);
+        html.classList.toggle('a11y-contrast-light', !!settings.contrastLight);
+        html.classList.toggle('a11y-grayscale', !!settings.grayscale);
+        html.classList.toggle('a11y-invert', !!settings.invert);
+        html.classList.toggle('a11y-saturation', !!settings.saturation);
+
+        html.classList.toggle('a11y-big-cursor', !!settings.bigCursor);
+        html.classList.toggle('a11y-big-cursor-white', !!settings.bigCursorWhite);
+        html.classList.toggle('a11y-reading-guide', !!settings.readingGuide);
+        html.classList.toggle('a11y-reading-mask', !!settings.readingMask);
+        html.classList.toggle('a11y-focus', !!settings.focus);
+    }
+
+    function updateButtonStates(panel) {
+        panel.querySelectorAll('.a11y-btn[data-action]').forEach(btn => {
+            const action = btn.getAttribute('data-action');
+            let active = false;
+            switch (action) {
+                case 'font-inc':     active = settings.fontLevel > 0; break;
+                case 'font-dec':     active = false; break;
+                case 'spacing':      active = settings.spacingLevel > 0; break;
+                case 'line':         active = settings.lineLevel > 0; break;
+                case 'readable':     active = settings.readable; break;
+                case 'links':        active = settings.links; break;
+                case 'titles':       active = settings.titles; break;
+                case 'hide-images':  active = settings.hideImages; break;
+                case 'no-motion':    active = settings.noMotion; break;
+                case 'contrast':     active = settings.contrast; break;
+                case 'contrast-light': active = settings.contrastLight; break;
+                case 'grayscale':    active = settings.grayscale; break;
+                case 'invert':       active = settings.invert; break;
+                case 'saturation':   active = settings.saturation; break;
+                case 'big-cursor':   active = settings.bigCursor; break;
+                case 'big-cursor-white': active = settings.bigCursorWhite; break;
+                case 'reading-guide':active = settings.readingGuide; break;
+                case 'reading-mask': active = settings.readingMask; break;
+                case 'focus':        active = settings.focus; break;
+            }
+            btn.classList.toggle('active', active);
+            btn.setAttribute('aria-pressed', String(active));
+        });
+    }
+
+    function clearColorGroup() {
+        settings.contrast = false;
+        settings.contrastLight = false;
+        settings.grayscale = false;
+        settings.invert = false;
+        settings.saturation = false;
+    }
+    function clearCursorGroup() {
+        settings.bigCursor = false;
+        settings.bigCursorWhite = false;
+    }
+
+    function handleAction(action, panel) {
+        switch (action) {
+            case 'font-inc':
+                settings.fontLevel = (settings.fontLevel + 1) % (FONT_LEVELS + 1);
+                break;
+            case 'font-dec':
+                settings.fontLevel = settings.fontLevel > 0 ? settings.fontLevel - 1 : 0;
+                break;
+            case 'spacing':
+                settings.spacingLevel = (settings.spacingLevel + 1) % (SPACING_LEVELS + 1);
+                break;
+            case 'line':
+                settings.lineLevel = (settings.lineLevel + 1) % (LINE_LEVELS + 1);
+                break;
+            case 'readable':    settings.readable = !settings.readable; break;
+            case 'links':       settings.links = !settings.links; break;
+            case 'titles':      settings.titles = !settings.titles; break;
+            case 'hide-images': settings.hideImages = !settings.hideImages; break;
+            case 'no-motion':   settings.noMotion = !settings.noMotion; break;
+
+            case 'contrast': {
+                const next = !settings.contrast;
+                clearColorGroup();
+                settings.contrast = next;
+                break;
+            }
+            case 'contrast-light': {
+                const next = !settings.contrastLight;
+                clearColorGroup();
+                settings.contrastLight = next;
+                break;
+            }
+            case 'grayscale': {
+                const next = !settings.grayscale;
+                clearColorGroup();
+                settings.grayscale = next;
+                break;
+            }
+            case 'invert': {
+                const next = !settings.invert;
+                clearColorGroup();
+                settings.invert = next;
+                break;
+            }
+            case 'saturation': {
+                const next = !settings.saturation;
+                clearColorGroup();
+                settings.saturation = next;
+                break;
+            }
+
+            case 'big-cursor': {
+                const next = !settings.bigCursor;
+                clearCursorGroup();
+                settings.bigCursor = next;
+                break;
+            }
+            case 'big-cursor-white': {
+                const next = !settings.bigCursorWhite;
+                clearCursorGroup();
+                settings.bigCursorWhite = next;
+                break;
+            }
+            case 'reading-guide':
+                settings.readingGuide = !settings.readingGuide;
+                if (settings.readingGuide) settings.readingMask = false;
+                break;
+            case 'reading-mask':
+                settings.readingMask = !settings.readingMask;
+                if (settings.readingMask) settings.readingGuide = false;
+                break;
+            case 'focus':
+                settings.focus = !settings.focus;
+                break;
+
+            case 'reset':
+                settings = { ...defaultSettings };
+                break;
+        }
+        saveSettings(settings);
+        applySettings();
+        updateButtonStates(panel);
+    }
+
+    // Create reading guide + mask helper elements
+    function createHelperElements() {
+        if (!document.querySelector('.a11y-reading-guide')) {
+            const guide = document.createElement('div');
+            guide.className = 'a11y-reading-guide';
+            guide.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(guide);
+        }
+        if (!document.querySelector('.a11y-reading-mask-top')) {
+            const top = document.createElement('div');
+            top.className = 'a11y-reading-mask-top';
+            top.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(top);
+            const bottom = document.createElement('div');
+            bottom.className = 'a11y-reading-mask-bottom';
+            bottom.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(bottom);
+        }
+
+        document.addEventListener('mousemove', function (e) {
+            const html = document.documentElement;
+            if (html.classList.contains('a11y-reading-guide')) {
+                const guide = document.querySelector('.a11y-reading-guide');
+                if (guide) guide.style.top = (e.clientY - 20) + 'px';
+            }
+            if (html.classList.contains('a11y-reading-mask')) {
+                const top = document.querySelector('.a11y-reading-mask-top');
+                const bottom = document.querySelector('.a11y-reading-mask-bottom');
+                if (top)    top.style.height = Math.max(0, e.clientY - 60) + 'px';
+                if (bottom) bottom.style.height = Math.max(0, window.innerHeight - e.clientY - 60) + 'px';
+            }
+        });
+    }
+
+    function buildWidget() {
+        createHelperElements();
+
+        const toggle = document.createElement('button');
+        toggle.className = 'a11y-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-label', 'פתיחת תפריט נגישות');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-controls', 'a11y-panel');
+        toggle.innerHTML = '<i class="fas fa-universal-access" aria-hidden="true"></i>';
+
+        const panel = document.createElement('div');
+        panel.className = 'a11y-panel';
+        panel.id = 'a11y-panel';
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-modal', 'false');
+        panel.setAttribute('aria-label', 'תפריט נגישות');
+        panel.innerHTML = `
+            <div class="a11y-panel-header">
+                <h3><i class="fas fa-universal-access" aria-hidden="true"></i> תפריט נגישות</h3>
+                <button type="button" class="a11y-panel-close" aria-label="סגירת תפריט נגישות">✕</button>
+            </div>
+
+            <div class="a11y-section-title">התאמות תוכן</div>
+            <div class="a11y-options">
+                <button type="button" class="a11y-btn" data-action="font-inc" aria-pressed="false">
+                    <i class="fas fa-search-plus" aria-hidden="true"></i>הגדלת טקסט
+                </button>
+                <button type="button" class="a11y-btn" data-action="font-dec" aria-pressed="false">
+                    <i class="fas fa-search-minus" aria-hidden="true"></i>הקטנת טקסט
+                </button>
+                <button type="button" class="a11y-btn" data-action="readable" aria-pressed="false">
+                    <i class="fas fa-font" aria-hidden="true"></i>גופן קריא
+                </button>
+                <button type="button" class="a11y-btn" data-action="spacing" aria-pressed="false">
+                    <i class="fas fa-text-width" aria-hidden="true"></i>ריווח אותיות
+                </button>
+                <button type="button" class="a11y-btn" data-action="line" aria-pressed="false">
+                    <i class="fas fa-text-height" aria-hidden="true"></i>ריווח שורות
+                </button>
+                <button type="button" class="a11y-btn" data-action="links" aria-pressed="false">
+                    <i class="fas fa-link" aria-hidden="true"></i>הדגשת קישורים
+                </button>
+                <button type="button" class="a11y-btn" data-action="titles" aria-pressed="false">
+                    <i class="fas fa-heading" aria-hidden="true"></i>הדגשת כותרות
+                </button>
+                <button type="button" class="a11y-btn" data-action="hide-images" aria-pressed="false">
+                    <i class="fas fa-image" aria-hidden="true"></i>הסתרת תמונות
+                </button>
+                <button type="button" class="a11y-btn" data-action="no-motion" aria-pressed="false">
+                    <i class="fas fa-pause-circle" aria-hidden="true"></i>עצירת אנימציות
+                </button>
+            </div>
+
+            <div class="a11y-section-title">התאמות צבע</div>
+            <div class="a11y-options">
+                <button type="button" class="a11y-btn" data-action="contrast" aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>ניגודיות כהה
+                </button>
+                <button type="button" class="a11y-btn" data-action="contrast-light" aria-pressed="false">
+                    <i class="fas fa-sun" aria-hidden="true"></i>ניגודיות בהירה
+                </button>
+                <button type="button" class="a11y-btn" data-action="grayscale" aria-pressed="false">
+                    <i class="fas fa-tint-slash" aria-hidden="true"></i>גווני אפור
+                </button>
+                <button type="button" class="a11y-btn" data-action="invert" aria-pressed="false">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>ניגודיות הפוכה
+                </button>
+                <button type="button" class="a11y-btn" data-action="saturation" aria-pressed="false">
+                    <i class="fas fa-palette" aria-hidden="true"></i>רוויית צבעים
+                </button>
+            </div>
+
+            <div class="a11y-section-title">התאמות ניווט</div>
+            <div class="a11y-options">
+                <button type="button" class="a11y-btn" data-action="big-cursor" aria-pressed="false">
+                    <i class="fas fa-mouse-pointer" aria-hidden="true"></i>סמן גדול שחור
+                </button>
+                <button type="button" class="a11y-btn" data-action="big-cursor-white" aria-pressed="false">
+                    <i class="far fa-hand-pointer" aria-hidden="true"></i>סמן גדול לבן
+                </button>
+                <button type="button" class="a11y-btn" data-action="reading-guide" aria-pressed="false">
+                    <i class="fas fa-grip-lines" aria-hidden="true"></i>מדריך קריאה
+                </button>
+                <button type="button" class="a11y-btn" data-action="reading-mask" aria-pressed="false">
+                    <i class="fas fa-eye" aria-hidden="true"></i>מסכת קריאה
+                </button>
+                <button type="button" class="a11y-btn" data-action="focus" aria-pressed="false">
+                    <i class="fas fa-bullseye" aria-hidden="true"></i>הדגשת פוקוס
+                </button>
+            </div>
+
+            <div class="a11y-footer-row">
+                <button type="button" class="a11y-reset" data-action="reset">
+                    <i class="fas fa-undo" aria-hidden="true"></i> איפוס הגדרות
+                </button>
+                <a class="a11y-statement" href="${getStatementHref()}">
+                    <i class="fas fa-file-alt" aria-hidden="true"></i> הצהרת נגישות
+                </a>
+            </div>
+        `;
+
+        document.body.appendChild(toggle);
+        document.body.appendChild(panel);
+
+        function openPanel() {
+            panel.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+            const firstBtn = panel.querySelector('.a11y-btn');
+            if (firstBtn) firstBtn.focus();
+        }
+        function closePanel() {
+            panel.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.focus();
+        }
+        function togglePanel() {
+            if (panel.classList.contains('open')) closePanel();
+            else openPanel();
+        }
+
+        toggle.addEventListener('click', togglePanel);
+        panel.querySelector('.a11y-panel-close').addEventListener('click', closePanel);
+
+        panel.addEventListener('click', function (e) {
+            const btn = e.target.closest('[data-action]');
+            if (!btn) return;
+            handleAction(btn.getAttribute('data-action'), panel);
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+            // Alt + A = open/close panel
+            if (e.altKey && (e.key === 'a' || e.key === 'A' || e.key === 'ש')) {
+                e.preventDefault();
+                togglePanel();
+            }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!panel.classList.contains('open')) return;
+            if (panel.contains(e.target) || toggle.contains(e.target)) return;
+            closePanel();
+        });
+
+        applySettings();
+        updateButtonStates(panel);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', buildWidget);
+    } else {
+        buildWidget();
+    }
+
+    console.log('✓ Accessibility Widget v2 initialized');
 })();
