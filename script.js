@@ -4118,9 +4118,9 @@ document.head.appendChild(spinnerCSS);
 
     // Create reading guide + mask helper elements
     function createHelperElements() {
-        if (!document.querySelector('.a11y-reading-guide')) {
+        if (!document.querySelector('.a11y-reading-guide-bar')) {
             const guide = document.createElement('div');
-            guide.className = 'a11y-reading-guide';
+            guide.className = 'a11y-reading-guide-bar';
             guide.setAttribute('aria-hidden', 'true');
             document.body.appendChild(guide);
         }
@@ -4138,7 +4138,7 @@ document.head.appendChild(spinnerCSS);
         document.addEventListener('mousemove', function (e) {
             const html = document.documentElement;
             if (html.classList.contains('a11y-reading-guide')) {
-                const guide = document.querySelector('.a11y-reading-guide');
+                const guide = document.querySelector('.a11y-reading-guide-bar');
                 if (guide) guide.style.top = (e.clientY - 20) + 'px';
             }
             if (html.classList.contains('a11y-reading-mask')) {

@@ -10741,7 +10741,7 @@ html.a11y-big-cursor-white [role='button'] {
 }
 
 /* Reading guide (horizontal line tracking mouse) */
-.a11y-reading-guide {
+.a11y-reading-guide-bar {
     position: fixed;
     left: 0;
     right: 0;
@@ -10753,7 +10753,7 @@ html.a11y-big-cursor-white [role='button'] {
     z-index: 99997;
     display: none;
 }
-html.a11y-reading-guide .a11y-reading-guide { display: block; }
+html.a11y-reading-guide .a11y-reading-guide-bar { display: block; }
 
 /* Reading mask (darkens except horizontal strip) */
 .a11y-reading-mask-top,
@@ -10801,7 +10801,7 @@ html.a11y-focus *:focus {
 @media print {
     .a11y-toggle,
     .a11y-panel,
-    .a11y-reading-guide,
+    .a11y-reading-guide-bar,
     .a11y-reading-mask-top,
     .a11y-reading-mask-bottom {
         display: none !important;
