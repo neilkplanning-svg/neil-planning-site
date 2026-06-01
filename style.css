@@ -10892,11 +10892,11 @@ h1, h2, h3, h4 {
     max-width: 200px;
 }
 
-/* ---------- 3. Scroll-to-top button (bottom-left, opposite WhatsApp) ---------- */
+/* ---------- 3. Scroll-to-top button (bottom-right, opposite WhatsApp which is left) ---------- */
 .scroll-top-btn {
     position: fixed;
     bottom: 28px;
-    left: 28px;
+    right: 28px;  /* WhatsApp lives on the LEFT — keep scroll-top on the RIGHT */
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -10931,54 +10931,62 @@ h1, h2, h3, h4 {
     outline-offset: 4px;
 }
 @media (max-width: 600px) {
-    .scroll-top-btn { width: 46px; height: 46px; bottom: 86px; left: 16px; }
+    .scroll-top-btn { width: 46px; height: 46px; bottom: 86px; right: 16px; }
 }
 
-/* ---------- 4. Hero with video background + portrait ---------- */
+/* ---------- 4. Hero with video background + portrait (DARK luxury — like Ariel Tal) ---------- */
 .hero {
     position: relative;
     overflow: hidden;
+    /* Keep the dark luxury background but let the video shine through */
+    min-height: 78vh !important;
+}
+.hero::before {
+    /* Tone down the existing particles overlay so video reads cleanly */
+    opacity: 0.35 !important;
 }
 .hero-video-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.18;
-    filter: saturate(0.6);
-    pointer-events: none;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+    opacity: 0.55 !important;            /* clearly visible video */
+    filter: saturate(0.85) contrast(1.05) !important;
+    pointer-events: none !important;
 }
 .hero-overlay-grad {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    /* Dark gradient — readable text over video, premium feel */
     background:
-        linear-gradient(135deg, rgba(250, 247, 241, 0.92) 0%, rgba(245, 240, 229, 0.88) 100%);
-    pointer-events: none;
+        linear-gradient(135deg, rgba(15, 25, 35, 0.78) 0%, rgba(15, 25, 35, 0.55) 50%, rgba(15, 25, 35, 0.85) 100%) !important;
+    pointer-events: none !important;
 }
-.hero > .hero-content,
-.hero > .hero-portrait-wrap {
-    position: relative;
-    z-index: 2;
+.hero .hero-content {
+    position: relative !important;
+    z-index: 3 !important;
 }
 .hero-portrait-wrap {
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 32%;
-    max-width: 480px;
-    pointer-events: none;
-    z-index: 1;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 3% !important;
+    width: 28% !important;
+    max-width: 420px !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    opacity: 0.95;
 }
 .hero-portrait-wrap img {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 20px 40px rgba(15, 25, 35, 0.18));
+    display: block;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(201, 162, 39, 0.15));
 }
 @media (max-width: 1024px) {
-    .hero-portrait-wrap { display: none; }
+    .hero-portrait-wrap { display: none !important; }
 }
 
 /* Trust badge upgrade */
