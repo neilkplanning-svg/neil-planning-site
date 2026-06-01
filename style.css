@@ -8046,15 +8046,13 @@ body.dark-mode ::selection {
     outline-offset: 3px !important;
 }
 
-/* Smooth image loading */
+/* Smooth image loading - DISABLED (was hiding all images with loading attribute) */
 img {
     opacity: 1;
     transition: opacity 0.3s ease;
 }
 
-img[loading] {
-    opacity: 0;
-}
+/* Removed: img[loading] { opacity: 0 } — was hiding every img using loading="lazy" or "eager" */
 
 /* Better link hover */
 a {
@@ -11748,6 +11746,14 @@ h1, h2, h3, h4 {
     .stas-monogram { width: 80px; height: 80px; font-size: 2em; }
     .stas-content h3 { font-size: 1.35em; }
     .stas-tagline { font-size: 0.95em; }
+}
+
+/* ---------- 12.5. SAFETY: ensure all images stay visible ---------- */
+img,
+img[loading],
+img[loading="lazy"],
+img[loading="eager"] {
+    opacity: 1 !important;
 }
 
 /* ---------- 13. AFFILIATE BADGE on benefits cards ---------- */
