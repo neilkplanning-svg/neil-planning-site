@@ -1,12 +1,24 @@
-# robots.txt for Neil Kappel Financial Planning Website
+# robots.txt for Neil Kappel Financial Planning
 # https://nk-planning.co.il
 
-# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Private/internal — digital business card, not for indexing
+Disallow: /card/
+
+# Block bad/aggressive bots
+User-agent: SemrushBot
+Disallow: /
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
 Sitemap: https://nk-planning.co.il/sitemap.xml
 
-# Crawl-delay for polite crawling
+# Polite crawl
 Crawl-delay: 1

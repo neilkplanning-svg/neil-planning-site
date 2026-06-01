@@ -10807,3 +10807,784 @@ html.a11y-focus *:focus {
         display: none !important;
     }
 }
+
+/* ============================================================
+   LUXURY UPGRADES v4 (May 2026)
+   - Almoni Neue local font
+   - Warm cream/ivory backgrounds (less pure white)
+   - Refined gold accents and shadows
+   - Scroll-to-top button
+   - Hero video background + portrait
+   - Persona cards / Pricing cards / Service video cards
+   - Partners page
+   ============================================================ */
+
+/* ---------- 1. Local fonts: Almoni Neue + Linearicons ---------- */
+@font-face {
+    font-family: 'Almoni Neue';
+    src: url('Fonts/almoni-neue-aaa-400.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Almoni Neue';
+    src: url('Fonts/almoni-neue-aaa-700.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Linearicons';
+    src: url('Fonts/Linearicons-Free.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Subpage fonts path (when CSS loaded from tools/ or articles/ subfolders) */
+@font-face {
+    font-family: 'Almoni Neue Sub';
+    src: url('../Fonts/almoni-neue-aaa-400.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
+/* ---------- 2. Warm cream luxury palette overrides ---------- */
+:root {
+    /* Soft warm tones — less pure white */
+    --ivory:       #faf7f1;     /* page background base */
+    --cream:       #f5f0e5;     /* cards / sections alt */
+    --cream-deep:  #ece4d2;     /* dividers */
+    --gold-soft:   #c9a227;     /* primary gold (kept) */
+    --gold-deep:   #a68518;
+    --gold-glow:   rgba(201, 162, 39, 0.18);
+    --navy-deep:   #0f1923;
+    --navy-soft:   #1a2a3a;
+    --paper-shadow: 0 2px 12px rgba(15, 25, 35, 0.06);
+    --gold-line:   linear-gradient(90deg, transparent, var(--gold-soft) 50%, transparent);
+    /* Apply Almoni as the primary heading + body font */
+    --font-body: 'Almoni Neue', 'Heebo', system-ui, sans-serif;
+    --font-heading: 'Almoni Neue', 'Montserrat', system-ui, sans-serif;
+}
+
+/* Warm body background — replace cold white with cream */
+body {
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 162, 39, 0.06) 0%, transparent 65%),
+        radial-gradient(ellipse at top right, rgba(15, 25, 35, 0.04) 0%, transparent 50%),
+        var(--ivory) !important;
+    background-attachment: fixed;
+    font-family: var(--font-body);
+}
+
+/* Headings get the premium Almoni weight 700 */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.3px;
+}
+
+/* Section dividers — thin gold horizontal accent */
+.gold-divider {
+    height: 1px;
+    background: var(--gold-line);
+    margin: 48px auto;
+    max-width: 200px;
+}
+
+/* ---------- 3. Scroll-to-top button (bottom-left, opposite WhatsApp) ---------- */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy-deep), var(--navy-soft));
+    color: var(--ivory);
+    border: 1.5px solid var(--gold-soft);
+    box-shadow: 0 8px 22px rgba(15, 25, 35, 0.22), 0 0 0 4px rgba(201, 162, 39, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.85);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 998;
+    font-size: 18px;
+}
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+.scroll-top-btn:hover {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+    color: var(--navy-deep);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 14px 30px rgba(201, 162, 39, 0.35);
+}
+.scroll-top-btn:focus-visible {
+    outline: 3px solid var(--gold-soft);
+    outline-offset: 4px;
+}
+@media (max-width: 600px) {
+    .scroll-top-btn { width: 46px; height: 46px; bottom: 86px; left: 16px; }
+}
+
+/* ---------- 4. Hero with video background + portrait ---------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+.hero-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.18;
+    filter: saturate(0.6);
+    pointer-events: none;
+}
+.hero-overlay-grad {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(135deg, rgba(250, 247, 241, 0.92) 0%, rgba(245, 240, 229, 0.88) 100%);
+    pointer-events: none;
+}
+.hero > .hero-content,
+.hero > .hero-portrait-wrap {
+    position: relative;
+    z-index: 2;
+}
+.hero-portrait-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 32%;
+    max-width: 480px;
+    pointer-events: none;
+    z-index: 1;
+}
+.hero-portrait-wrap img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(15, 25, 35, 0.18));
+}
+@media (max-width: 1024px) {
+    .hero-portrait-wrap { display: none; }
+}
+
+/* Trust badge upgrade */
+.trust-badge {
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.12), rgba(201, 162, 39, 0.06));
+    border: 1px solid rgba(201, 162, 39, 0.35);
+    color: var(--gold-deep);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+/* ---------- 5. Persona cards (3 personas section) ---------- */
+.personas-section {
+    padding: 80px 24px;
+    background:
+        linear-gradient(180deg, transparent, rgba(201, 162, 39, 0.04) 50%, transparent);
+}
+.personas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.persona-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 36px 28px;
+    border: 1px solid var(--cream-deep);
+    box-shadow: var(--paper-shadow);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+.persona-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold-line);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.persona-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(15, 25, 35, 0.12);
+    border-color: rgba(201, 162, 39, 0.4);
+}
+.persona-card:hover::before { opacity: 1; }
+.persona-card .persona-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--cream), var(--ivory));
+    border: 1px solid var(--cream-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--gold-deep);
+    margin-bottom: 20px;
+}
+.persona-card h3 {
+    color: var(--navy-deep);
+    font-size: 1.4em;
+    margin-bottom: 8px;
+}
+.persona-card .persona-tag {
+    display: inline-block;
+    font-size: 0.8em;
+    color: var(--gold-deep);
+    background: rgba(201, 162, 39, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+.persona-card .persona-details {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    font-size: 0.95em;
+    color: var(--gray-700);
+}
+.persona-card .persona-details li {
+    padding: 4px 0;
+    padding-right: 22px;
+    position: relative;
+}
+.persona-card .persona-details li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    top: 4px;
+    color: var(--gold-soft);
+    font-weight: 700;
+}
+.persona-card .persona-message {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--cream-deep);
+    font-style: italic;
+    color: var(--navy-soft);
+    font-weight: 600;
+}
+
+/* ---------- 6. Pricing cards (transparent pricing) ---------- */
+.pricing-section {
+    padding: 80px 24px;
+    background:
+        linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%);
+}
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.pricing-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 32px 24px;
+    border: 1px solid var(--cream-deep);
+    box-shadow: var(--paper-shadow);
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.pricing-card.featured {
+    border: 2px solid var(--gold-soft);
+    box-shadow: 0 14px 36px rgba(201, 162, 39, 0.18);
+    transform: scale(1.02);
+}
+.pricing-card.featured::before {
+    content: 'הכי מבוקש';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(15, 25, 35, 0.12);
+}
+.pricing-card.featured:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+.pricing-card h3 {
+    color: var(--navy-deep);
+    font-size: 1.25em;
+    margin-bottom: 6px;
+}
+.pricing-card .pricing-tagline {
+    color: var(--gray-600);
+    font-size: 0.88em;
+    margin-bottom: 18px;
+    min-height: 2.6em;
+}
+.pricing-card .pricing-price {
+    font-family: var(--font-display);
+    font-size: 1.9em;
+    font-weight: 700;
+    color: var(--gold-deep);
+    margin: 14px 0 4px;
+}
+.pricing-card .pricing-period {
+    color: var(--gray-600);
+    font-size: 0.85em;
+    margin-bottom: 18px;
+}
+.pricing-card .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    text-align: right;
+    font-size: 0.92em;
+    flex: 1;
+}
+.pricing-card .pricing-features li {
+    padding: 6px 0;
+    padding-right: 22px;
+    position: relative;
+    color: var(--gray-700);
+}
+.pricing-card .pricing-features li::before {
+    content: '◆';
+    position: absolute;
+    right: 0;
+    top: 6px;
+    color: var(--gold-soft);
+    font-size: 0.7em;
+}
+.pricing-card .pricing-cta {
+    display: inline-block;
+    background: var(--navy-deep);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.25s;
+    margin-top: auto;
+}
+.pricing-card .pricing-cta:hover {
+    background: var(--gold-deep);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.pricing-card.featured .pricing-cta {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+}
+
+/* ---------- 7. Service cards with hover video ---------- */
+.services-video-section {
+    padding: 80px 24px;
+}
+.services-video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.service-video-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(15, 25, 35, 0.12);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--cream-deep);
+    text-decoration: none;
+    color: #fff;
+}
+.service-video-card .svc-video-poster,
+.service-video-card .svc-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+.service-video-card .svc-video { opacity: 0; }
+.service-video-card:hover .svc-video { opacity: 1; }
+.service-video-card .svc-video-poster { opacity: 1; }
+.service-video-card:hover .svc-video-poster { opacity: 0; }
+.service-video-card .svc-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 25, 35, 0.1) 0%, rgba(15, 25, 35, 0.85) 100%);
+    z-index: 2;
+}
+.service-video-card .svc-content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 22px 24px;
+    z-index: 3;
+}
+.service-video-card .svc-content h3 {
+    color: #fff;
+    font-size: 1.25em;
+    margin: 0 0 6px;
+}
+.service-video-card .svc-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9em;
+    margin: 0;
+}
+.service-video-card .svc-num {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    z-index: 3;
+    font-family: var(--font-display);
+    font-size: 1.6em;
+    color: var(--gold-soft);
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.service-video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(15, 25, 35, 0.22);
+    border-color: var(--gold-soft);
+}
+
+/* ---------- 8. Partners page ---------- */
+.partners-hero {
+    background:
+        linear-gradient(135deg, rgba(15,25,35,0.92), rgba(15,25,35,0.85)),
+        url('assets/images/buisness.jpg') center / cover no-repeat;
+    color: #fff;
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+}
+.partners-hero h1 {
+    color: #fff;
+    font-size: clamp(1.8em, 4vw, 2.6em);
+    margin-bottom: 14px;
+}
+.partners-hero p {
+    color: rgba(255,255,255,0.85);
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.05em;
+    line-height: 1.7;
+}
+.partners-disclosure {
+    max-width: 900px;
+    margin: -50px auto 40px;
+    background: #fff;
+    border: 1px solid var(--cream-deep);
+    border-right: 4px solid var(--gold-soft);
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: var(--paper-shadow);
+    color: var(--gray-700);
+    font-size: 0.95em;
+    line-height: 1.7;
+    position: relative;
+    z-index: 5;
+}
+.partners-disclosure strong { color: var(--navy-deep); }
+
+.partner-section {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+}
+.partner-section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--cream-deep);
+    padding-bottom: 14px;
+}
+.partner-section-header .ps-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.partner-section-header h2 {
+    color: var(--navy-deep);
+    margin: 0;
+    font-size: 1.6em;
+}
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.partner-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 26px;
+    border: 1px solid var(--cream-deep);
+    box-shadow: var(--paper-shadow);
+    transition: all 0.35s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+.partner-card.featured-partner {
+    border: 2px solid var(--gold-soft);
+    background: linear-gradient(135deg, #fff, var(--cream));
+    box-shadow: 0 12px 32px rgba(201, 162, 39, 0.18);
+}
+.partner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(15, 25, 35, 0.12);
+    border-color: var(--gold-soft);
+}
+.partner-card .partner-logo {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    color: var(--navy-deep);
+    font-family: var(--font-display);
+    font-size: 1.4em;
+    font-weight: 700;
+}
+.partner-card .partner-logo i {
+    font-size: 1.6em;
+    margin-left: 10px;
+    color: var(--gold-deep);
+}
+.partner-card h3 {
+    color: var(--navy-deep);
+    font-size: 1.15em;
+    margin: 0 0 6px;
+}
+.partner-card .partner-role {
+    color: var(--gray-600);
+    font-size: 0.9em;
+    margin-bottom: 14px;
+}
+.partner-card .partner-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    font-size: 0.92em;
+    color: var(--gray-700);
+    flex: 1;
+}
+.partner-card .partner-benefits li {
+    padding: 5px 0;
+    padding-right: 20px;
+    position: relative;
+}
+.partner-card .partner-benefits li::before {
+    content: '✦';
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: var(--gold-soft);
+    font-size: 0.85em;
+}
+.partner-card .partner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy-deep);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.92em;
+    transition: all 0.25s;
+    align-self: flex-start;
+}
+.partner-card .partner-cta:hover {
+    background: var(--gold-deep);
+    transform: translateY(-2px);
+}
+.partner-card.featured-partner .partner-cta {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+}
+
+/* ---------- 9. Section header gold accent ---------- */
+.section-title-luxury {
+    text-align: center;
+    margin-bottom: 12px;
+    color: var(--navy-deep);
+}
+.section-title-luxury::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--gold-soft);
+    margin: 18px auto 0;
+}
+.section-subtitle-luxury {
+    text-align: center;
+    color: var(--gray-600);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    font-size: 1.05em;
+}
+
+/* ---------- 10. Soft luxury accents for existing cards ---------- */
+.pain-item,
+.step-card,
+.article-card,
+.resource-card {
+    background: #ffffff !important;
+}
+
+/* WhatsApp float — gold border accent */
+.whatsapp-float {
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35), 0 0 0 4px rgba(201, 162, 39, 0.1) !important;
+}
+
+/* ---------- 11. MOBILE POLISH for new components ---------- */
+@media (max-width: 768px) {
+    .personas-section,
+    .pricing-section,
+    .services-video-section {
+        padding: 56px 16px;
+    }
+    .personas-grid,
+    .pricing-grid,
+    .services-video-grid,
+    .partners-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .persona-card,
+    .pricing-card,
+    .partner-card {
+        padding: 24px 20px;
+    }
+    .pricing-card.featured {
+        transform: none;  /* avoid horizontal overflow on mobile */
+        margin-top: 18px;
+    }
+    .pricing-card.featured:hover {
+        transform: translateY(-4px);
+    }
+    .pricing-card .pricing-price {
+        font-size: 1.6em;
+    }
+    .service-video-card {
+        aspect-ratio: 16 / 10;  /* shorter on phones */
+    }
+    .service-video-card .svc-content {
+        padding: 16px 18px;
+    }
+    .service-video-card .svc-content h3 {
+        font-size: 1.1em;
+    }
+    .service-video-card .svc-num {
+        font-size: 1.3em;
+        top: 10px;
+        left: 14px;
+    }
+    .partners-hero {
+        padding: 60px 16px 84px;
+    }
+    .partners-hero h1 {
+        font-size: 1.7em;
+    }
+    .partners-disclosure {
+        margin: -50px 16px 30px;
+        font-size: 0.9em;
+        padding: 16px 18px;
+    }
+    .partner-section {
+        padding: 0 16px;
+        margin-bottom: 44px;
+    }
+    .partner-section-header h2 {
+        font-size: 1.3em;
+    }
+    .section-title-luxury {
+        font-size: 1.6em;
+    }
+    .section-subtitle-luxury {
+        font-size: 0.95em;
+        margin-bottom: 32px;
+        padding: 0 8px;
+    }
+    .hero-video-bg {
+        opacity: 0.12;  /* less distracting on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .persona-card .persona-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+    .pricing-card h3,
+    .partner-card h3 {
+        font-size: 1.05em;
+    }
+    .partner-section-header {
+        gap: 10px;
+    }
+    .partner-section-header .ps-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+}
+
+/* Prevent video autoplay drain on data-saver connections */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video-bg,
+    .service-video-card .svc-video {
+        display: none;
+    }
+    .scroll-top-btn,
+    .persona-card,
+    .pricing-card,
+    .partner-card,
+    .service-video-card {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+

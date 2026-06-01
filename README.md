@@ -43,4 +43,4 @@ neil-planning-site-main/
 
 ## רישיון
 
-© 2025 Neil Kappel. All rights reserved.
+© 2026 Neil Kappel. All rights reserved.

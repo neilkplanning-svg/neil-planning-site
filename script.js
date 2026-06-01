@@ -4307,3 +4307,105 @@ document.head.appendChild(spinnerCSS);
 
     console.log('✓ Accessibility Widget v2 initialized');
 })();
+
+/* ============================================
+   LUXURY UPGRADES v4 — JS (May 2026)
+   - Dynamic copyright year
+   - Scroll-to-top button
+   - Hover-to-play service videos
+   ============================================ */
+(function () {
+    'use strict';
+
+    function initDynamicYear() {
+        const year = new Date().getFullYear();
+        document.querySelectorAll('.current-year').forEach(el => {
+            el.textContent = year;
+        });
+    }
+
+    function initScrollToTop() {
+        if (document.querySelector('.scroll-top-btn')) return;
+        const btn = document.createElement('button');
+        btn.className = 'scroll-top-btn';
+        btn.setAttribute('aria-label', 'גלול חזרה למעלה');
+        btn.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
+        document.body.appendChild(btn);
+
+        const toggle = () => {
+            if (window.pageYOffset > 400) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        };
+        window.addEventListener('scroll', toggle, { passive: true });
+        toggle();
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    function initServiceHoverVideos() {
+        const cards = document.querySelectorAll('.service-video-card');
+        cards.forEach(card => {
+            const video = card.querySelector('.svc-video');
+            if (!video) return;
+            // Lazy-set src
+            if (video.dataset.src && !video.src) {
+                video.src = video.dataset.src;
+            }
+            card.addEventListener('mouseenter', () => {
+                video.currentTime = 0;
+                const p = video.play();
+                if (p && p.catch) p.catch(() => {});
+            });
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+            });
+            // Touch support — play on tap, navigate on second tap
+            card.addEventListener('touchstart', () => {
+                const p = video.play();
+                if (p && p.catch) p.catch(() => {});
+            }, { passive: true });
+        });
+    }
+
+    function initHeroVideo() {
+        const heroVid = document.querySelector('.hero-video-bg');
+        if (!heroVid) return;
+        if (heroVid.dataset.src && !heroVid.src) {
+            heroVid.src = heroVid.dataset.src;
+        }
+        // Pause when off-screen for performance
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const p = heroVid.play();
+                        if (p && p.catch) p.catch(() => {});
+                    } else {
+                        heroVid.pause();
+                    }
+                });
+            });
+            io.observe(heroVid);
+        }
+    }
+
+    function init() {
+        initDynamicYear();
+        initScrollToTop();
+        initServiceHoverVideos();
+        initHeroVideo();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    console.log('✓ Luxury upgrades v4 initialized');
+})();

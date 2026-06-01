@@ -3,38 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="תכנון פיננסי למשפחות צעירות - ליווי אישי לבניית הון, ניהול סיכונים וחיסכון לעתיד. ניל קאפל - מהנדס ומתכנן פיננסי.">
-    <meta name="keywords" content="תכנון פיננסי, ייעוץ משכנתא, השקעות, חיסכון, משפחות צעירות, ניהול תקציב">
+
+    <!-- ===== Security Headers (CSP via meta) ===== -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+        img-src 'self' data: https:;
+        media-src 'self';
+        connect-src 'self' https://formspree.io https://www.google-analytics.com;
+        frame-src https://calendar.google.com https://calendar.app.google;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self' https://formspree.io;
+    ">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ===== SEO ===== -->
+    <title>NEIL KAPPEL | תכנון פיננסי למשפחות צעירות</title>
+    <meta name="description" content="תכנון פיננסי למשפחות צעירות - ליווי אישי לבניית הון, ניהול סיכונים וחיסכון לעתיד. גם אם מתחילים מאפס. ניל קאפל - מהנדס ומתכנן פיננסי.">
+    <meta name="keywords" content="תכנון פיננסי, ייעוץ משכנתא, השקעות, חיסכון, משפחות צעירות, ניהול תקציב, קופת גמל IRA, חיסכון לילדים">
     <meta name="author" content="Neil Kappel">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="NEIL KAPPEL | תכנון פיננסי למשפחות">
-    <meta property="og:description" content="תכנון וליווי פיננסי אישי למשפחות צעירות שרוצות לבנות הון ולישון בשקט">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="geo.region" content="IL">
+    <meta name="geo.placename" content="חריש, ישראל">
+    <link rel="canonical" href="https://nk-planning.co.il/">
+
+    <!-- ===== Open Graph ===== -->
     <meta property="og:type" content="website">
-    
-    <title>NEIL KAPPEL | תכנון פיננסי למשפחות</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <meta property="og:site_name" content="NEIL KAPPEL — תכנון פיננסי">
+    <meta property="og:url" content="https://nk-planning.co.il/">
+    <meta property="og:title" content="NEIL KAPPEL | תכנון פיננסי למשפחות צעירות">
+    <meta property="og:description" content="תכנון וליווי פיננסי אישי למשפחות צעירות שרוצות לבנות הון ולישון בשקט. גם אם מתחילים מאפס.">
+    <meta property="og:image" content="https://nk-planning.co.il/assets/images/Neil%20Card%20Photo.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="he_IL">
+
+    <!-- ===== Twitter Card ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEIL KAPPEL | תכנון פיננסי למשפחות צעירות">
+    <meta name="twitter:description" content="תכנון וליווי פיננסי אישי. ללא קונפליקט עניינים, במחיר שאפשר לעמוד בו.">
+    <meta name="twitter:image" content="https://nk-planning.co.il/assets/images/Neil%20Card%20Photo.jpg">
+
+    <!-- ===== Favicons ===== -->
+    <link rel="icon" type="image/jpeg" href="assets/images/Neil%20Card%20Photo.jpg">
+    <link rel="apple-touch-icon" href="assets/images/Neil%20Card%20Photo.jpg">
+    <meta name="theme-color" content="#0f1923">
+
+    <!-- ===== Fonts (preload local + Google fallback) ===== -->
+    <link rel="preload" href="Fonts/almoni-neue-aaa-400.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="Fonts/almoni-neue-aaa-700.woff" as="font" type="font/woff" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ===== Stylesheets ===== -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Schema.org -->
+
+    <!-- ===== Schema.org: FinancialService ===== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "FinancialService",
-        "name": "Neil Kappel - תכנון פיננסי",
-        "description": "תכנון פיננסי מותאם אישית למשפחות",
-        "url": "https://neilkappel.com",
+        "@id": "https://nk-planning.co.il/#business",
+        "name": "NK Planning — תכנון פיננסי",
+        "alternateName": "Neil Kappel Financial Planning",
+        "description": "תכנון פיננסי מותאם אישית למשפחות צעירות בישראל. ליווי אישי, ללא קונפליקט עניינים, במחיר נגיש.",
+        "url": "https://nk-planning.co.il/",
+        "image": "https://nk-planning.co.il/assets/images/Neil%20Card%20Photo.jpg",
         "telephone": "+972-54-5882618",
         "email": "Neil.k.planning@gmail.com",
+        "priceRange": "₪₪",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "חריש",
+            "addressCountry": "IL"
+        },
+        "areaServed": {"@type": "Country", "name": "ישראל"},
         "founder": {
             "@type": "Person",
             "name": "Neil Kappel",
-            "jobTitle": "מתכנן פיננסי"
+            "jobTitle": "מתכנן פיננסי ומהנדס מערכות",
+            "alumniOf": "תואר שני בהנדסת מערכות"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/neil-kappel-077460b4/",
+            "https://wa.me/972545882618"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "חבילות ליווי פיננסי",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "name": "שיחת היכרות",
+                    "description": "שיחה אונליין של 30 דקות, מיפוי צרכים ראשוני",
+                    "price": "0",
+                    "priceCurrency": "ILS"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "חבילת בסיס",
+                    "description": "2 פגישות, ניתוח תקציב, מסמך המלצות, תוכנית פעולה ל-12 חודשים",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "1500",
+                        "maxPrice": "2500",
+                        "priceCurrency": "ILS"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "name": "חבילה מקיפה",
+                    "description": "4-5 פגישות, ניתוח מלא (תקציב + ביטוחים + פנסיה + נדל\"ן), ליווי 3 חודשים",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "4000",
+                        "maxPrice": "6000",
+                        "priceCurrency": "ILS"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "name": "ליווי שנתי",
+                    "description": "פגישת רבעון + מענה בוואטסאפ, מתאים לאחר חבילה ראשונית",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "2400",
+                        "maxPrice": "3600",
+                        "priceCurrency": "ILS"
+                    }
+                }
+            ]
         }
+    }
+    </script>
+
+    <!-- ===== Schema.org: WebSite (for sitelinks searchbox) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://nk-planning.co.il/",
+        "name": "NEIL KAPPEL — תכנון פיננסי",
+        "inLanguage": "he-IL"
     }
     </script>
 </head>
@@ -78,6 +194,7 @@
 
             <a href="resources.html">מקורות מידע</a>
             <a href="knowledge.html">מרכז ידע</a>
+            <a href="partners.html">שותפים</a>
             <a href="about.html">אודות</a>
             <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
                 <i class="fas fa-calendar-check" aria-hidden="true"></i> תיאום פגישה
@@ -88,19 +205,26 @@
     <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
+            <video class="hero-video-bg" data-src="assets/videos/financialPlanning.mp4"
+                   poster="assets/videos/financialPlanning-poster.jpg"
+                   autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+            <div class="hero-overlay-grad" aria-hidden="true"></div>
+            <div class="hero-portrait-wrap" aria-hidden="true">
+                <img src="assets/images/Neil with suit - no background.png" alt="" loading="eager">
+            </div>
             <div class="hero-content">
                 <div class="trust-badge">
                     <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                    100% נאמנות ללקוח (Fiduciary)
+                    100% נאמנות ללקוח — בלי קונפליקט עניינים
                 </div>
-                
+
                 <h1>תכנון וליווי אישי למטרות שלכם</h1>
-                
+
                 <p class="hero-subtitle">
                     למשפחות צעירות שרוצות לבנות הון, לנהל סיכונים ולישון בשקט.<br>
-                    לוקחים את הכלכלה לידיים בגישה מתוכננת, מדויקת ופרקטית.
+                    <strong>גם אם מתחילים מאפס</strong> — לוקחים את הכלכלה לידיים בגישה מתוכננת, מדויקת ופרקטית.
                 </p>
-                
+
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-value">M.E</div>
@@ -115,7 +239,7 @@
                         <div class="hero-stat-label">עמלות נסתרות</div>
                     </div>
                 </div>
-                
+
                 <div class="hero-cta">
                     <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="cta-button">
                         <i class="fas fa-calendar-alt" aria-hidden="true"></i>
@@ -158,6 +282,58 @@
             </div>
         </section>
 
+        <!-- Personas Section -->
+        <section class="personas-section">
+            <div class="section-header fade-in-up">
+                <div class="section-badge">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    למי זה מתאים?
+                </div>
+                <h2 class="section-title-luxury">תכנון פיננסי לכל שלב במשפחה</h2>
+                <p class="section-subtitle-luxury">
+                    לא משנה אם אתם בתחילת הדרך או באמצע — יש דרך נכונה לקדם את המצב.
+                </p>
+            </div>
+
+            <div class="personas-grid stagger-children">
+                <div class="persona-card">
+                    <div class="persona-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+                    <span class="persona-tag">פרסונה 1</span>
+                    <h3>זוג בתחילת הדרך</h3>
+                    <ul class="persona-details">
+                        <li>גילאים 28-35, שני שכירים</li>
+                        <li>ילד אחד או בדרך</li>
+                        <li>מתחילים לבנות הון משפחתי</li>
+                    </ul>
+                    <div class="persona-message">"להתחיל נכון — חוסכים לכם עשרות אלפי שקלים בעתיד"</div>
+                </div>
+
+                <div class="persona-card">
+                    <div class="persona-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
+                    <span class="persona-tag">פרסונה 2</span>
+                    <h3>משפחה במעבר</h3>
+                    <ul class="persona-details">
+                        <li>גילאים 32-40, שני ילדים+</li>
+                        <li>מתלבטים על דירה גדולה, רכב, חינוך</li>
+                        <li>צריכים אופטימיזציה והכוונה</li>
+                    </ul>
+                    <div class="persona-message">"לקחת שליטה לפני שההתחייבויות לוקחות אותך"</div>
+                </div>
+
+                <div class="persona-card">
+                    <div class="persona-icon"><i class="fas fa-seedling" aria-hidden="true"></i></div>
+                    <span class="persona-tag">פרסונה 3</span>
+                    <h3>משפחה בקיבעון</h3>
+                    <ul class="persona-details">
+                        <li>גילאים 35-45</li>
+                        <li>הכנסה יציבה אך ללא הון נצבר</li>
+                        <li>הזמן עובר וצריך לעשות משהו</li>
+                    </ul>
+                    <div class="persona-message">"אף פעם לא מאוחר מדי — נתחיל היום"</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Quote Section -->
         <div class="buffett-quote" style="margin: 60px auto;">
             <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
@@ -166,6 +342,168 @@
             </div>
             <div class="quote-author">- בנג'מין פרנקלין</div>
         </div>
+
+        <!-- Service Areas with Video Section -->
+        <section class="services-video-section">
+            <div class="section-header fade-in-up">
+                <div class="section-badge">
+                    <i class="fas fa-briefcase" aria-hidden="true"></i>
+                    תחומי הליווי
+                </div>
+                <h2 class="section-title-luxury">איך אני יכול לעזור</h2>
+                <p class="section-subtitle-luxury">
+                    שש זוויות, תמונה אחת שלמה של ההון המשפחתי שלכם.
+                </p>
+            </div>
+
+            <div class="services-video-grid stagger-children">
+                <a href="tools/tool-budget.html" class="service-video-card">
+                    <img class="svc-video-poster" src="assets/videos/moneySpending-poster.jpg" alt="" loading="lazy">
+                    <video class="svc-video" data-src="assets/videos/moneySpending.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                    <div class="svc-overlay"></div>
+                    <span class="svc-num">01</span>
+                    <div class="svc-content">
+                        <h3>ניהול תקציב משפחתי</h3>
+                        <p>איתור "דליפות" כספיות, בניית תזרים ברור, חיסכון חודשי קבוע.</p>
+                    </div>
+                </a>
+
+                <a href="tools/tool-loan.html" class="service-video-card">
+                    <img class="svc-video-poster" src="assets/videos/houseBuy-poster.jpg" alt="" loading="lazy">
+                    <video class="svc-video" data-src="assets/videos/houseBuy.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                    <div class="svc-overlay"></div>
+                    <span class="svc-num">02</span>
+                    <div class="svc-content">
+                        <h3>משכנתא ונדל"ן</h3>
+                        <p>בניית משכנתא חכמה, בחינת מחזור, וניתוח כדאיות נדל"ן.</p>
+                    </div>
+                </a>
+
+                <a href="tools/tool-invest-leverage.html" class="service-video-card">
+                    <img class="svc-video-poster" src="assets/videos/investing-poster.jpg" alt="" loading="lazy">
+                    <video class="svc-video" data-src="assets/videos/investing.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                    <div class="svc-overlay"></div>
+                    <span class="svc-num">03</span>
+                    <div class="svc-content">
+                        <h3>השקעות לטווח ארוך</h3>
+                        <p>בניית תיק השקעות מותאם, השוואת קופות גמל, IRA וקרנות.</p>
+                    </div>
+                </a>
+
+                <a href="tools/tool-compound.html" class="service-video-card">
+                    <img class="svc-video-poster" src="assets/videos/kids-poster.jpg" alt="" loading="lazy">
+                    <video class="svc-video" data-src="assets/videos/kids.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                    <div class="svc-overlay"></div>
+                    <span class="svc-num">04</span>
+                    <div class="svc-content">
+                        <h3>חיסכון לילדים</h3>
+                        <p>תכנון עתיד הילדים — לימודים, חתונה והתחלה כלכלית טובה.</p>
+                    </div>
+                </a>
+
+                <a href="resources.html" class="service-video-card">
+                    <img class="svc-video-poster" src="assets/videos/city-poster.jpg" alt="" loading="lazy">
+                    <video class="svc-video" data-src="assets/videos/city.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                    <div class="svc-overlay"></div>
+                    <span class="svc-num">05</span>
+                    <div class="svc-content">
+                        <h3>מאקרו והשוק הישראלי</h3>
+                        <p>הבנת הסביבה הכלכלית, ריבית, אינפלציה ומיסוי — בעברית פשוטה.</p>
+                    </div>
+                </a>
+
+                <a href="tools/tool-leverage.html" class="service-video-card">
+                    <img class="svc-video-poster" src="assets/videos/financialPlanning-poster.jpg" alt="" loading="lazy">
+                    <video class="svc-video" data-src="assets/videos/financialPlanning.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                    <div class="svc-overlay"></div>
+                    <span class="svc-num">06</span>
+                    <div class="svc-content">
+                        <h3>ניהול סיכונים וביטוחים</h3>
+                        <p>בדיקת תיק ביטוחים, איתור כפילויות והתאמת כיסוי לצרכי המשפחה.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="pricing">
+            <div class="section-header fade-in-up">
+                <div class="section-badge">
+                    <i class="fas fa-tag" aria-hidden="true"></i>
+                    שירותים ותמחור שקוף
+                </div>
+                <h2 class="section-title-luxury">חבילות הליווי</h2>
+                <p class="section-subtitle-luxury">
+                    מחירים שקופים, ללא עמלות נסתרות. בוחרים חבילה שמתאימה לכם.
+                </p>
+            </div>
+
+            <div class="pricing-grid stagger-children">
+                <div class="pricing-card">
+                    <h3>שיחת היכרות</h3>
+                    <p class="pricing-tagline">להכיר אחד את השני ולמפות צרכים ראשוניים</p>
+                    <div class="pricing-price">חינם</div>
+                    <div class="pricing-period">30 דקות אונליין</div>
+                    <ul class="pricing-features">
+                        <li>מיפוי המצב הפיננסי</li>
+                        <li>הבנת היעדים והצרכים</li>
+                        <li>הסבר על תהליך העבודה</li>
+                        <li>ללא התחייבות</li>
+                    </ul>
+                    <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="pricing-cta">
+                        <i class="fas fa-calendar-alt"></i> תאמו שיחה
+                    </a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>חבילת בסיס</h3>
+                    <p class="pricing-tagline">תוכנית עבודה מסודרת לשנה הקרובה</p>
+                    <div class="pricing-price">1,500-2,500 ₪</div>
+                    <div class="pricing-period">2 פגישות + מסמך המלצות</div>
+                    <ul class="pricing-features">
+                        <li>ניתוח תקציב מלא</li>
+                        <li>מסמך המלצות מפורט</li>
+                        <li>תוכנית פעולה ל-12 חודשים</li>
+                        <li>מענה בוואטסאפ למשך 30 יום</li>
+                    </ul>
+                    <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="pricing-cta">
+                        <i class="fas fa-arrow-left"></i> מתחילים
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>חבילה מקיפה</h3>
+                    <p class="pricing-tagline">תמונה פיננסית שלמה וליווי מקצועי</p>
+                    <div class="pricing-price">4,000-6,000 ₪</div>
+                    <div class="pricing-period">4-5 פגישות + ליווי 3 חודשים</div>
+                    <ul class="pricing-features">
+                        <li>ניתוח מלא: תקציב + ביטוחים + פנסיה + נדל"ן</li>
+                        <li>תוכנית פעולה רב-שנתית</li>
+                        <li>ליווי ביישום ההמלצות</li>
+                        <li>מענה רציף בוואטסאפ</li>
+                    </ul>
+                    <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="pricing-cta">
+                        <i class="fas fa-arrow-left"></i> לפרטים
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>ליווי שנתי</h3>
+                    <p class="pricing-tagline">המשך ליווי אחרי חבילה ראשונית</p>
+                    <div class="pricing-price">2,400-3,600 ₪</div>
+                    <div class="pricing-period">פגישת רבעון + מענה שוטף</div>
+                    <ul class="pricing-features">
+                        <li>פגישת ביקורת רבעונית</li>
+                        <li>מענה בוואטסאפ לאורך השנה</li>
+                        <li>עדכון התוכנית לפי שינויים</li>
+                        <li>מתאים לאחר חבילה ראשונית</li>
+                    </ul>
+                    <a href="https://calendar.app.google/sqr288yJLiTTyq4b6" target="_blank" rel="noopener" class="pricing-cta">
+                        <i class="fas fa-arrow-left"></i> פרטים
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- Process Section -->
         <section class="process">
@@ -219,7 +557,7 @@
                             <strong>ראש של מהנדס:</strong> אני מביא את הדיוק, האנליטיות וניהול הסיכונים מעולם ההנדסה וניהול הפרויקטים ישר לכיס שלכם.
                         </li>
                         <li>
-                            <strong>100% נאמנות אליכם (Fiduciary):</strong> אני לא סוכן ביטוח. אני לא מקבל עמלות מאף בית השקעות. התשלום היחיד הוא מכם, ולכן האינטרס שלי הוא אך ורק הצלחתכם.
+                            <strong>100% נאמנות אליכם:</strong> אני לא סוכן ביטוח, ואיני מקבל עמלות מאף בית השקעות, בנק או חברת ביטוח. שכר הטרחה היחיד הוא מכם — ולכן האינטרס שלי הוא אך ורק הצלחתכם.
                         </li>
                         <li>
                             <strong>ארגז כלים מתקדם:</strong> שימוש באפליקציות ואוטומציות שפיתחתי כדי להפוך את ניהול התקציב לקל ופשוט.
@@ -345,7 +683,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2025 NEIL KAPPEL. Financial Planning & Strategy.</p>
+                <p>© <span class="current-year">2026</span> NEIL KAPPEL. Financial Planning & Strategy.</p>
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/in/neil-kappel-077460b4/" target="_blank" rel="noopener" aria-label="לינקדאין">
                         <i class="fab fa-linkedin"></i>
