@@ -10937,8 +10937,9 @@ h1, h2, h3, h4 {
     .scroll-top-btn {
         width: 46px !important;
         height: 46px !important;
-        bottom: 88px !important;     /* clearly above a11y toggle (~24px) and any sticky bar */
-        right: 16px !important;
+        bottom: 80px !important;     /* sit above WhatsApp on the left side */
+        right: auto !important;
+        left: 16px !important;        /* MOBILE: move to LEFT, above WhatsApp (a11y is on right) */
         font-size: 17px !important;
     }
 }
@@ -10981,18 +10982,24 @@ h1, h2, h3, h4 {
 .hero-portrait-wrap {
     position: absolute !important;
     bottom: 0 !important;
-    left: 3% !important;
-    width: 28% !important;
-    max-width: 420px !important;
+    left: 4% !important;
+    width: 34% !important;
+    max-width: 500px !important;
+    min-height: 60% !important;
     pointer-events: none !important;
     z-index: 2 !important;
-    opacity: 0.95;
+    opacity: 1 !important;
+    display: flex !important;
+    align-items: flex-end !important;
 }
 .hero-portrait-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(201, 162, 39, 0.15));
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    max-height: 90vh !important;
+    object-fit: contain !important;
+    object-position: bottom center !important;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 30px rgba(201, 162, 39, 0.2)) !important;
 }
 @media (max-width: 1024px) {
     .hero-portrait-wrap { display: none !important; }
