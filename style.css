@@ -10892,46 +10892,55 @@ h1, h2, h3, h4 {
     max-width: 200px;
 }
 
-/* ---------- 3. Scroll-to-top button (bottom-right, opposite WhatsApp which is left) ---------- */
+/* ---------- 3. Scroll-to-top button — TOP z-index so it sits above a11y widget ---------- */
 .scroll-top-btn {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;  /* WhatsApp lives on the LEFT — keep scroll-top on the RIGHT */
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--navy-deep), var(--navy-soft));
-    color: var(--ivory);
-    border: 1.5px solid var(--gold-soft);
-    box-shadow: 0 8px 22px rgba(15, 25, 35, 0.22), 0 0 0 4px rgba(201, 162, 39, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    position: fixed !important;
+    bottom: 96px !important;        /* sit above the a11y toggle button */
+    right: 28px !important;          /* opposite side from WhatsApp (which is on the left) */
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #0f1923, #1a2a3a) !important;
+    color: #faf7f1 !important;
+    border: 1.5px solid #c9a227 !important;
+    box-shadow: 0 8px 22px rgba(15, 25, 35, 0.28), 0 0 0 4px rgba(201, 162, 39, 0.12) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px) scale(0.85);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 998;
-    font-size: 18px;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s, color 0.25s !important;
+    z-index: 100001 !important;     /* a11y widget max is 100000 — sit above it */
+    font-size: 20px !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    pointer-events: auto !important;
 }
 .scroll-top-btn.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1) !important;
 }
 .scroll-top-btn:hover {
-    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
-    color: var(--navy-deep);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 14px 30px rgba(201, 162, 39, 0.35);
+    background: linear-gradient(135deg, #c9a227, #a68518) !important;
+    color: #0f1923 !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 14px 30px rgba(201, 162, 39, 0.45) !important;
 }
 .scroll-top-btn:focus-visible {
-    outline: 3px solid var(--gold-soft);
-    outline-offset: 4px;
+    outline: 3px solid #c9a227 !important;
+    outline-offset: 4px !important;
 }
-@media (max-width: 600px) {
-    .scroll-top-btn { width: 46px; height: 46px; bottom: 86px; right: 16px; }
+@media (max-width: 768px) {
+    .scroll-top-btn {
+        width: 46px !important;
+        height: 46px !important;
+        bottom: 88px !important;     /* clearly above a11y toggle (~24px) and any sticky bar */
+        right: 16px !important;
+        font-size: 17px !important;
+    }
 }
 
 /* ---------- 4. Hero with video background + portrait (DARK luxury — like Ariel Tal) ---------- */
@@ -11579,6 +11588,177 @@ h1, h2, h3, h4 {
         font-size: 16px;
     }
 }
+
+/* ---------- 12. STAS FEATURE CARD (large featured partner) ---------- */
+.stas-feature {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    background: #fff;
+    border: 2px solid var(--gold-soft);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 14px 36px rgba(201, 162, 39, 0.15);
+    align-items: start;
+}
+.stas-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--cream), var(--ivory));
+    border-radius: 12px;
+    padding: 30px 20px;
+    border: 1px solid var(--cream-deep);
+}
+.stas-monogram {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.4em;
+    font-weight: 700;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 22px rgba(201, 162, 39, 0.35);
+}
+.stas-badge {
+    background: var(--navy-deep);
+    color: var(--gold-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+.stas-content { padding-top: 8px; }
+.stas-eyebrow {
+    color: var(--gold-deep);
+    font-size: 0.85em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+.stas-content h3 {
+    color: var(--navy-deep);
+    font-size: 1.6em;
+    margin: 0 0 10px;
+}
+.stas-tagline {
+    color: var(--gray-700);
+    font-size: 1.02em;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+.stas-services { margin: 22px 0 24px; }
+.stas-services strong {
+    color: var(--navy-deep);
+    display: block;
+    margin-bottom: 12px;
+}
+.stas-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px 16px;
+    font-size: 0.94em;
+    color: var(--gray-700);
+}
+.stas-services-grid div {
+    padding: 4px 0;
+}
+.stas-services-grid i {
+    color: var(--gold-deep);
+    margin-left: 8px;
+    width: 18px;
+    text-align: center;
+}
+.stas-contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 22px 0 14px;
+}
+.stas-contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid var(--cream-deep);
+    transition: all 0.25s;
+    background: #fff;
+    color: var(--navy-deep);
+}
+.stas-contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 25, 35, 0.12);
+    border-color: var(--gold-soft);
+}
+.stas-contact-btn i {
+    font-size: 1.6em;
+    color: var(--gold-deep);
+    width: 28px;
+    text-align: center;
+}
+.stas-contact-btn.whatsapp-btn i { color: #25d366; }
+.stas-contact-btn div { display: flex; flex-direction: column; line-height: 1.3; }
+.stas-contact-btn small {
+    color: var(--gray-600);
+    font-size: 0.78em;
+}
+.stas-contact-btn strong {
+    color: var(--navy-deep);
+    font-size: 1em;
+    font-weight: 700;
+}
+.stas-languages {
+    color: var(--gray-600);
+    font-size: 0.9em;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--cream-deep);
+}
+.stas-languages i {
+    color: var(--gold-deep);
+    margin-left: 6px;
+}
+
+@media (max-width: 768px) {
+    .stas-feature {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+        gap: 20px;
+    }
+    .stas-visual { padding: 20px 16px; }
+    .stas-monogram { width: 80px; height: 80px; font-size: 2em; }
+    .stas-content h3 { font-size: 1.35em; }
+    .stas-tagline { font-size: 0.95em; }
+}
+
+/* ---------- 13. AFFILIATE BADGE on benefits cards ---------- */
+.affiliate-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.72em;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+}
+.partner-card { position: relative; }
+.partner-card.featured-partner { padding-top: 40px; }
 
 /* Prevent video autoplay drain on data-saver connections */
 @media (prefers-reduced-motion: reduce) {
