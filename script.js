@@ -3325,26 +3325,25 @@ document.head.appendChild(spinnerCSS);
             // Intercept calculator button clicks
             document.querySelectorAll('.calc-btn').forEach(btn => {
                 const originalOnclick = btn.getAttribute('onclick');
-                
-                if (originalOnclick) {
-                    btn.removeAttribute('onclick');
-                    btn.addEventListener('click', (e) => {
-                        this.setLoading(btn, true);
-                        
-                        // Execute original function after short delay
-                        setTimeout(() => {
-                            try {
-                                eval(originalOnclick);
-                            } catch (err) {
-                                console.error('Calculator error:', err);
-                            }
-                            
-                            setTimeout(() => {
-                                this.setLoading(btn, false);
-                            }, 300);
-                        }, 100);
-                    });
-                }
+                if (!originalOnclick) return;
+
+                // Parse `funcName(...)` from the inline onclick. CSP blocks
+                // `eval`, so resolve the function on `window` and call it directly.
+                const match = originalOnclick.match(/^\s*([A-Za-z_$][\w$]*)\s*\(\s*\)\s*;?\s*$/);
+                if (!match) return;
+                const fnName = match[1];
+                const fn = window[fnName];
+                if (typeof fn !== 'function') return;
+
+                btn.removeAttribute('onclick');
+                btn.addEventListener('click', () => {
+                    this.setLoading(btn, true);
+                    setTimeout(() => {
+                        try { fn(); }
+                        catch (err) { console.error('Calculator error:', err); }
+                        setTimeout(() => this.setLoading(btn, false), 300);
+                    }, 100);
+                });
             });
         },
         
