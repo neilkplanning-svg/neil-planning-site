@@ -791,44 +791,67 @@ window.formatNumber = formatNumber;
    ============================================ */
 function calculateLeverage() {
     const assetValue = parseInputNumber(document.getElementById('assetValue')?.value) || 0;
+    const equityInput = parseInputNumber(document.getElementById('equity')?.value) || 0;
     const loans = parseInputNumber(document.getElementById('loans')?.value) || 0;
 
-    if (assetValue === 0) { 
-        showError('שווי הנכס חייב להיות גדול מאפס'); 
-        return; 
+    if (assetValue === 0) {
+        showError('שווי הנכס חייב להיות גדול מאפס');
+        return;
     }
 
     const ltv = (loans / assetValue) * 100;
-    
+    const equityInAsset = Math.max(assetValue - loans, 0);
+    const equityPercent = Math.max(100 - ltv, 0);
+
     let status = "";
     let badgeClass = "";
 
-    if (ltv < 45) { 
-        status = "מצוין (סיכון נמוך)"; 
-        badgeClass = "verdict-success"; 
-    } else if (ltv < 60) { 
-        status = "סביר (סטנדרט בנקאי)"; 
-        badgeClass = "verdict-info"; 
-    } else if (ltv < 75) { 
-        status = "גבוה (גבול המימון הבנקאי)"; 
-        badgeClass = "verdict-warning"; 
-    } else { 
-        status = "מסוכן מאוד (חריגה)"; 
-        badgeClass = "verdict-danger"; 
+    if (ltv < 45) {
+        status = "מצוין (סיכון נמוך)";
+        badgeClass = "verdict-success";
+    } else if (ltv < 60) {
+        status = "סביר (סטנדרט בנקאי)";
+        badgeClass = "verdict-info";
+    } else if (ltv < 75) {
+        status = "גבוה (גבול המימון הבנקאי)";
+        badgeClass = "verdict-warning";
+    } else {
+        status = "מסוכן מאוד (חריגה)";
+        badgeClass = "verdict-danger";
     }
 
-    // Update results
     const resultArea = document.getElementById('result');
     if (resultArea) {
         resultArea.style.display = 'block';
-        
+
         const ltvEl = document.getElementById('resLTV');
-        if (ltvEl) ltvEl.innerHTML = `<span class="label">אחוז מינוף</span><span class="value">${ltv.toFixed(1)}%</span>`;
-        
+        if (ltvEl) ltvEl.innerHTML = `<span class="label">אחוז מינוף (LTV)</span><span class="value">${ltv.toFixed(1)}%</span>`;
+
+        const verdictEl = document.getElementById('resVerdict');
+        if (verdictEl) verdictEl.innerHTML = `<div class="verdict-badge ${badgeClass}">${status}</div>`;
+
         const statusEl = document.getElementById('resStatus');
         if (statusEl) statusEl.innerHTML = `<div class="verdict-badge ${badgeClass}">${status}</div>`;
+
+        const assetValueEl = document.getElementById('resAssetValue');
+        if (assetValueEl) assetValueEl.textContent = formatCurrency(assetValue);
+
+        const loansEl = document.getElementById('resLoans');
+        if (loansEl) loansEl.textContent = formatCurrency(loans);
+
+        const equityInAssetEl = document.getElementById('resEquityInAsset');
+        if (equityInAssetEl) equityInAssetEl.textContent = formatCurrency(equityInAsset);
+
+        const equityPercentEl = document.getElementById('resEquityPercent');
+        if (equityPercentEl) equityPercentEl.textContent = `${equityPercent.toFixed(1)}%`;
+
+        const riskIndicator = document.getElementById('riskIndicator');
+        if (riskIndicator) {
+            const clamped = Math.max(0, Math.min(ltv, 100));
+            riskIndicator.style.right = `calc(${clamped}% - 10px)`;
+        }
     }
-    
+
     resultArea?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -3225,9 +3248,8 @@ document.head.appendChild(spinnerCSS);
             this.hamburger.setAttribute('aria-expanded', 'true');
             this.nav.classList.add('open');
             if (this.overlay) this.overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
         },
-        
+
         close() {
             this.hamburger.classList.remove('active');
             this.hamburger.setAttribute('aria-expanded', 'false');
